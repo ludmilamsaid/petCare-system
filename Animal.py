@@ -1,4 +1,16 @@
 from abc import ABC, abstractmethod
+from enum import Enum
+from datetime import date
+
+class Especie(Enum):
+    CACHORRO = "Cachorro"
+    GATO = "Gato"
+
+class Tamanho(Enum):
+    MINI = "Mini"
+    PEQUENO = "Pequeno"
+    MEDIO = "Médio"
+    GRANDE = "Grande"
 
 class Animal(ABC):
     def __init__(self, nome, idade, especie, cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta):
