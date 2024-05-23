@@ -1,153 +1,34 @@
 from enum import Enum
-
-class Raca(Enum):
-    AFGHAN_HOUND = "Afghan Hound"
-    AIREDALE_TERRIER = "Airedale Terrier"
-    AKITA = "Akita"
-    AKITA_AMERICANO = "Akita Americano"
-    AMERICAN_BULLY = "American Bully"
-    AMERICAN_PIT_BULL_TERRIER = "American Pit Bull Terrier"
-    AMERICAN_STAFFORDSHIRE_TERRIER = "American Staffordshire Terrier"
-    ANATOLIAN_SHEPHERD = "Anatolian Shepherd"
-    AUSTRALIAN_CATTLE_DOG = "Australian Cattle Dog"
-    AUSTRALIAN_KELPIE = "Australian Kelpie"
-    AUSTRALIAN_SHEPHERD = "Australian Shepherd"
-    AUSTRALIAN_TERRIER = "Australian Terrier"
-    BASENJI = "Basenji"
-    BASSET_HOUND = "Basset Hound"
-    BEAGLE = "Beagle"
-    BEARDED_COLLIE = "Bearded Collie"
-    BEDLINGTON_TERRIER = "Bedlington Terrier"
-    BELGIAN_MALINOIS = "Belgian Malinois"
-    BELGIAN_SHEEPDOG = "Belgian Sheepdog"
-    BELGIAN_TERVUREN = "Belgian Tervuren"
-    BERNESE_MOUNTAIN_DOG = "Bernese Mountain Dog"
-    BICHON_FRISE = "Bichon Frisé"
-    BLACK_AND_TAN_COONHOUND = "Black and Tan Coonhound"
-    BLACK_RUSSIAN_TERRIER = "Black Russian Terrier"
-    BLOODHOUND = "Bloodhound"
-    BORDER_COLLIE = "Border Collie"
-    BORDER_TERRIER = "Border Terrier"
-    BORZOI = "Borzoi"
-    BOSTON_TERRIER = "Boston Terrier"
-    BOUVIER_DES_FLANDRES = "Bouvier des Flandres"
-    BOXER = "Boxer"
-    BOYKIN_SPANIEL = "Boykin Spaniel"
-    BRACCO_ITALIANO = "Bracco Italiano"
-    BRITTANY = "Brittany"
-    BRUSSELS_GRIFFON = "Brussels Griffon"
-    BULL_TERRIER = "Bull Terrier"
-    BULLDOG = "Bulldog"
-    BULLMASTIFF = "Bullmastiff"
-    CAIRN_TERRIER = "Cairn Terrier"
-    CANNES_MAESTAS = "Cannes Maestus"
-    CATAHOULA_LEOPARD_DOG = "Catahoula Leopard Dog"
-    CAUCASIAN_SHEPHERD_DOG = "Caucasian Shepherd Dog"
-    CAVALIER_KING_CHARLES_SPANIEL = "Cavalier King Charles Spaniel"
-    CENTRAL_ASIAN_SHEPHERD_DOG = "Central Asian Shepherd Dog"
-    CHESAPEAKE_BAY_RETRIEVER = "Chesapeake Bay Retriever"
-    CHIHUAHUA = "Chihuahua"
-    CHINESE_CRESTED = "Chinese Crested"
-    CHOW_CHOW = "Chow Chow"
-    CIRNECO_DELL_ETNA = "Cirneco dell'Etna"
-    CLUMBER_SPANIEL = "Clumber Spaniel"
-    COCKER_SPANIEL = "Cocker Spaniel"
-    COLLIE = "Collie"
-    COTON_DE_TULEAR = "Coton de Tulear"
-    CURLY_COATED_RETRIEVER = "Curly-Coated Retriever"
-    DACHSHUND = "Dachshund"
-    DALMATIAN = "Dalmatian"
-    DANDIE_DINMONT_TERRIER = "Dandie Dinmont Terrier"
-    DOBERMAN_PINSCHER = "Doberman Pinscher"
-    DOGO_ARGENTINO = "Dogo Argentino"
-    DOGUE_DE_BORDEAUX = "Dogue de Bordeaux"
-    ENGLISH_COCKER_SPANIEL = "English Cocker Spaniel"
-    ENGLISH_FOXHOUND = "English Foxhound"
-    ENGLISH_SETTER = "English Setter"
-    ENGLISH_SPRINGER_SPANIEL = "English Springer Spaniel"
-    ENGLISH_TOY_SPANIEL = "English Toy Spaniel"
-    ENTLEBUCHER_MOUNTAIN_DOG = "Entlebucher Mountain Dog"
-    FIELD_SPANIEL = "Field Spaniel"
-    FINNISH_LAPPHUND = "Finnish Lapphund"
-    FINNISH_SPITZ = "Finnish Spitz"
-    FLAT_COATED_RETRIEVER = "Flat-Coated Retriever"
-    FRENCH_BULLDOG = "French Bulldog"
-    GERMAN_PINSCHER = "German Pinscher"
-    GERMAN_SHEPHERD_DOG = "German Shepherd Dog"
-    GERMAN_SHORTHAIRED_POINTER = "German Shorthaired Pointer"
-    GERMAN_WIREHAIRED_POINTER = "German Wirehaired Pointer"
-    GIANT_SCHNAUZER = "Giant Schnauzer"
-    GLEN_OF_IMAAL_TERRIER = "Glen of Imaal Terrier"
-    GOLDEN_RETRIEVER = "Golden Retriever"
-    GORDON_SETTER = "Gordon Setter"
-    GREAT_DANE = "Great Dane"
-    GREAT_PYRENEES = "Great Pyrenees"
-    GREATER_SWISS_MOUNTAIN_DOG = "Greater Swiss Mountain Dog"
-    GREYHOUND = "Greyhound"
-    HARRIER = "Harrier"
-    HAVANESE = "Havanese"
-    IBIZAN_HOUND = "Ibizan Hound"
-    ICELANDIC_SHEEPDOG = "Icelandic Sheepdog"
-    IRISH_RED_AND_WHITE_SETTER = "Irish Red and White Setter"
-    IRISH_SETTER = "Irish Setter"
-    IRISH_TERRIER = "Irish Terrier"
-    IRISH_WATER_SPANIEL = "Irish Water Spaniel"
-    IRISH_WOLFHOUND = "Irish Wolfhound"
-    ITALIAN_GREYHOUND = "Italian Greyhound"
-    JAPANESE_CHIN = "Japanese Chin"
-    KEESHOND = "Keeshond"
-    KERRY_BLUE_TERRIER = "Kerry Blue Terrier"
-    KUVASZ = "Kuvasz"
-    LABRADOR_RETRIEVER = "Labrador Retriever"
-    LAGOTTO_ROMAGNOLO = "Lagotto Romagnolo"
-    LAKELAND_TERRIER = "Lakeland Terrier"
-    LEONBERGER = "Leonberger"
-    LHASA_APSO = "Lhasa Apso"
-    LOWCHEN = "Lowchen"
-    MALTESE = "Maltese"
-    MANCHESTER_TERRIER = "Manchester Terrier"
-    MASTIFF = "Mastiff"
-    MINIATURE_AMERICAN_SHEPHERD = "Miniature American Shepherd"
-    MINIATURE_BULL_TERRIER = "Miniature Bull Terrier"
-    MINIATURE_PINSCHER = "Miniature Pinscher"
-    MINIATURE_SCHNAUZER = "Miniature Schnauzer"
-    NEAPOLITAN_MASTIFF = "Neapolitan Mastiff"
-    NEWFOUNDLAND = "Newfoundland"
-    NORFOLK_TERRIER = "Norfolk Terrier"
-    NORWEGIAN_BUHUND = "Norwegian Buhund"
-    NORWEGIAN_ELKHOUND = "Norwegian Elkhound"
-    NORWEGIAN_LUNDEHUND = "Norwegian Lundehund"
-    NORWICH_TERRIER = "Norwich Terrier"
-    NOVA_SCOTIA_DUCK_TOLLING_RETRIEVER = "Nova Scotia Duck Tolling Retriever"
-    OLD_ENGLISH_SHEEPDOG = "Old English Sheepdog"
-    OTTERHOUND = "Otterhound"
-    PAPILLON = "Papillon"
-    PARSON_RUSSELL_TERRIER = "Parson Russell Terrier"
-    PEKINGESE = "Pekingese"
-    PEMBROKE_WELSH_CORGI = "Pembroke Welsh Corgi"
-    PERRO_DE_AGUA_ESPAÑOL = "Perro de Agua Español"
-    PETIT_BASSET_GRIFFON_VENDEEN = "Petit Basset Griffon Vendéen"
-    PHARAOH_HOUND = "Pharaoh Hound"
-    PLATINUM_RETRIEVER = "Platinum Retriever"
-    POINTER = "Pointer"
-    POLISH_LOWLAND_SHEEPDOG = "Polish Lowland Sheepdog"
-    POMERANIAN = "Pomeranian"
-    POODLE = "Poodle"
-    PORTUGUESE_PODENGO = "Portuguese Podengo"
-    PORTUGUESE_PODENGO_PEQUENO = "Portuguese Podengo Pequeno"
-    PORTUGUESE_WATER_DOG = "Portuguese Water Dog"
-    PUG = "Pug"
-    PULI = "Puli"
-    PUMI = "Pumi"
-    PYRENEAN_MASTIFF = "Pyrenean Mastiff"
-    PYRENEAN_SHEPHERD = "Pyrenean Shepherd"
-    RAT_TERRIER = "Rat Terrier"
-    REDBONE_COONHOUND = "Redbone Coonhound"
-    RHODESIAN_RIDGEBACK = "Rhodesian Ridgeback"
-    ROTTWEILER = "Rottweiler"
-    
+from Animal import Animal
+from datetime import date, datetime, timedelta
 
 class Cachorro(Animal):
-    def __init__(self, nome: str, idade: int, raca: Raca, cor: str, tamanho: str, cliente: int, ID: int, data_chegada: date, data_saida: date, addr_historico: str, conta: float):
+    def __init__(self, nome: str, idade: int, raca: str, cor: str, tamanho: str, cliente: int, ID: int, data_chegada: date, data_saida: date, addr_historico: str, conta: float):
         super().__init__(nome, idade, raca.value, cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta)
         self.raca = raca
+
+raca = ["Norsk Lundehund", "Bulldog Francês Fluffy", "Braco-da-Transilvânia", "Sabujo Colombiano", "American Bully", "Dogue de Bordeaux", "American Pit Bull Terrier", "Cão Esquimó Americano",
+        "Manchester Terrier", "Shar Pei", "Coton de Tulear", "Cão Lobo Checoslovaco", "Griffon de Bruxelas", "Cão de Crista Chinês", "Harrier", "Chow Chow", "Dogue Alemão", "Galgo Espanhol",
+        "Scottish Terrier", "Boiadeiro Australiano", "Schnauzer Miniatura", "Pinscher Miniatura", "Welsh Corgi Pembroke", "Bearded Collie", "Pastor dos Pirineus de Pelo Longo",
+        "Collie de Pelo Curto", "Cão Esquimó Canadense", "Galgo Inglês", "Dogue Canário", "Mastim Tibetano", "Setter Irlandês", "Broholmer", "Pastor-Galego", "Spaniel Bretão", "Lébrel Irlandês",
+        "Bloodhound ou Cão-de-Santo-Humberto", "Cavalier King Charles Spaniel", "Pelado Mexicano", "Terrier Americano Sem Pelo", "Terrier Alemão de Caça", "Vulpino Italiano", "Fox Terrier de Pelo Duro",
+        "Bichon Frisé", "Papillon", "Basenji", "Husky Siberiano", "Doberman", "Prazsky Krysarik", "Pastor Belga Malinois", "Leão da Rodésia", "West Highland White Terrier", "Chorkie",
+        "Cavoodle ou Cavapoo", "Australian Cobberdog", "Goldendoodle", "Cockapoo", "Cão d'água Português", "Terrier Tibetano", "Shichon", "Curly coated retriever", "Perdigueiro de Burgos",
+        "Perdigueiro português", "Leonberger", "Silky terrier", "Flat-coated retriever", "Lancashire heeler", "Black mouth cur", "Cachorro pila argentino", "Pastor americano miniatura ou pastor australiano miniatura",
+        "Bardino majorero", "Cão d'água irlandês", "Otterhound ou cão de lontra", "Cachorro Mudi", "Cão do faraó", "Tamaskan", "Cão-lobo-de-saarloos", "Clumber spaniel", "Pinscher austríaco",
+        "Cão-pelado-peruano", "Alusky: malamute do alasca e husky", "Dandie Dinmont Terrier", "Skye terrier", "Lulu da Pomerânia", "Chesapeake bay retriever", "Pointer inglês", "Sloughi ou galgo árabe",
+        "Setter inglês", "Dogo argentino", "Boykin spaniel", "Pastor-da-picardia", "Pastor-croata", "Pequeno brabançon", "Bull Arab", "Azawakh", "Aidi ou cão das montanhas do Atlas", "Pastor-polonês-da-planície",
+        "Vizsla ou braco-húngaro-de-pelo-curto", "Jindo-coreano", "Cairn terrier", "Schipperke", "Terrier australiano (Australian Terrier)", "Kuvasz", "Soft coated wheaten terrier", "Spitz finlandês",
+        "Spitz de norrbotten", "Collie de pelo longo", "Bouvier des Flandres (Boiadeiro de Flandres)", "Pastor-de-beauce ou beauceron", "Bedlington terrier", "Barbet ou cão d'água francês", "Coonhound inglês",
+        "Poodle anão", "Spaniel tibetano", "Spitz dos visigodos ou vallhund sueco", "Samoieda", "Poochon", "Cuvac eslovaco", "Pinscher Alemão", "Catahoula cur", "Vira-lata caramelo", "Labsky ou huskador",
+        "Shikoku Inu", "Affenpinscher", "Poodle gigante (caniche gigante)", "Griffon belga", "Mastim inglês ou mastiff", "Springer spaniel inglês", "Pequinês", "Bernedoodle", "Pastor-do-cáucaso",
+        "Mastim espanhol", "Kelpie Australiano", "Kerry Blue Terrier", "Shorkie", "Mastim dos Pirinéus", "Podengo Português", "Husky Inu", "Goldador", "Foxhound Americano", "Foxhound Inglês", "Poodle Toy",
+        "Ratonero Bodeguero Andaluz", "Schnoodle", "Elkhound Norueguês", "Shih poo", "Eurasier", "Pomsky", "Galgo Italiano ou Pequeno Lébrel Italiano", "Bichon Havanês", "Parson Russell Terrier",
+        "Ratonero Valenciano ou Gos Rater Valencià", "Borzoi", "Puggle", "Braco-italiano", "Maltipoo", "Morkie", "Yorkie Poo ou Yorkipoo", "Labradoodle", "Pastor Bergamasco", "Pastor de Shetland", "Deerhound",
+        "Labrador Retriever", "Boxer", "Bichon Bolonhês", "Cane Corso", "Mastim Napolitano", "Boiadeiro de Appenzeller", "Tosa Inu", "Cão d'água Espanhol", "Schnauzer Gigante", "Terrier Preto da Rússia",
+        "Bulldog Francês", "Pastor Catalão", "Rottweiler", "Border Terrier", "Boiadeiro de Berna", "Staffordshire Bull Terrier", "Welsh Corgi Cardigan", "Bulldog Americano", "Bulldog Inglês", 
+        "Braco alemão de pelo curto", "Pastor Australiano", "Pastor Branco Suíço", "Boston terrier", "Poodle ou caniche", "Chihuahua", "Terra-nova", "Malamute do Alasca", "Shih Tzu", "Saluki",
+        "Fox Paulistinha ou Terrier Brasileiro", "Bullmastiff", "Cocker Spaniel Inglês", "Whippet", "Fila Brasileiro", "Airedale Terrier", "Pastor Belga Groenendael", "Pastor Belga Tervueren", 
+        "Weimaraner ou Braco de Weimar", "Dálmata", "Dachshund ou Teckel", "Spitz Alemão", "Pug", "Lhasa Apso", "Fox Terrier de pelo liso", "Schnauzer", "Boerboel", "Jack Russell Terrier", "São Bernardo",
+        "Bobtail", "Bull Terrier Inglês", "Galgo Afegão", "Golden Retriever", "Border Collie", "Basset Hound", "American Staffordshire Terrier", "Bull Terrier Inglês Miniatura", "Akita Inu",
+        "Pastor alemão", "Maltês", "Beagle", "Yorkshire Terrier", "Shiba Inu", "Akita Americano"]

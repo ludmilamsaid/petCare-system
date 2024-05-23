@@ -1,79 +1,16 @@
 from enum import Enum
-
-class Raca(Enum):
-    ABISSINIO = "Abissínio"
-    AMERICAN_CURL = "American Curl"
-    AMERICAN_SHORTHAIR = "American Shorthair"
-    AMERICAN_WIREHAIR = "American Wirehair"
-    ANGORA_TURCO = "Angorá Turco"
-    AUSTRALIAN_MIST = "Australian Mist"
-    AZUL_RUSSO = "Azul Russo"
-    BALINES = "Balinês"
-    BAMBINO = "Bambino"
-    BENGAL = "Bengal"
-    BOBTAIL_AMERICANO = "Bobtail Americano"
-    BOBTAIL_JAPONES = "Bobtail Japonês"
-    BOMBAIM = "Bombaim"
-    BRITISH_LONGHAIR = "British Longhair"
-    BRITISH_SHORTHAIR = "British Shorthair"
-    BURMES = "Burmês"
-    BURMILLA = "Burmilla"
-    CALIFORNIA_SPANGLED = "California Spangled"
-    CHANTILLY_TIFFANY = "Chantilly Tiffany"
-    CHARTREUX = "Chartreux"
-    CHAUSIE = "Chausie"
-    COLORPOINT_SHORTHAIR = "Colorpoint Shorthair"
-    CORNISH_REX = "Cornish Rex"
-    CYMRIC = "Cymric"
-    DEVON_REX = "Devon Rex"
-    DONSKOY = "Donskoy"
-    EGYPTO_MAU = "Egípcio Mau"
-    EUROPEU_COMUM = "Europeu Comum"
-    EXOTICO_PELO_CURTO = "Exótico de Pelo Curto"
-    HAVANA_BROWN = "Havana Brown"
-    HIGHLANDER = "Highlander"
-    HIMALIA = "Himalaio"
-    KHAO_MANEE = "Khao Manee"
-    KORAT = "Korat"
-    KURILIAN_BOBTAIL = "Kurilian Bobtail"
-    LAPERM = "LaPerm"
-    MAINE_COON = "Maine Coon"
-    MANX = "Manx"
-    MUNCHKIN = "Munchkin"
-    NEBELUNG = "Nebelung"
-    NORUEGUES_FLORESTA = "Norueguês da Floresta"
-    OCICAT = "Ocicat"
-    ORIENTAL = "Oriental"
-    PERSA = "Persa"
-    PETERBALD = "Peterbald"
-    PIXIE_BOB = "Pixie Bob"
-    RAGAMUFFIN = "Ragamuffin"
-    RAGDOLL = "Ragdoll"
-    SAVANNAH = "Savannah"
-    SCOTTISH_FOLD = "Scottish Fold"
-    SCOTTISH_FOLD_LONGHAIR = "Scottish Fold Longhair"
-    SCOTTISH_STRAIGHT = "Scottish Straight"
-    SCOTTISH_STRAIGHT_LONGHAIR = "Scottish Straight Longhair"
-    SELKIRK_REX = "Selkirk Rex"
-    SELKIRK_REX_LONGHAIR = "Selkirk Rex Longhair"
-    SIAMES = "Siamês"
-    SIBERIANO = "Siberiano"
-    SINGAPURA = "Singapura"
-    SNOWSHOE = "Snowshoe"
-    SOMALI = "Somali"
-    SPHYNX = "Sphynx"
-    SRD = "SRD"
-    THAI = "Thai"
-    TONQUINES = "Tonquinês"
-    TOYGER = "Toyger"
-    TURKISH_VAN = "Turkish Van"
-    BRITISH_CURL = "British Curl"
-    CHANTILLY_TIFFANY_LONGHAIR = "Chantilly Tiffany Longhair"
-    HIGHLANDER_LONGHAIR = "Highlander Longhair"
-    SIBERIANO_LONGHAIR = "Siberiano Longhair"
-    SINGAPURA_LONGHAIR = "Singapura Longhair"
+from Animal import Animal
+from datetime import date, datetime, timedelta
 
 class Gato(Animal):
-    def __init__(self, nome: str, idade: int, raca: Raca, cor: str, tamanho: str, cliente: int, ID: int, data_chegada: date, data_saida: date, addr_historico: str, conta: float):
+    def __init__(self, nome: str, idade: int, raca, cor: str, tamanho: str, cliente: int, ID: int, data_chegada: date, data_saida: date, addr_historico: str, conta: float):
         super().__init__(nome, idade, raca.value, cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta)
         self.raca = raca
+
+raca = ["Abissínio", "American Curl", "American Shorthair", "American Wirehair", "Angorá Turco", "Australian Mist", "Azul Russo", "Balinês", "Bambino", "Bengal",
+        "Bobtail Americano", "Bobtail Japonês", "Bombaim", "British Longhair", "British Shorthair", "Burmês", "Burmilla", "California Spangled", "Chantilly Tiffany",
+        "Chartreux", "Chausie", "Colorpoint Shorthair", "Cornish Rex", "Cymric", "Devon Rex", "Donskoy", "Egípcio Mau", "Europeu Comum", "Exótico de Pelo Curto",
+        "Havana Brown", "Highlander", "Himalaio", "Khao Manee", "Korat", "Kurilian Bobtail", "LaPerm", "Maine Coon", "Manx", "Munchkin", "Nebelung", "Norueguês da Floresta",
+        "Ocicat", "Oriental", "Persa", "Peterbald", "Pixie Bob", "Ragamuffin", "Ragdoll", "Savannah", "Scottish Fold", "Scottish Fold Longhair", "Scottish Straight",
+        "Scottish Straight Longhair", "Selkirk Rex", "Selkirk Rex Longhair", "Siamês", "Siberiano", "Singapura", "Snowshoe", "Somali", "Sphynx", "SRD", "Thai", "Tonquinês",
+        "Toyger", "Turkish Van", "British Curl", "Chantilly Tiffany Longhair", "Highlander Longhair", "Siberiano Longhair", "Singapura Longhair"]
