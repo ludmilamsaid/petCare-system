@@ -1,10 +1,9 @@
 from Pessoa import Pessoa
 
 class Funcionario(Pessoa):
-    def __init__(self, nome, ID, valor_servico, disponivel):
+    def __init__(self, nome, ID, disponivel):
         super().__init__(nome)
         self.ID = ID
-        self.valor_servico = valor_servico
         self.disponivel = disponivel
         
 def chegar(self):

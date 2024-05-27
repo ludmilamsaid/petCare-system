@@ -1,10 +1,11 @@
 from enum import Enum
 from Animal import Animal
+from Animal import Especie
 from datetime import date, datetime, timedelta
 
 class Cachorro(Animal):
-    def __init__(self, nome: str, idade: int, raca: str, cor: str, tamanho: str, cliente: int, ID: int, data_chegada: date, data_saida: date, addr_historico: str, conta: float):
-        super().__init__(nome, idade, raca.value, cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta)
+    def __init__(self, nome, idade, raca, cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta):
+        super().__init__(nome, idade, Especie.CACHORRO, cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta)
         self.raca = raca
 
 raca = ["Norsk Lundehund", "Bulldog Francês Fluffy", "Braco-da-Transilvânia", "Sabujo Colombiano", "American Bully", "Dogue de Bordeaux", "American Pit Bull Terrier", "Cão Esquimó Americano",
