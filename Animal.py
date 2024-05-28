@@ -31,3 +31,6 @@ class Animal(ABC):
 
     def tosa(self):
         pass
+
+    def banho(self):
+        pass

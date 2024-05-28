@@ -1,5 +1,7 @@
 from enum import Enum
 from Animal import Animal
+from Tosador import Tosador
+from Veterinario import Veterinario
 from datetime import date, datetime, timedelta
 
 class Gato(Animal):
