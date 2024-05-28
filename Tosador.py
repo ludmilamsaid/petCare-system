@@ -9,7 +9,7 @@ class TipoTosa(Enum):
     TESOURA = "Na tesoura"
 
 class Tosador(Funcionario):
-    def __init__(self, nome, ID, valor_tosa, disponivel=False):
+    def __init__(self, nome, ID, valor_tosa, valor_banho, disponivel=False):
         super().__init__(nome, ID, disponivel)
         self.valor_tosa = valor_tosa
 
@@ -51,3 +51,37 @@ def tosar(self, animal):
                 print(f"Tosador {self.nome} não está disponível no momento.")
         else:
             print("O animal fornecido não pode ser tosado por este tosador.")
+
+def calcular_valor_banho(self, animal):
+        valor_base = 40
+        fator_tamanho = 1.0
+        fator_especie = 1.0
+
+        if animal.tamanho == Tamanho.MINI:
+            fator_tamanho = 0.8
+        elif animal.tamanho == Tamanho.PEQUENO:
+            fator_tamanho = 1.0
+        elif animal.tamanho == Tamanho.MEDIO:
+            fator_tamanho = 1.2
+        elif animal.tamanho == Tamanho.GRANDE:
+            fator_tamanho = 1.5
+
+        if isinstance(animal, Cachorro):
+            fator_especie = 1.0
+        elif isinstance(animal, Gato):
+            fator_especie = 0.9
+
+        valor_banho = valor_base * fator_tamanho * fator_especie
+        return valor_banho
+
+def dar_banho(self, animal):
+        if isinstance(animal, Cachorro) or isinstance(animal, Gato):
+            if self.disponivel:
+                valor_banho = self.calcular_valor_banho(animal)
+                print(f"Tosador {self.nome} está dando banho no {animal.especie.value} {animal.nome}.")
+                print(f"Valor do banho: R$ {valor_banho:.2f}")
+                animal.especie.banho()
+            else:
+                print(f"Tosador {self.nome} não está disponível no momento.")
+        else:
+            print("O animal fornecido não pode tomar banho.")

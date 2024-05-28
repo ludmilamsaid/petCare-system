@@ -32,4 +32,5 @@ raca = ["Norsk Lundehund", "Bulldog Francês Fluffy", "Braco-da-Transilvânia", 
         "Fox Paulistinha ou Terrier Brasileiro", "Bullmastiff", "Cocker Spaniel Inglês", "Whippet", "Fila Brasileiro", "Airedale Terrier", "Pastor Belga Groenendael", "Pastor Belga Tervueren", 
         "Weimaraner ou Braco de Weimar", "Dálmata", "Dachshund ou Teckel", "Spitz Alemão", "Pug", "Lhasa Apso", "Fox Terrier de pelo liso", "Schnauzer", "Boerboel", "Jack Russell Terrier", "São Bernardo",
         "Bobtail", "Bull Terrier Inglês", "Galgo Afegão", "Golden Retriever", "Border Collie", "Basset Hound", "American Staffordshire Terrier", "Bull Terrier Inglês Miniatura", "Akita Inu",
-        "Pastor alemão", "Maltês", "Beagle", "Yorkshire Terrier", "Shiba Inu", "Akita Americano"]
+        "Pastor alemão", "Maltês", "Beagle", "Yorkshire Terrier", "Shiba Inu", "Akita Americano", "SRD"]
+

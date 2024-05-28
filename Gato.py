@@ -14,3 +14,6 @@ raca = ["Abissínio", "American Curl", "American Shorthair", "American Wirehair"
         "Ocicat", "Oriental", "Persa", "Peterbald", "Pixie Bob", "Ragamuffin", "Ragdoll", "Savannah", "Scottish Fold", "Scottish Fold Longhair", "Scottish Straight",
         "Scottish Straight Longhair", "Selkirk Rex", "Selkirk Rex Longhair", "Siamês", "Siberiano", "Singapura", "Snowshoe", "Somali", "Sphynx", "SRD", "Thai", "Tonquinês",
         "Toyger", "Turkish Van", "British Curl", "Chantilly Tiffany Longhair", "Highlander Longhair", "Siberiano Longhair", "Singapura Longhair"]
+
+def banho (self, animal):
+        print(f"O gato {animal.nome} está tomando banho.")
