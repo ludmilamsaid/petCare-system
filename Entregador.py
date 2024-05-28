@@ -18,8 +18,9 @@ class Entregador(Funcionario):
             print(f"Entregador {self.nome} está buscando o {animal.especie.value} {animal.nome}.")
             endereco_clinica = "Rua Reitor Píres Albuquerque, 308, Pampulha, Belo Horizonte, MG, 31270-901"
             distancia, duracao = self.calcular_distancia_tempo(cliente.endereco, endereco_clinica)
+            duracao_arredondada = round(duracao, 2)
             print(f"Distância até a clínica: {distancia:.2f} km")
-            print(f"Tempo estimado de entrega: {duracao} minutos")
+            print(f"Tempo estimado de entrega: {duracao_arredondada} minutos")
         else:
             print(f"Entregador {self.nome} não está disponível para buscar animais no momento.")
 
@@ -29,7 +30,8 @@ class Entregador(Funcionario):
             endereco_clinica = "Rua Reitor Píres Albuquerque, 308, Pampulha, Belo Horizonte, MG, 31270-901"
             distancia, duracao = self.calcular_distancia_tempo(endereco_clinica, cliente.endereco)
             print(f"Distância até o endereço: {distancia:.2f} km")
-            print(f"Tempo estimado de entrega: {duracao} minutos")
+            duracao_arredondada = round(duracao, 2)
+            print(f"Tempo estimado de entrega: {duracao_arredondada} minutos")
         else:
             print(f"Entregador {self.nome} não está disponível para entregar animais no momento.")
 
@@ -72,5 +74,4 @@ animal = Animal(
     conta=200.0
 )
 
-# Buscar o animal
 entregador.entregar(animal, cliente)
