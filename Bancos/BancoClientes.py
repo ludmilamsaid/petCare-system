@@ -1,4 +1,4 @@
-from Banco import *
+from Banco import Banco
 
 class BancoCliente(Banco):
 

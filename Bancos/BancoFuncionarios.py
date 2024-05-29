@@ -11,5 +11,10 @@ class BancoFuncionarios(Banco):
         }
 
         addr = "Planilhas/Funcionarios.xlsx"
-        
+
         super().__init__(addr, dataType)
+
+teste = BancoFuncionarios()
+teste.ler_banco()
+teste.adicionar([int(101), "Joao", True])
+teste.imprimir()
