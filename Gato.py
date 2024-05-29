@@ -7,7 +7,7 @@ from datetime import date
 
 class Gato(Animal):
     def __init__(self, nome: str, idade: int, cor: str, tamanho: Tamanho, cliente: int, ID: int, data_chegada: date, data_saida: date, addr_historico: str, conta: float, raca: str):
-        super().__init__(nome, idade, "Gato", cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta)
+        super().__init__(nome, idade, Especie.GATO, cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta)
         self.raca = raca
 
 raca = ["Abissínio", "American Curl", "American Shorthair", "American Wirehair", "Angorá Turco", "Australian Mist", "Azul Russo", "Balinês", "Bambino", "Bengal",
@@ -18,34 +18,37 @@ raca = ["Abissínio", "American Curl", "American Shorthair", "American Wirehair"
         "Scottish Straight Longhair", "Selkirk Rex", "Selkirk Rex Longhair", "Siamês", "Siberiano", "Singapura", "Snowshoe", "Somali", "Sphynx", "SRD", "Thai", "Tonquinês",
         "Toyger", "Turkish Van", "British Curl", "Chantilly Tiffany Longhair", "Highlander Longhair", "Siberiano Longhair", "Singapura Longhair"]
 
-def tosa(gato: Gato, tosador: Tosador, tipo_tosa: TipoTosa):
-    if tosador.disponivel:
-        valor_tosa = tosador.valor_tosa * 0.9
-        print(f"Tosador {tosador.nome} está tosando o gato {gato.nome}.")
-        print(f"Valor da tosa: R$ {valor_tosa:.2f}")
-    else:
-        print(f"Tosador {tosador.nome} não está disponível no momento.")
+def tosa(self, tosador, tipo_tosa):
+        if tosador.disponivel:
+                valor_tosa = tosador.calcular_valor_tosa_gato(self.tamanho, tipo_tosa)
+                print(f"Tosador {tosador.nome} está tosando o gato {self.nome}.")
+                print(f"Valor da tosa: R$ {valor_tosa:.2f}")
+        else:
+                print(f"Tosador {tosador.nome} não está disponível no momento.")
 
-def banho(gato: Gato, tosador: Tosador):
-    if tosador.disponivel:
-        tosador.calcular_valor_banho(Animal)
-        valor_banho = tosador.valor_banho * 0.9
-        print(f"Tosador {tosador.nome} está dando banho no gato {gato.nome}.")
-        print(f"Valor do banho: R$ {valor_banho:.2f}")
-    else:
-        print(f"Tosador {tosador.nome} não está disponível no momento.")
-
+def banho(self, tosador):
+        if tosador.disponivel:
+                valor_banho = tosador.calcular_valor_banho_gato(self.tamanho)
+                print(f"Tosador {tosador.nome} está dando banho no gato {self.nome}.")
+                print(f"Valor do banho: R$ {valor_banho:.2f}")
+        else:
+                print(f"Tosador {tosador.nome} não está disponível no momento.")
 
 
-gato = Gato("Mia", 2, "Branco", Tamanho.PEQUENO, 123, 456, date.today(), date.today(), "Rua Exemplo, 123", 100.0, "Persa")
+animal1 = Animal(
+    nome="Mia",
+    idade=2,
+    especie=Especie.GATO,
+    cor="Branco",
+    tamanho=Tamanho.PEQUENO,
+    cliente=124,
+    ID=455,
+    data_chegada=date.today(),
+    data_saida=date.today(),
+    addr_historico="Rua Exemplo, 123",
+    conta=200.0
+)
 
-cliente = Cliente(
-        pet=gato,
-        conta=500.0,
-        endereco="Rua Apucarana, 11, Ouro Preto, Belo Horizonte, MG",
-        ID=789
-    )
+tosador = Tosador("Pedro", 1, True)
 
-tosador = Tosador("Pedro", 1, 65, 40, True)
-
-tosa(gato, tosador, TipoTosa.MAQUINA)
+tosa(animal1, tosador, TipoTosa.MAQUINA)
