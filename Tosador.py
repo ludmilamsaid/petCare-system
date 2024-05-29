@@ -1,87 +1,111 @@
 from Funcionario import Funcionario
-from Gato import Gato
-from Cachorro import Cachorro
-from Animal import Tamanho
+from Animal import Animal, Tamanho, Especie
 from enum import Enum
+from datetime import date
 
 class TipoTosa(Enum):
-    MAQUINA = "Na máquina"
-    TESOURA = "Na tesoura"
+    MAQUINA = "Máquina"
+    TESOURA = "Tesoura"
 
 class Tosador(Funcionario):
-    def __init__(self, nome, ID, valor_tosa, valor_banho, disponivel=False):
+    def __init__(self, nome:str, ID: int, disponivel=False):
         super().__init__(nome, ID, disponivel)
-        self.valor_tosa = valor_tosa
 
-def calcular_valor_tosa(self, animal, tipo_tosa):
-        valor_base = self.valor_tosa
-        if tipo_tosa == TipoTosa.MAQUINA:
-            valor_tosa = 65
-        elif tipo_tosa == TipoTosa.TESOURA:
-            valor_tosa = 75
-        valor_base = self.valor_tosa
+def calcular_valor_tosa_cachorro(tamanho, tipo_tosa) -> float:
+
+    if tipo_tosa == TipoTosa.MAQUINA:
+        valor_base = 65
+    elif tipo_tosa == TipoTosa.TESOURA:
+        valor_base = 75
+    else:
+        raise ValueError("Tipo de tosa inválido")
+
+    if tamanho == Tamanho.MINI:
+        fator_tamanho = 0.8
+    elif tamanho == Tamanho.PEQUENO:
         fator_tamanho = 1.0
-        fator_especie = 1.0
+    elif tamanho == Tamanho.MEDIO:
+        fator_tamanho = 1.2
+    elif tamanho == Tamanho.GRANDE:
+        fator_tamanho = 1.5
+    else:
+        raise ValueError("Tamanho inválido")
 
-        if animal.tamanho == Tamanho.MINI:
+    valor_tosa_cachorro = valor_base * fator_tamanho
+    print(f"Valor da tosa: R$ {valor_tosa_cachorro:.2f}")
+
+    return valor_tosa_cachorro
+
+def calcular_valor_tosa_gato(tamanho, tipo_tosa) -> float:
+
+    if tipo_tosa == TipoTosa.MAQUINA:
+        valor_base = 65
+    elif tipo_tosa == TipoTosa.TESOURA:
+        valor_base = 75
+    else:
+        raise ValueError("Tipo de tosa inválido")
+
+    if tamanho == Tamanho.MINI:
+        fator_tamanho = 0.8
+    elif tamanho == Tamanho.PEQUENO:
+        fator_tamanho = 1.0
+    elif tamanho == Tamanho.MEDIO:
+        fator_tamanho = 1.2
+    elif tamanho == Tamanho.GRANDE:
+        fator_tamanho = 1.5
+    else:
+        raise ValueError("Tamanho inválido")
+
+    valor_tosa_gato = valor_base * fator_tamanho * 0.9
+    return valor_tosa_gato
+
+def calcular_valor_banho_cachorro(tamanho) -> float:
+        
+        valor_base = 45
+
+        if tamanho == Tamanho.MINI:
             fator_tamanho = 0.8
-        elif animal.tamanho == Tamanho.PEQUENO:
+        elif tamanho == Tamanho.PEQUENO:
             fator_tamanho = 1.0
-        elif animal.tamanho == Tamanho.MEDIO:
+        elif tamanho == Tamanho.MEDIO:
             fator_tamanho = 1.2
-        elif animal.tamanho == Tamanho.GRANDE:
+        elif tamanho == Tamanho.GRANDE:
             fator_tamanho = 1.5
 
-        if isinstance(animal, Cachorro):
-            fator_especie = 1.0
-        elif isinstance(animal, Gato):
-            fator_especie = 0.9
+        valor_banho_cachorro = valor_base * fator_tamanho
+        print(f"Valor do banho: R$ {valor_banho_cachorro:.2f}")
 
-        valor_tosa = valor_base * fator_tamanho * fator_especie
-        return valor_tosa
+        return valor_banho_cachorro
 
-def tosar(self, animal):
-        if isinstance(animal, Cachorro) or isinstance(animal, Gato):
-            if self.disponivel:
-                valor_tosa = self.calcular_valor_tosa(animal)
-                print(f"Tosador {self.nome} está tosando o {animal.especie.value} {animal.nome}.")
-                print(f"Valor da tosa: R$ {valor_tosa:.2f}")
-                animal.tosa()
-            else:
-                print(f"Tosador {self.nome} não está disponível no momento.")
-        else:
-            print("O animal fornecido não pode ser tosado por este tosador.")
+def calcular_valor_banho_gato(tamanho) -> float:
+        
+        valor_base = 45
 
-def calcular_valor_banho(self, animal):
-        valor_base = 40
-        fator_tamanho = 1.0
-        fator_especie = 1.0
-
-        if animal.tamanho == Tamanho.MINI:
+        if tamanho == Tamanho.MINI:
             fator_tamanho = 0.8
-        elif animal.tamanho == Tamanho.PEQUENO:
+        elif tamanho == Tamanho.PEQUENO:
             fator_tamanho = 1.0
-        elif animal.tamanho == Tamanho.MEDIO:
+        elif tamanho == Tamanho.MEDIO:
             fator_tamanho = 1.2
-        elif animal.tamanho == Tamanho.GRANDE:
+        elif tamanho == Tamanho.GRANDE:
             fator_tamanho = 1.5
 
-        if isinstance(animal, Cachorro):
-            fator_especie = 1.0
-        elif isinstance(animal, Gato):
-            fator_especie = 0.9
+        valor_banho_gato = valor_base * fator_tamanho * 0.9
+        return valor_banho_gato
 
-        valor_banho = valor_base * fator_tamanho * fator_especie
-        return valor_banho
 
-def dar_banho(self, animal):
-        if isinstance(animal, Cachorro) or isinstance(animal, Gato):
-            if self.disponivel:
-                valor_banho = self.calcular_valor_banho(animal)
-                print(f"Tosador {self.nome} está dando banho no {animal.especie.value} {animal.nome}.")
-                print(f"Valor do banho: R$ {valor_banho:.2f}")
-                animal.especie.banho()
-            else:
-                print(f"Tosador {self.nome} não está disponível no momento.")
-        else:
-            print("O animal fornecido não pode tomar banho.")
+animal = Animal(
+    nome="Rex",
+    idade=3,
+    especie=Especie.CACHORRO,
+    cor="Marrom",
+    tamanho=Tamanho.GRANDE.value,
+    cliente=123,
+    ID=456,
+    data_chegada=date.today(),
+    data_saida=date.today(),
+    addr_historico="Rua Exemplo, 123",
+    conta=200.0
+)
+
+calcular_valor_banho_cachorro(Tamanho.GRANDE)

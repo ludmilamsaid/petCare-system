@@ -29,8 +29,8 @@ class Animal(ABC):
     def consulta_veterinaria(self):
         pass
 
-    def tosa(self):
+    def tosa(self, tosador, TipoTosa):
         pass
 
-    def banho(self):
+    def banho(self, tosador):
         pass

@@ -5,7 +5,7 @@ from datetime import date, datetime, timedelta
 
 class Cachorro(Animal):
     def __init__(self, nome, idade, raca, cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta):
-        super().__init__(nome, idade, Especie.CACHORRO, cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta)
+        super().__init__(nome, idade, Especie.CACHORRO, cor, tamanho.value, cliente, ID, data_chegada, data_saida, addr_historico, conta)
         self.raca = raca
 
 raca = ["Norsk Lundehund", "Bulldog Francês Fluffy", "Braco-da-Transilvânia", "Sabujo Colombiano", "American Bully", "Dogue de Bordeaux", "American Pit Bull Terrier", "Cão Esquimó Americano",
@@ -34,3 +34,18 @@ raca = ["Norsk Lundehund", "Bulldog Francês Fluffy", "Braco-da-Transilvânia", 
         "Bobtail", "Bull Terrier Inglês", "Galgo Afegão", "Golden Retriever", "Border Collie", "Basset Hound", "American Staffordshire Terrier", "Bull Terrier Inglês Miniatura", "Akita Inu",
         "Pastor alemão", "Maltês", "Beagle", "Yorkshire Terrier", "Shiba Inu", "Akita Americano", "SRD"]
 
+def tosa(self, tosador, animal):
+        if tosador.disponivel:
+                valor_tosa = tosador.calcular_valor_tosa(animal)
+                print(f"Tosador {tosador.nome} está tosando o cachorro {Cachorro.nome}.")
+                print(f"Valor da tosa: R$ {valor_tosa:.2f}")
+        else:
+                print(f"Tosador {tosador.nome} não está disponível no momento.")
+
+def banho(self, tosador, animal):
+        if tosador.disponivel:
+                valor_banho = tosador.calcular_valor_banho(animal)
+                print(f"Tosador {tosador.nome} está dando banho no cachorro {Cachorro.nome}.")
+                print(f"Valor do banho: R$ {valor_banho:.2f}")
+        else:
+                print(f"Tosador {tosador.nome} não está disponível no momento.")
