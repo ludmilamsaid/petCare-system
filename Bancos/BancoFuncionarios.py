@@ -15,6 +15,8 @@ class BancoFuncionarios(Banco):
         super().__init__(addr, dataType)
 
 teste = BancoFuncionarios()
+print(teste.addr)
 teste.ler_banco()
 teste.adicionar([int(101), "Joao", True])
+teste.atualizarBanco()
 teste.imprimir()

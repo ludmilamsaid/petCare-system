@@ -8,7 +8,7 @@ class Banco:
     def __init__(self, addr: str, dataType) -> None:
 
         self.__addr = addr
-        self.banco : pd.DataFrame = None
+        self.banco = None
         self.__dataType = dataType
         self.ler_banco()
 
@@ -68,7 +68,7 @@ class Banco:
     def atualizarBanco(self) -> bool:
 
         try:
-            self.banco.to_excel(self.addr, index=False, sheet_name="testando", engine="openpyxl")
+            self.banco.to_excel(self.addr, index=False, sheet_name="planilha", engine="openpyxl")
             return True
         except:
             print("Erro ao escrever sobre a planilha")
