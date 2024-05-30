@@ -1,10 +1,11 @@
 import pandas as pd
+from abc import ABC, abstractmethod
 
 class ItemNaoEncontrado (Exception):
     def __init__(self) -> None:
         self.erro = "Item nao encontrado"
 
-class Banco:
+class Banco(ABC):
     def __init__(self, addr: str, dataType) -> None:
 
         self.__addr = addr
@@ -46,9 +47,11 @@ class Banco:
             print("Erro ao imprimir")
             return False
 
+    @abstractmethod
     def adicionar(self, novaLinha : list) -> bool:
         
         try:
+            novaLinha = pd.DataFrame(data=novaLinha, dtype=self.dataType, index=False)
             self.banco = self.banco._append(novaLinha, ignore_index=True)
             self.atualizarBanco()
             return True
