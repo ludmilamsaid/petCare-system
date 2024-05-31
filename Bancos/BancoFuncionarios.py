@@ -40,8 +40,8 @@ class BancoFuncionarios(Banco):
             print(f"Erro ao adicionar linha: {e}")
             return False
 
-teste = BancoFuncionarios()
+"""teste = BancoFuncionarios()
 print(teste.addr)
 teste.adicionar([101, "Joao", True])
 teste.atualizarBanco()
-teste.imprimir()
+teste.imprimir()"""
