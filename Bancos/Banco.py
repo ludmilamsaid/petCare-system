@@ -6,10 +6,11 @@ class ItemNaoEncontrado (Exception):
         self.erro = "Item nao encontrado"
 
 class Banco(ABC):
-    def __init__(self, addr: str, dataType) -> None:
+    def __init__(self, addr: str, dataType, colunas : list) -> None:
 
         self.__addr = addr
-        self.banco = None
+        self.__colunas = colunas
+        self.banco = pd.DataFrame(columns=self.colunas)
         self.__dataType = dataType
         self.ler_banco()
 
@@ -21,8 +22,14 @@ class Banco(ABC):
         return self.__addr
 
     @property
-    def dataType(self) -> None:
+    def dataType(self) -> dict:
         return self.__dataType
+    
+    @property
+    def colunas (self) ->list:
+        return self.__colunas
+    
+
 
     def ler_banco(self) -> bool:
 
@@ -49,15 +56,7 @@ class Banco(ABC):
 
     @abstractmethod
     def adicionar(self, novaLinha : list) -> bool:
-        try:
-            novaLinha_df = pd.DataFrame(novaLinha).astype(self.__dataType)
-            self.banco = pd.concat([self.banco, novaLinha_df], ignore_index=True)
-            self.atualizarBanco()
-            return True
-
-        except Exception as e:
-            print(f"Erro ao adicionar linha: {e}")
-            return False
+        pass
     
     def procurarItem(self, item, tipo: str) -> pd.DataFrame:
         
