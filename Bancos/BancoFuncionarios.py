@@ -41,9 +41,11 @@ class BancoFuncionarios(Banco):
             return False
 
 def teste() -> None:
-    
+
     teste = BancoFuncionarios()
     print(teste.addr)
     teste.adicionar([101, "Joao", True])
     teste.atualizarBanco()
     teste.imprimir()
+
+#teste()
