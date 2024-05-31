@@ -27,7 +27,7 @@ class Banco(ABC):
     def ler_banco(self) -> bool:
 
         try:
-            self.banco = pd.read_excel(self.addr, dtype=self.__dataType, engine="openpyxl")
+            self.banco = pd.read_excel(self.addr, dtype=self.dataType, engine="openpyxl")
             self.banco = pd.DataFrame(self.banco)
             return True
         except ValueError as e:
@@ -49,16 +49,16 @@ class Banco(ABC):
 
     @abstractmethod
     def adicionar(self, novaLinha : list) -> bool:
-        
         try:
-            novaLinha = pd.DataFrame(data=novaLinha, dtype=self.dataType, index=False)
-            self.banco = self.banco._append(novaLinha, ignore_index=True)
+            novaLinha_df = pd.DataFrame(novaLinha).astype(self.__dataType)
+            self.banco = pd.concat([self.banco, novaLinha_df], ignore_index=True)
             self.atualizarBanco()
             return True
-        except:
-            print("Erro ao adicionar linha")
-            return False
 
+        except Exception as e:
+            print(f"Erro ao adicionar linha: {e}")
+            return False
+    
     def procurarItem(self, item, tipo: str) -> pd.DataFrame:
         
         try:

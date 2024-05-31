@@ -15,23 +15,24 @@ class BancoFuncionarios(Banco):
         super().__init__(addr, dataType)
     
     def adicionar(self, novaLinha: list) -> bool:
-        dataAdicionar = {
+
+        novaLinha = [{
             "ID" : novaLinha[0],
             "Nome" : novaLinha[1],
-            "Disponibilidade" : novaLinha[2]}
+            "Disponibilidade" : novaLinha[2]
+        }]
         try:
-            dataAdicionar = pd.DataFrame.from_dict(data=dataAdicionar, dtype=self.dataType)
-            self.banco = self.banco._append(dataAdicionar, ignore_index=True)
+            novaLinha_df = pd.DataFrame(novaLinha).astype(self.__dataType)
+            self.banco = pd.concat([self.banco, novaLinha_df], ignore_index=True)
             self.atualizarBanco()
             return True
-        
-        except:
-            print("Erro ao adicionar linha")
+
+        except Exception as e:
+            print(f"Erro ao adicionar linha: {e}")
             return False
 
 teste = BancoFuncionarios()
 print(teste.addr)
-teste.ler_banco()
 teste.adicionar([int(101), "Joao", True])
 teste.atualizarBanco()
 teste.imprimir()
