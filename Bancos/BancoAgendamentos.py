@@ -1,41 +1,47 @@
 from Banco import *
 
-class BancoClientes(Banco):
+class DataHorario:
+    def __init__(self, horas, dia) -> None:
+        self.horas = horas
+        self.dia = dia
+    
+    def horario (self) -> str:
+        return self.horas+" "+self.dia
 
-    #ID, Nome, PETs (ID), Endereço, Conta
+class BancoAgendamentos(Banco):
+
+    #Tutor, PET, Serviço, Horário
 
     def __init__(self) -> None:
 
         dataType = {
-             "ID" : int, 
-             "Nome" : str, 
-             "PETs" : object,
-             "Endereço" : str,
-             "Conta" : float 
+             "Tutor" : str,
+             "PET" : str,
+             "Serviço" : str,
+             "Horário" : object
         }
 
-        colunas = ["ID", "Nome", "PETs", "Endereço", "Conta"]
-        addr = "Planilhas/Clientes.xlsx"
+        colunas = ["Tutor", "PET", "Serviço", "Horário"]
+        addr = "Planilhas/Agendamentos.xlsx"
 
         super().__init__(addr, dataType, colunas)
     
     def adicionar(self, novaLinha: list) -> bool:
 
         #Conferir se o item já existe
-        ID = novaLinha[0]
+        PET = novaLinha[1]
         #Converter nova linha para dict
         novaLinha = {
             self.colunas[0] : novaLinha[0],
             self.colunas[1] : novaLinha[1],
             self.colunas[2] : novaLinha[2],
             self.colunas[3] : novaLinha[3],
-            self.colunas[4] : novaLinha[4]
         }
 
         try:
             novaLinha = pd.DataFrame([novaLinha]).astype(self.dataType)
             
-            if not self.procurarItem(ID, "ID").empty:
+            if not self.procurarItem(PET, "PET").empty:
                 #Erro, pois a pessoa já existe no banco
                 raise RegisteredItem
             else:
@@ -46,13 +52,14 @@ class BancoClientes(Banco):
         except Exception as e:
             print(f"Erro ao adicionar linha: {e}")
             return False
-
+    
 def teste() -> None:
     
-    teste = BancoClientes()
+    teste = BancoAgendamentos()
     print(teste.addr)
-    teste.adicionar([101, "Joao", [101, 102, 103], "35180184", 234.23])
+    data = DataHorario("12h34", "30/04")
+    teste.adicionar(["Joao", "Totó", "Tosa", data.horario()])
     teste.atualizarBanco()
     teste.imprimir()
 
-#teste()
+teste()
