@@ -1,7 +1,7 @@
 from enum import Enum
-from Animal import Animal
-from Animal import Especie
+from Animal import Animal, Tamanho, Especie
 from datetime import date, datetime, timedelta
+from Tosador import Tosador, TipoTosa
 
 class Cachorro(Animal):
     def __init__(self, nome, idade, raca, cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta):
@@ -32,4 +32,38 @@ raca = ["Norsk Lundehund", "Bulldog Francês Fluffy", "Braco-da-Transilvânia", 
         "Fox Paulistinha ou Terrier Brasileiro", "Bullmastiff", "Cocker Spaniel Inglês", "Whippet", "Fila Brasileiro", "Airedale Terrier", "Pastor Belga Groenendael", "Pastor Belga Tervueren", 
         "Weimaraner ou Braco de Weimar", "Dálmata", "Dachshund ou Teckel", "Spitz Alemão", "Pug", "Lhasa Apso", "Fox Terrier de pelo liso", "Schnauzer", "Boerboel", "Jack Russell Terrier", "São Bernardo",
         "Bobtail", "Bull Terrier Inglês", "Galgo Afegão", "Golden Retriever", "Border Collie", "Basset Hound", "American Staffordshire Terrier", "Bull Terrier Inglês Miniatura", "Akita Inu",
-        "Pastor alemão", "Maltês", "Beagle", "Yorkshire Terrier", "Shiba Inu", "Akita Americano"]
+        "Pastor alemão", "Maltês", "Beagle", "Yorkshire Terrier", "Shiba Inu", "Akita Americano", "SRD"]
+
+def tosa(self, tosador, tipo_tosa):
+        if tosador.disponivel:
+                valor_tosa = tosador.calcular_valor_tosa_cachorro(self.tamanho, tipo_tosa)
+                print(f"Tosador {tosador.nome} está tosando o cachorro {self.nome}.")
+                print(f"Valor da tosa: R$ {valor_tosa:.2f}")
+        else:
+                print(f"Tosador {tosador.nome} não está disponível no momento.")
+
+def banho(self, tosador):
+        if tosador.disponivel:
+                valor_banho = tosador.calcular_valor_banho_cachorro(self.tamanho)
+                print(f"Tosador {tosador.nome} está dando banho no cachorro {self.nome}.")
+                print(f"Valor do banho: R$ {valor_banho:.2f}")
+        else:
+                print(f"Tosador {tosador.nome} não está disponível no momento.")
+
+animal = Animal(
+    nome="Rex",
+    idade=3,
+    especie=Especie.CACHORRO,
+    cor="Marrom",
+    tamanho=Tamanho.GRANDE,
+    cliente=123,
+    ID=456,
+    data_chegada=date.today(),
+    data_saida=date.today(),
+    addr_historico="Rua Exemplo, 123",
+    conta=200.0
+)
+
+tosador = Tosador("Pedro", 1, True)
+
+tosa(animal, tosador, TipoTosa.TESOURA)

@@ -1,8 +1,6 @@
-from Pessoa import Pessoa
-
-class Funcionario(Pessoa):
+class Funcionario:
     def __init__(self, nome, ID, disponivel):
-        super().__init__(nome)
+        self.nome = nome
         self.ID = ID
         self.disponivel = disponivel
         
