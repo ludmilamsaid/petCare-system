@@ -9,28 +9,28 @@ class BancoFuncionarios(Banco):
              "Nome" : str, 
              "Disponibilidade" : bool 
         }
-
-        addr = "Planilhas/Funcionarios.xlsx"
         colunas = ["ID", "Nome", "Disponibilidade"]
+        addr = "Planilhas/Funcionarios.xlsx"
 
         super().__init__(addr, dataType, colunas)
     
     def adicionar(self, novaLinha: list) -> bool:
 
+        #Conferir se o item já existe
         ID = novaLinha[0]
-
+        #Converter nova linha para dict
         novaLinha = {
-            "ID" : novaLinha[0],
-            "Nome" : novaLinha[1],
-            "Disponibilidade" : novaLinha[2]
+            self.colunas[0] : novaLinha[0],
+            self.colunas[1] : novaLinha[1],
+            self.colunas[2] : novaLinha[2]
         }
 
-        print("Fez dicionario")
         try:
             novaLinha = pd.DataFrame([novaLinha]).astype(self.dataType)
             
             if not self.procurarItem(ID, "ID").empty:
-                raise ValueError("Já existe essa pessoa")
+                #Erro, pois a pessoa já existe no banco
+                raise RegisteredItem
             else:
                 self.banco = pd.concat([self.banco, novaLinha], ignore_index=True)
                 self.atualizarBanco()
@@ -40,8 +40,10 @@ class BancoFuncionarios(Banco):
             print(f"Erro ao adicionar linha: {e}")
             return False
 
-"""teste = BancoFuncionarios()
-print(teste.addr)
-teste.adicionar([101, "Joao", True])
-teste.atualizarBanco()
-teste.imprimir()"""
+def teste() -> None:
+    
+    teste = BancoFuncionarios()
+    print(teste.addr)
+    teste.adicionar([101, "Joao", True])
+    teste.atualizarBanco()
+    teste.imprimir()
