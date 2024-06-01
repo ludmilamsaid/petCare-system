@@ -52,14 +52,24 @@ class BancoAgendamentos(Banco):
         except Exception as e:
             print(f"Erro ao adicionar linha: {e}")
             return False
-    
+        
+    def removerTopo(self) -> bool:
+        try:
+            self.banco = self.banco.drop(0).reset_index(drop=True)
+            return True
+        except Exception as e:
+            print("Erro ao remover topo:", e)
+            return False
+        
 def teste() -> None:
     
     teste = BancoAgendamentos()
     print(teste.addr)
     data = DataHorario("12h34", "30/04")
     teste.adicionar(["Joao", "Totó", "Tosa", data.horario()])
+    teste.adicionar(["Geraldo","Poodle", "Banho", data.horario()])
+    teste.removerTopo()
     teste.atualizarBanco()
     teste.imprimir()
 
-teste()
+#teste()

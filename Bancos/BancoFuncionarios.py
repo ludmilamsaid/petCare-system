@@ -45,6 +45,9 @@ def teste() -> None:
     teste = BancoFuncionarios()
     print(teste.addr)
     teste.adicionar([101, "Joao", True])
+    teste.alterarItem("Maria", "Joao", "Nome")
+    teste.imprimir()
+    teste.remover("Maria", "Nome")
     teste.atualizarBanco()
     teste.imprimir()
 
