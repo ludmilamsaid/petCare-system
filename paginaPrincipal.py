@@ -14,8 +14,7 @@ class PaginaPrincipal(Frame):
         # Criando um rótulo para exibir a imagem
         self.logo_label = Label(self, image=self.logo_image)
         self.logo_label.pack(side = LEFT, padx=10)
-
-
+        
         self.botao_cadastrar = Button(self, text="Cadastrar", width= 15, command = self.navegar_pagina_cadastro)
         self.botao_cadastrar.pack(pady=10)
 

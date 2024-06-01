@@ -1,8 +1,8 @@
 from tkinter import Tk, Frame
-from pages.paginaPrincipal import PaginaPrincipal
-from pages.paginaCadastro import PaginaCadastro
-from pages.paginaAgendar import PaginaAgendar
-from pages.paginaAgendamentos import PaginaAgendamentos
+from paginaPrincipal import PaginaPrincipal
+from paginaCadastro import PaginaCadastro
+from paginaAgendar import PaginaAgendar
+from paginaAgendamentos import PaginaAgendamentos
 
 class PetCare(Tk):
     def __init__(self):
