@@ -1,10 +1,17 @@
+import sys
+import os
 from tkinter import *
+from Animal import Tamanho
 from Cliente import Cliente
 from Cachorro import Cachorro, raca_cachorro
 from Gato import Gato, raca_gato
 from Styles import *
 from tkinter import messagebox
 
+
+sys.path.append(os.path.join(os.path.dirname(__file__), 'Bancos'))
+
+from Bancos.BancoClientes import BancoClientes
 from datetime import date
 
 
@@ -12,6 +19,8 @@ class PaginaCadastro(Frame):
     def __init__(self, master):
         super().__init__(master, bg="#2E8B57", padx=30, pady=30)
         self.grid(row=0, column=0, sticky="nsew")
+        
+        self.banco_cliente = BancoClientes()
 
         self.title = Label(self, text="Cadastro Tutor", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 30, "italic", "bold"))
         self.title.grid(row=0, column=0, pady=20)
@@ -57,9 +66,22 @@ class PaginaCadastro(Frame):
         self.label_raca_pet.grid(row=10, column=0, sticky=W, pady=5)
 
         self.raca_var = StringVar(self)
-        menu = self.option_menu_raca_pet = OptionMenu(self, self.raca_var, "Selecione uma Raça")
+        self.raca_var.set("Selecione Raça")  # valor padrão
+        menu = self.option_menu_raca_pet = OptionMenu(self, self.raca_var, "Selecione a Espécie primeiro")
         estilo_menu(menu)
         menu.grid(row=10, column=0, pady=5)
+        
+        self.tamanho_var = StringVar(self)
+        self.tamanho_var.set("Tamanho do PET")  # valor padrão
+        self.option_menu_tamanho_pet = OptionMenu(self, self.tamanho_var, *[tamanho.value for tamanho in Tamanho])
+        estilo_menu(self.option_menu_tamanho_pet)
+        self.option_menu_tamanho_pet.grid(row=10, column=1, pady=5, padx=5)
+        
+        self.label_historico = Label(self, text="Histórico:", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 12))
+        self.label_historico.grid(row=11, column=0, sticky=W, pady=5)
+        self.text_historico = Text(self, width=100, height= 10)
+        estilo_entry(self.text_historico)
+        self.text_historico.grid(row=11, column=0,columnspan= 10, pady=5, padx = 60) 
 
         # Button Frame
         voltar = self.voltar = Button(self, text="Voltar", font=("Calibri", 12), width=10, command=self.navegar_pagina_principal)
@@ -84,6 +106,9 @@ class PaginaCadastro(Frame):
             menu.add_command(label=raca, command=lambda r=raca: self.raca_var.set(r))
 
         self.raca_var.set("Selecione Raça")
+        
+    
+        
 
     def navegar_pagina_principal(self):
         self.master.master.mostrar_pagina("PaginaPrincipal")
@@ -96,19 +121,17 @@ class PaginaCadastro(Frame):
         pet_idade = int(self.entry_idade_pet.get())
         pet_especie = self.especie_var.get()
         pet_raca = self.raca_var.get()
+        tamanho = self.tamanho_var.get()
         
-        if not cliente_nome or not endereco or not pet_nome or not pet_idade or not pet_especie or not pet_raca:
-            messagebox.showerror("Erro", "Todos os campos devem ser preenchidos!")
-            return
         
         cor = "Caramelo"  
-        tamanho = "MEDIO"
+        
         cliente_id = 1
         pet_id = 1
         conta = 0.0
         data_chegada = date.today()
         data_saida = date.today()
-        addr_historico = ""
+        addr_historico = self.text_historico.get("1.0", END)
         
         if pet_especie == "Cachorro":
             pet = Cachorro(pet_nome, pet_idade, pet_raca, cor, tamanho, cliente_id, pet_id, data_chegada, data_saida, addr_historico, conta)
@@ -116,6 +139,21 @@ class PaginaCadastro(Frame):
             pet = Gato(pet_nome, pet_idade, pet_raca, cor, tamanho, cliente_id, pet_id, data_chegada, data_saida, addr_historico, conta)
        
         cliente = Cliente(cliente_nome,pet, conta, endereco, cliente_id)
+        try:
+            
+            # Aqui estamos simulando a adição de um novo cliente ao banco de dados
+            nova_linha = [cliente_id, cliente_nome, [pet_id], endereco, conta]
+            sucesso = self.banco_cliente.adicionar(nova_linha)
+            
+            
+            if sucesso:
+                messagebox.showinfo("Cadastro Salvo", "Cliente e pet cadastrado com sucesso!")
+            else:
+                messagebox.showerror("Erro", "Erro ao salvar cadastro no banco de dados!")
+
+        except Exception as e:
+            messagebox.showerror("Erro", f"Ocorreu um erro: {e}")
+        
         print(f"Nome Tutor: {cliente.nome} com pet {pet.nome} ({pet.especie}) de raça {pet.raca} cadastrado com sucesso!")
         messagebox.showwarning("Cadastro Salvo", "Cliente e pet cadastrado com sucesso!")
         

@@ -1,6 +1,6 @@
 def estilo_menu(menu):
     menu.config(
-        bg="lightblue",  # Cor de fundo
+        #bg="lightblue",  # Cor de fundo
         fg="black",      # Cor do texto
         font=("Arial", 12),  # Fonte
         width=30,        # Largura em caracteres
