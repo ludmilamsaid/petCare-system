@@ -46,7 +46,7 @@ class Atendente(Funcionario):
         print(f"Nenhum histórico encontrado para o animal {animal.nome}.")
 
 
-cliente1 = Cliente(
+cliente = Cliente(
     nome="Ana",
     pet=Animal,
     conta=500.0,
@@ -54,7 +54,7 @@ cliente1 = Cliente(
     ID=123
 )
 
-animal1 = Animal(
+animal = Animal(
     nome="Rex",
     idade=3,
     especie=Especie.CACHORRO,
@@ -69,4 +69,4 @@ animal1 = Animal(
 )
 
 atendente1 = Atendente("Jussara", 101, True)
-atendente1.agendar(cliente1, animal1, "Tosa", DataHorario("12h30", "12/06"))
+atendente1.agendar(cliente, animal, "Tosa", DataHorario("12h30", "12/06"))
