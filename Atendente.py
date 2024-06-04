@@ -45,6 +45,28 @@ class Atendente(Funcionario):
     def getHistorico(self, animal):
         print(f"Nenhum histórico encontrado para o animal {animal.nome}.")
 
+    def cadastrar_animal(self, animal_id, animal_nome, animal_idade, animal_especie, animal_raca, animal_cor, animal_tamanho, tutor_id, horario_chegada, horario_saida, conta):
+        animal_id = animal.ID  
+        animal_nome = animal.nome
+        animal_idade = animal.idade  
+        animal_especie = animal.especie
+        animal_raca = animal.raca
+        animal_cor = animal.cor  
+        animal_tamanho = animal.tamanho  
+        tutor_id = cliente.ID
+        horario_chegada = animal.horario_chegada
+        horario_saida = animal.horario_saida
+        conta = animal.conta
+        
+        nova_linha = [animal_id, animal_nome, animal_idade, animal_especie, animal_raca, animal_cor, 
+                      animal_tamanho, tutor_id, horario_chegada, horario_saida, "", conta]
+        sucesso = self.banco_animais.adicionar(nova_linha)
+
+        if sucesso:
+            print(f"Animal {animal_nome} cadastrado com sucesso.")
+        else:
+            print(f"Erro ao cadastrar o animal {animal_nome}.")
+
 
 cliente = Cliente(
     nome="Ana",
