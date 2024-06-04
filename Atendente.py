@@ -51,7 +51,7 @@ class Atendente(Funcionario):
         animal_idade = animal.idade  
         animal_especie = animal.especie
         animal_raca = animal.raca
-        animal_cor = animal.cor  
+        animal_cor = animal.cor
         animal_tamanho = animal.tamanho  
         tutor_id = cliente.ID
         horario_chegada = animal.horario_chegada
