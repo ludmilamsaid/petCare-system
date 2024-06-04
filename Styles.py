@@ -13,7 +13,7 @@ def estilo_entry(entry):
        # bg="lightgray",  # Cor de fundo
         fg="black",      # Cor do texto
         font=("Arial", 12),  # Fonte
-        width=90,        # Largura em caracteres
+        #width=90,        # Largura em caracteres
         relief="raised",  # Estilo da borda
         bd=2            # Largura da borda
 

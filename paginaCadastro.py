@@ -32,11 +32,18 @@ class PaginaCadastro(Frame):
         estilo_entry(self.entry_nome)
         self.entry_nome.grid(row=1, column=0,columnspan=10, pady=5 )
         
+        
         self.label_endereco = Label(self, text="Endereço:", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 12))
         self.label_endereco.grid(row=2, column=0, sticky=W, pady=5)
         self.entry_endereco = Entry(self, width=100)
         estilo_entry(self.entry_endereco)
         self.entry_endereco.grid(row=2, column=0,columnspan=10, pady=5, padx = 100)
+        
+        self.label_endereco = Label(self, text="Telefone:", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 12))
+        self.label_endereco.grid(row=3, column=0, sticky=W, pady=5)
+        self.entry_endereco = Entry(self, width=20)
+        estilo_entry(self.entry_endereco)
+        self.entry_endereco.grid(row=3,sticky=W, pady=5, padx=100)
         
         # Formulário PET
         self.title = Label(self, text="Cadastro PET", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 30, "italic", "bold"))
@@ -50,7 +57,8 @@ class PaginaCadastro(Frame):
         
         self.label_idade_pet = Label(self, text="Idade:", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 12))
         self.label_idade_pet.grid(row=9,column= 0, sticky=W,  pady=5)
-        self.entry_idade_pet = Entry(self, width=50)
+        self.entry_idade_pet = Entry(self, width=20)
+        estilo_entry(self.entry_idade_pet)
         self.entry_idade_pet.grid(row=9, column=0, pady=5, padx=100)
 
         self.label_especie_pet = Label(self, text="Espécie:", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 12))
@@ -69,7 +77,7 @@ class PaginaCadastro(Frame):
         self.raca_var.set("Selecione Raça")  # valor padrão
         menu = self.option_menu_raca_pet = OptionMenu(self, self.raca_var, "Selecione a Espécie primeiro")
         estilo_menu(menu)
-        menu.grid(row=10, column=0, pady=5)
+        menu.grid(row=10, column=0, pady=5,padx = 100)
         
         self.tamanho_var = StringVar(self)
         self.tamanho_var.set("Tamanho do PET")  # valor padrão
