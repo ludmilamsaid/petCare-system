@@ -8,7 +8,7 @@ class Cachorro(Animal):
         super().__init__(nome, idade, Especie.CACHORRO, cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta)
         self.raca = raca
 
-raca = ["Norsk Lundehund", "Bulldog Francês Fluffy", "Braco-da-Transilvânia", "Sabujo Colombiano", "American Bully", "Dogue de Bordeaux", "American Pit Bull Terrier", "Cão Esquimó Americano",
+raca_cachorro = ["Norsk Lundehund", "Bulldog Francês Fluffy", "Braco-da-Transilvânia", "Sabujo Colombiano", "American Bully", "Dogue de Bordeaux", "American Pit Bull Terrier", "Cão Esquimó Americano",
         "Manchester Terrier", "Shar Pei", "Coton de Tulear", "Cão Lobo Checoslovaco", "Griffon de Bruxelas", "Cão de Crista Chinês", "Harrier", "Chow Chow", "Dogue Alemão", "Galgo Espanhol",
         "Scottish Terrier", "Boiadeiro Australiano", "Schnauzer Miniatura", "Pinscher Miniatura", "Welsh Corgi Pembroke", "Bearded Collie", "Pastor dos Pirineus de Pelo Longo",
         "Collie de Pelo Curto", "Cão Esquimó Canadense", "Galgo Inglês", "Dogue Canário", "Mastim Tibetano", "Setter Irlandês", "Broholmer", "Pastor-Galego", "Spaniel Bretão", "Lébrel Irlandês",
