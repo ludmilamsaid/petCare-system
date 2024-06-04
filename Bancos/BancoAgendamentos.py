@@ -1,7 +1,7 @@
 from Banco import *
 
 class DataHorario:
-    def __init__(self, horas, dia) -> None:
+    def __init__(self, horas : str, dia : str) -> None:
         self.horas = horas
         self.dia = dia
     

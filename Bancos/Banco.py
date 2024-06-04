@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class NotFoundItem (Exception):
     def __init__(self) -> None:
-        self.erro = "Item nao encontrado"
+        self.erro = "Item não encontrado"
         super().__init__(self.erro)
 
 class RegisteredItem (Exception):
