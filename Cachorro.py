@@ -8,6 +8,21 @@ class Cachorro(Animal):
         super().__init__(nome, idade, Especie.CACHORRO, cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta)
         self.raca = raca
 
+    def tosa(self, tosador, tipo_tosa):
+        if tosador.disponivel:
+            valor_tosa = tosador.calcular_valor_tosa_cachorro(self.tamanho, tipo_tosa)
+            print(f"Tosador {tosador.nome} está tosando o cachorro {self.nome}.")
+            print(f"Valor da tosa: R$ {valor_tosa:.2f}")
+        else:
+            print(f"Tosador {tosador.nome} não está disponível no momento.")
+    def banho(self, tosador):
+        if tosador.disponivel:
+            valor_banho = tosador.calcular_valor_banho_cachorro(self.tamanho)
+            print(f"Tosador {tosador.nome} está dando banho no cachorro {self.nome}.")
+            print(f"Valor do banho: R$ {valor_banho:.2f}")
+        else:
+            print(f"Tosador {tosador.nome} não está disponível no momento.")
+
 raca_cachorro = ["Norsk Lundehund", "Bulldog Francês Fluffy", "Braco-da-Transilvânia", "Sabujo Colombiano", "American Bully", "Dogue de Bordeaux", "American Pit Bull Terrier", "Cão Esquimó Americano",
         "Manchester Terrier", "Shar Pei", "Coton de Tulear", "Cão Lobo Checoslovaco", "Griffon de Bruxelas", "Cão de Crista Chinês", "Harrier", "Chow Chow", "Dogue Alemão", "Galgo Espanhol",
         "Scottish Terrier", "Boiadeiro Australiano", "Schnauzer Miniatura", "Pinscher Miniatura", "Welsh Corgi Pembroke", "Bearded Collie", "Pastor dos Pirineus de Pelo Longo",
@@ -34,22 +49,6 @@ raca_cachorro = ["Norsk Lundehund", "Bulldog Francês Fluffy", "Braco-da-Transil
         "Bobtail", "Bull Terrier Inglês", "Galgo Afegão", "Golden Retriever", "Border Collie", "Basset Hound", "American Staffordshire Terrier", "Bull Terrier Inglês Miniatura", "Akita Inu",
         "Pastor alemão", "Maltês", "Beagle", "Yorkshire Terrier", "Shiba Inu", "Akita Americano", "SRD"]
 
-def tosa(self, tosador, tipo_tosa):
-        if tosador.disponivel:
-                valor_tosa = tosador.calcular_valor_tosa_cachorro(self.tamanho, tipo_tosa)
-                print(f"Tosador {tosador.nome} está tosando o cachorro {self.nome}.")
-                print(f"Valor da tosa: R$ {valor_tosa:.2f}")
-        else:
-                print(f"Tosador {tosador.nome} não está disponível no momento.")
-
-def banho(self, tosador):
-        if tosador.disponivel:
-                valor_banho = tosador.calcular_valor_banho_cachorro(self.tamanho)
-                print(f"Tosador {tosador.nome} está dando banho no cachorro {self.nome}.")
-                print(f"Valor do banho: R$ {valor_banho:.2f}")
-        else:
-                print(f"Tosador {tosador.nome} não está disponível no momento.")
-
 animal = Animal(
     nome="Rex",
     idade=3,
@@ -66,4 +65,4 @@ animal = Animal(
 
 tosador = Tosador("Pedro", 1, True)
 
-tosa(animal, tosador, TipoTosa.TESOURA)
+Cachorro.tosa(animal, tosador, TipoTosa.TESOURA)
