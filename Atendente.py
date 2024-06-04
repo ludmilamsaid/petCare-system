@@ -1,10 +1,12 @@
 from Funcionario import Funcionario
 from Animal import Animal, Tamanho, Especie
 from Cliente import Cliente
-from Bancos import BancoAgendamentos, BancoClientes
-from Bancos.Banco import *
-from Bancos import DataHorario
 from datetime import date
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), 'Bancos'))
+from Bancos.BancoClientes import BancoClientes
+from Bancos.BancoAgendamentos import BancoAgendamentos, DataHorario
 
 class Atendente(Funcionario):
     def __init__(self, nome, ID, disponivel=False):
@@ -66,4 +68,4 @@ animal = Animal(
     conta=200.0
 )
 
-Atendente.agendar(cliente, animal, "Tosa", date.today())
+Atendente.agendar(cliente, animal, "Tosa", "12h30", "12/06")
