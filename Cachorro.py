@@ -4,18 +4,18 @@ from datetime import date, datetime, timedelta
 from Tosador import Tosador, TipoTosa
 
 class Cachorro(Animal):
-    def __init__(self, nome, idade, raca, cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta):
+    def __init__(self, nome: str, idade: int, raca: str, cor: str, tamanho: Tamanho, cliente: int, ID: int, data_chegada: date, data_saida: date, addr_historico: str, conta: float) -> None:
         super().__init__(nome, idade, Especie.CACHORRO, cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta)
         self.raca = raca
 
-    def tosa(self, tosador, tipo_tosa):
+    def tosa(self, tosador: int, tipo_tosa: TipoTosa) -> str:
         if tosador.disponivel:
             valor_tosa = tosador.calcular_valor_tosa_cachorro(self.tamanho, tipo_tosa)
             print(f"Tosador {tosador.nome} está tosando o cachorro {self.nome}.")
             print(f"Valor da tosa: R$ {valor_tosa:.2f}")
         else:
             print(f"Tosador {tosador.nome} não está disponível no momento.")
-    def banho(self, tosador):
+    def banho(self, tosador: int) -> str:
         if tosador.disponivel:
             valor_banho = tosador.calcular_valor_banho_cachorro(self.tamanho)
             print(f"Tosador {tosador.nome} está dando banho no cachorro {self.nome}.")

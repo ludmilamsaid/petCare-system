@@ -6,11 +6,11 @@ from Veterinario import Veterinario
 from datetime import date
 
 class Gato(Animal):
-    def __init__(self, nome: str, idade: int, cor: str, tamanho: Tamanho, cliente: int, ID: int, data_chegada: date, data_saida: date, addr_historico: str, conta: float, raca: str):
+    def __init__(self, nome: str, idade: int, cor: str, tamanho: Tamanho, cliente: int, ID: int, data_chegada: date, data_saida: date, addr_historico: str, conta: float, raca: str) -> None:
         super().__init__(nome, idade, Especie.GATO, cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta)
         self.raca = raca
 
-    def tosa(self, tosador, tipo_tosa):
+    def tosa(self, tosador: int, tipo_tosa: TipoTosa) -> str:
         if tosador.disponivel:
             valor_tosa = tosador.calcular_valor_tosa_gato(self.tamanho, tipo_tosa)
             print(f"Tosador {tosador.nome} está tosando o gato {self.nome}.")
@@ -18,7 +18,7 @@ class Gato(Animal):
         else:
             print(f"Tosador {tosador.nome} não está disponível no momento.")
 
-    def banho(self, tosador):
+    def banho(self, tosador: int) -> str:
         if tosador.disponivel:
             valor_banho = tosador.calcular_valor_banho_gato(self.tamanho)
             print(f"Tosador {tosador.nome} está dando banho no gato {self.nome}.")

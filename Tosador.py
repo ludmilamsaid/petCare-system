@@ -8,10 +8,10 @@ class TipoTosa(Enum):
     TESOURA = "Tesoura"
 
 class Tosador(Funcionario):
-    def __init__(self, nome: str, ID: int, disponivel: bool = False):
+    def __init__(self, nome: str, ID: int, disponivel: bool = False) -> None:
         super().__init__(nome, ID, disponivel)
 
-    def calcular_valor_tosa_cachorro(self, tamanho, tipo_tosa) -> float:
+    def calcular_valor_tosa_cachorro(self, tamanho: Tamanho, tipo_tosa: TipoTosa) -> float:
 
         if tipo_tosa == TipoTosa.MAQUINA:
             valor_base = 65
@@ -35,7 +35,7 @@ class Tosador(Funcionario):
 
         return valor_tosa_cachorro
 
-    def calcular_valor_tosa_gato(self, tamanho, tipo_tosa) -> float:
+    def calcular_valor_tosa_gato(self, tamanho: Tamanho, tipo_tosa: TipoTosa) -> float:
 
         if tipo_tosa == TipoTosa.MAQUINA:
             valor_base = 65
@@ -58,7 +58,7 @@ class Tosador(Funcionario):
         valor_tosa_gato = valor_base * fator_tamanho * 0.9
         return valor_tosa_gato
 
-    def calcular_valor_banho_cachorro(self, tamanho) -> float:
+    def calcular_valor_banho_cachorro(self, tamanho: Tamanho) -> float:
         
         valor_base = 45
 
@@ -75,7 +75,7 @@ class Tosador(Funcionario):
 
         return valor_banho_cachorro
 
-    def calcular_valor_banho_gato(self, tamanho) -> float:
+    def calcular_valor_banho_gato(self, tamanho: Tamanho) -> float:
         
         valor_base = 45
 

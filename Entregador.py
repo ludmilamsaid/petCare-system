@@ -9,11 +9,11 @@ from geopy.distance import geodesic
 from enum import Enum
 
 class Entregador(Funcionario):
-    def __init__(self, nome, ID, disponivel=False):
+    def __init__(self, nome: str, ID: int, disponivel: bool=False) -> None:
         super().__init__(nome, ID, disponivel)
         self.geolocator = Nominatim(user_agent="pet_care")
 
-    def buscar(self, animal, cliente):
+    def buscar(self, animal: int, cliente: int) -> str:
         if self.disponivel:
             print(f"Entregador {self.nome} está buscando o {animal.especie.value} {animal.nome}.")
             endereco_clinica = "Rua Reitor Píres Albuquerque, 308, Pampulha, Belo Horizonte, MG, 31270-901"
@@ -24,7 +24,7 @@ class Entregador(Funcionario):
         else:
             print(f"Entregador {self.nome} não está disponível para buscar animais no momento.")
 
-    def entregar(self, animal, cliente):
+    def entregar(self, animal: int, cliente: int) -> str:
         if self.disponivel:
             print(f"Entregador {self.nome} está entregando o {animal.especie.value} {animal.nome}.")
             endereco_clinica = "Rua Reitor Píres Albuquerque, 308, Pampulha, Belo Horizonte, MG, 31270-901"
@@ -35,7 +35,7 @@ class Entregador(Funcionario):
         else:
             print(f"Entregador {self.nome} não está disponível para entregar animais no momento.")
 
-    def calcular_distancia_tempo(self, origem, destino):
+    def calcular_distancia_tempo(self, origem: str, destino: str) -> str:
         origem_location = self.geolocator.geocode(origem)
         destino_location = self.geolocator.geocode(destino)
 

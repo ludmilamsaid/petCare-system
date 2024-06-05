@@ -30,8 +30,8 @@ class Animal(ABC):
     def consulta_veterinaria(self) -> None:
         pass
 
-    def tosa(self, tosador: str, TipoTosa: TipoTosa) -> None:
+    def tosa(self, tosador: int, TipoTosa: TipoTosa) -> None:
         pass
 
-    def banho(self, tosador: str) -> None:
+    def banho(self, tosador: int) -> None:
         pass
