@@ -10,12 +10,14 @@ class Cachorro(Animal):
 
     def consulta_veterinaria(self) -> None:
         print(f"Consulta veterinária para o cachorro {self.nome}.")
+        self.adicionar_servico("Consulta Veterinária", 100.0)
 
     def tosa(self, tosador: Tosador, tipo_tosa: TipoTosa) -> None:
         if tosador.disponivel:
             valor_tosa = tosador.calcular_valor_tosa_cachorro(self.tamanho, tipo_tosa)
             print(f"Tosador {tosador.nome} está tosando o cachorro {self.nome}.")
             print(f"Valor da tosa: R$ {valor_tosa:.2f}")
+            self.adicionar_servico("Tosa", valor_tosa)
         else:
             print(f"Tosador {tosador.nome} não está disponível no momento.")
     def banho(self, tosador: Tosador) -> None:
@@ -23,6 +25,7 @@ class Cachorro(Animal):
             valor_banho = tosador.calcular_valor_banho_cachorro(self.tamanho)
             print(f"Tosador {tosador.nome} está dando banho no cachorro {self.nome}.")
             print(f"Valor do banho: R$ {valor_banho:.2f}")
+            Animal.adicionar_servico("Banho", valor_banho)
         else:
             print(f"Tosador {tosador.nome} não está disponível no momento.")
 

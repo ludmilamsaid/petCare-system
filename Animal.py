@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
+from typing import List
 from enum import Enum
 from datetime import date
-from Cliente import Cliente
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -24,12 +24,13 @@ class Animal(ABC):
                  especie: Especie, 
                  cor: str, 
                  tamanho: Tamanho, 
-                 cliente: Cliente, 
+                 cliente: int, 
                  ID: int, 
                  data_chegada: date, 
                  data_saida: date, 
-                 addr_historico: str, 
-                 conta: float) -> None:
+                 addr_historico: str,
+                 servicos_prestados: List[str],
+                 conta: float = 0.0) -> None:
         self.nome = nome
         self.idade = idade
         self.especie = especie
@@ -40,7 +41,12 @@ class Animal(ABC):
         self.data_chegada = data_chegada
         self.data_saida = data_saida
         self.addr_historico = addr_historico
+        self.servicos_prestados = []
         self.conta = conta
+
+    def adicionar_servico(self, servico: str, custo: float) -> None:
+        self.servicos_prestados.append((servico, custo))
+        self.conta += custo
 
     @abstractmethod
     def consulta_veterinaria(self) -> None:

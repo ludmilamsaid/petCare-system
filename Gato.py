@@ -12,12 +12,14 @@ class Gato(Animal):
 
     def consulta_veterinaria(self) -> None:
         print(f"Consulta veterinária para o cachorro {self.nome}.")
+        Animal.adicionar_servico("Consulta Veterinária", 100.0)
 
     def tosa(self, tosador: Tosador, tipo_tosa: TipoTosa) -> None:
         if tosador.disponivel:
             valor_tosa = tosador.calcular_valor_tosa_gato(self.tamanho, tipo_tosa)
             print(f"Tosador {tosador.nome} está tosando o gato {self.nome}.")
             print(f"Valor da tosa: R$ {valor_tosa:.2f}")
+            Animal.adicionar_servico("Tosa", "valor_tosa:.2f")
         else:
             print(f"Tosador {tosador.nome} não está disponível no momento.")
 
@@ -26,6 +28,7 @@ class Gato(Animal):
             valor_banho = tosador.calcular_valor_banho_gato(self.tamanho)
             print(f"Tosador {tosador.nome} está dando banho no gato {self.nome}.")
             print(f"Valor do banho: R$ {valor_banho:.2f}")
+            Animal.adicionar_servico("Banho", valor_banho)
         else:
             print(f"Tosador {tosador.nome} não está disponível no momento.")
 
