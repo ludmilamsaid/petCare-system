@@ -12,16 +12,46 @@ class RegisteredItem (Exception):
         super().__init__(self.erro)
 
 class Banco(ABC):
+
+    """
+    Classe que descreve um banco de dados do excel
+
+    Attributes
+    ----------
+    __addr : str
+        endereço do banco de dados
+    __colunas : list<str>
+        nome das colunas
+    banco : pd
+        Dataframe do banco referente
+    __dataType : dict
+        contém a tipagem de cada uma das colunas do banco
+
+    Methods
+    -------
+    setNewAddr (self, addr : str) -> bool
+        Altera o endereço __addr
+    
+    ler_banco(self) -> bool
+        Lê o banco de dados do excel
+    
+    imprimir(self) -> bool
+        Imprime o dataframe no terminal
+
+    adicionar(self) -> bool
+        Método abstrato, adiciona uma nova linha no Dataframe
+    
+    remover (self, item, tipo : str) -> bool
+        Remove uma linha do dataframe
+
+    procurarItem(self, item, tipo : str) -> pd.DataFrame
+        procura linhas de um dataframe conforme o item passado
+
+    alterarItem (self, itemNovo, itemAntigo, tipo : str) -> bool
+        altera uma cédula do Dataframe
+    """
+
     def __init__(self, addr: str, dataType, colunas : list) -> None:
-
-        """
-        Construtor da classe Banco
-
-        Parameters:
-            addr : str - endereço do banco excel (privado)
-            datatype : dict - dicionário com os tipos das colunas (privado)
-            colunas : list - nome das colunas (privado)
-        """
 
         self.__addr = addr #Endereço da planilha
         self.__colunas = colunas #Nome das colunas
