@@ -5,6 +5,8 @@ from Animal import Animal, Especie, Tamanho
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 from enum import Enum
+from Cachorro import Cachorro
+from Gato import Gato
 
 class Entregador(Funcionario):
     def __init__(self, nome: str, ID: int, disponivel: bool=False) -> None:
@@ -33,7 +35,7 @@ class Entregador(Funcionario):
         else:
             print(f"Entregador {self.nome} não está disponível para entregar animais no momento.")
 
-    def calcular_distancia_tempo(self, origem: str, destino: str) -> str:
+    def calcular_distancia_tempo(self, origem: str, destino: str) -> tuple:
         origem_location = self.geolocator.geocode(origem)
         destino_location = self.geolocator.geocode(destino)
 
@@ -64,7 +66,7 @@ animal = Animal(
 
 cliente = Cliente(
     nome="Maria",
-    pet= animal,
+    pet= [animal],
     conta=500.0,
     endereco="Rua Apucarana, 11, Ouro Preto, Belo Horizonte, MG",
     ID=789

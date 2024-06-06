@@ -1,21 +1,24 @@
 from enum import Enum
 from Animal import Animal, Tamanho, Especie
-from datetime import date, datetime, timedelta
-from Tosador import Tosador, TipoTosa
+from datetime import date
+from Tosador import TipoTosa, Tosador
 
 class Cachorro(Animal):
     def __init__(self, nome: str, idade: int, raca: str, cor: str, tamanho: Tamanho, cliente: int, ID: int, data_chegada: date, data_saida: date, addr_historico: str, conta: float) -> None:
         super().__init__(nome, idade, Especie.CACHORRO, cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta)
         self.raca = raca
 
-    def tosa(self, tosador: int, tipo_tosa: TipoTosa) -> str:
+    def consulta_veterinaria(self) -> None:
+        print(f"Consulta veterinária para o cachorro {self.nome}.")
+
+    def tosa(self, tosador: Tosador, tipo_tosa: TipoTosa) -> None:
         if tosador.disponivel:
             valor_tosa = tosador.calcular_valor_tosa_cachorro(self.tamanho, tipo_tosa)
             print(f"Tosador {tosador.nome} está tosando o cachorro {self.nome}.")
             print(f"Valor da tosa: R$ {valor_tosa:.2f}")
         else:
             print(f"Tosador {tosador.nome} não está disponível no momento.")
-    def banho(self, tosador: int) -> str:
+    def banho(self, tosador: Tosador) -> None:
         if tosador.disponivel:
             valor_banho = tosador.calcular_valor_banho_cachorro(self.tamanho)
             print(f"Tosador {tosador.nome} está dando banho no cachorro {self.nome}.")
@@ -49,10 +52,9 @@ raca_cachorro = ["Norsk Lundehund", "Bulldog Francês Fluffy", "Braco-da-Transil
         "Bobtail", "Bull Terrier Inglês", "Galgo Afegão", "Golden Retriever", "Border Collie", "Basset Hound", "American Staffordshire Terrier", "Bull Terrier Inglês Miniatura", "Akita Inu",
         "Pastor alemão", "Maltês", "Beagle", "Yorkshire Terrier", "Shiba Inu", "Akita Americano", "SRD"]
 
-animal = Animal(
+animal = Cachorro(
     nome="Rex",
     idade=3,
-    especie=Especie.CACHORRO,
     cor="Marrom",
     tamanho=Tamanho.GRANDE,
     cliente=123,
@@ -60,7 +62,8 @@ animal = Animal(
     data_chegada=date.today(),
     data_saida=date.today(),
     addr_historico="Rua Exemplo, 123",
-    conta=200.0
+    conta=200.0,
+    raca= "Fila"
 )
 
 tosador = Tosador("Pedro", 1, True)

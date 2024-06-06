@@ -1,8 +1,11 @@
 from abc import ABC, abstractmethod
 from enum import Enum
 from datetime import date
-from Tosador import TipoTosa, Tosador
 from Cliente import Cliente
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from Tosador import TipoTosa, Tosador
 
 class Especie(Enum):
     CACHORRO = "Cachorro"
@@ -21,7 +24,7 @@ class Animal(ABC):
                  especie: Especie, 
                  cor: str, 
                  tamanho: Tamanho, 
-                 cliente: int, 
+                 cliente: Cliente, 
                  ID: int, 
                  data_chegada: date, 
                  data_saida: date, 
@@ -39,11 +42,14 @@ class Animal(ABC):
         self.addr_historico = addr_historico
         self.conta = conta
 
+    @abstractmethod
     def consulta_veterinaria(self) -> None:
         pass
 
-    def tosa(self, tosador: Tosador, TipoTosa: TipoTosa) -> None:
+    @abstractmethod
+    def tosa(self, tosador: 'Tosador', tipo_tosa: 'TipoTosa') -> None:
         pass
 
-    def banho(self, tosador: Tosador) -> None:
+    @abstractmethod
+    def banho(self, tosador: 'Tosador') -> None:
         pass

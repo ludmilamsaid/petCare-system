@@ -1,5 +1,5 @@
 from Funcionario import Funcionario
-from Animal import Animal, Tamanho, Especie
+from Animal import Tamanho
 from enum import Enum
 from datetime import date
 

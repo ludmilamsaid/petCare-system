@@ -2,6 +2,8 @@ from Funcionario import Funcionario
 from Animal import Animal, Tamanho, Especie
 from Cliente import Cliente
 from datetime import date
+from Cachorro import Cachorro 
+from Gato import Gato
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), 'Bancos'))
@@ -76,10 +78,9 @@ cliente = Cliente(
     ID=123
 )
 
-animal = Animal(
+animal = Cachorro(
     nome="Rex",
     idade=3,
-    especie=Especie.CACHORRO,
     cor="Marrom",
     tamanho=Tamanho.GRANDE.value,
     cliente=123,
@@ -87,7 +88,8 @@ animal = Animal(
     data_chegada=date.today(),
     data_saida=date.today(),
     addr_historico="Rua Exemplo, 123",
-    conta=200.0
+    conta=200.0,
+    raca= "Fila"
 )
 
 atendente1 = Atendente("Jussara", 101, True)

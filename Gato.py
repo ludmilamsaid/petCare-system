@@ -10,7 +10,10 @@ class Gato(Animal):
         super().__init__(nome, idade, Especie.GATO, cor, tamanho, cliente, ID, data_chegada, data_saida, addr_historico, conta)
         self.raca = raca
 
-    def tosa(self, tosador: int, tipo_tosa: TipoTosa) -> str:
+    def consulta_veterinaria(self) -> None:
+        print(f"Consulta veterinária para o cachorro {self.nome}.")
+
+    def tosa(self, tosador: Tosador, tipo_tosa: TipoTosa) -> None:
         if tosador.disponivel:
             valor_tosa = tosador.calcular_valor_tosa_gato(self.tamanho, tipo_tosa)
             print(f"Tosador {tosador.nome} está tosando o gato {self.nome}.")
@@ -18,7 +21,7 @@ class Gato(Animal):
         else:
             print(f"Tosador {tosador.nome} não está disponível no momento.")
 
-    def banho(self, tosador: int) -> str:
+    def banho(self, tosador: Tosador) -> None:
         if tosador.disponivel:
             valor_banho = tosador.calcular_valor_banho_gato(self.tamanho)
             print(f"Tosador {tosador.nome} está dando banho no gato {self.nome}.")
