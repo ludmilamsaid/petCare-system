@@ -50,10 +50,9 @@ class Entregador(Funcionario):
         else:
             return 0, 0
 
-animal = Animal(
+animal = Cachorro(
     nome="Rex",
     idade=3,
-    especie=Especie.CACHORRO,
     cor="Marrom",
     tamanho=Tamanho.GRANDE.value,
     cliente= 789,
@@ -61,7 +60,8 @@ animal = Animal(
     data_chegada=date.today(),
     data_saida=date.today(),
     addr_historico=[{"endereco": "Rua Exemplo, 123"}],
-    conta=200.0
+    conta= 200.0,
+    raca= "Fila"
 )
 
 cliente = Cliente(
