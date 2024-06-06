@@ -25,7 +25,7 @@ class Cachorro(Animal):
             valor_banho = tosador.calcular_valor_banho_cachorro(self.tamanho)
             print(f"Tosador {tosador.nome} está dando banho no cachorro {self.nome}.")
             print(f"Valor do banho: R$ {valor_banho:.2f}")
-            Animal.adicionar_servico("Banho", valor_banho)
+            self.adicionar_servico("Banho", valor_banho)
         else:
             print(f"Tosador {tosador.nome} não está disponível no momento.")
 
