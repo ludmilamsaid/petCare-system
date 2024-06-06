@@ -14,14 +14,39 @@ class RegisteredItem (Exception):
 class Banco(ABC):
     def __init__(self, addr: str, dataType, colunas : list) -> None:
 
+        """
+        Construtor da classe Banco
+
+        Parameters:
+            addr : str - endereço do banco excel (privado)
+            datatype : dict - dicionário com os tipos das colunas (privado)
+            colunas : list - nome das colunas (privado)
+        """
+
         self.__addr = addr #Endereço da planilha
         self.__colunas = colunas #Nome das colunas
         self.banco = pd.DataFrame(columns=self.colunas)
         self.__dataType = dataType #Tipo dos dados
         self.ler_banco()
 
-    def setNewAddr(self, addr: str) -> None:
-        self.__addr = addr
+    def setNewAddr(self, addr: str) -> bool:
+
+        """
+        Altera o endereço do banco excel
+
+        Parameters:
+            addr : str - novo endereço do banco de dados
+        
+        Return:
+            Se não houver erro, retorna True, caso contrário False
+        """
+        try:
+            self.__addr = addr
+            return True
+        
+        except Exception as e:
+            print("Erro em setNewAddr", e)
+            return False
 
     @property
     def addr(self) -> str:
@@ -36,6 +61,16 @@ class Banco(ABC):
         return self.__colunas
 
     def ler_banco(self) -> bool:
+
+        """
+        Lê o banco de dados excel e transforma num data frame
+
+        Parameters:
+            Nenhum parametro
+
+        Return: 
+            Retorna True se não houver erros, caso contrário, retorna False
+        """
 
         try:
             self.banco = pd.read_excel(self.addr, dtype=self.dataType, engine="openpyxl")
@@ -52,6 +87,16 @@ class Banco(ABC):
 
     def imprimir(self) -> bool:
 
+        """
+        Imprime o banco de dados
+
+        Parameters:
+            Nenhum parametro
+
+        Return: 
+            Retorna True se não houver erros, caso contrário, retorna False
+        """
+
         try:
             print(self.banco)
             return True
@@ -61,9 +106,30 @@ class Banco(ABC):
 
     @abstractmethod
     def adicionar(self, novaLinha : list) -> bool:
+
+        """
+        Adiciona uma nova linha ao dataFrame
+
+        Parameters:
+            novaLinha : lis - polimorfico
+
+        Return:
+        Retorna True se não houber erros, caso contrário, retorna False
+        """
         pass
     
     def procurarItem(self, item, tipo: str) -> pd.DataFrame:
+
+        """
+        Procura um item do banco de dados
+
+        Parameters:
+            item : Any - polimorfico, depende do atributo instanciado, item a ser procurado
+            tipo : str - nome da coluna que o item pode estar inserido
+
+        Return:
+            Retorna um data frame com o resultado das buscas
+        """
         
         try:
             itemProcurado = self.banco[self.banco[tipo] == item]
@@ -74,6 +140,16 @@ class Banco(ABC):
 
     def atualizarBanco(self) -> bool:
 
+        """
+            Atualiza o banco de dados no excel   
+
+        Parameters:
+            Nenhum
+
+        Return:
+        Retorna True se não houber erros, caso contrário, retorna False
+        """
+
         try:
             self.banco.to_excel(self.addr, index=False, sheet_name="planilha", engine="openpyxl")
             return True
@@ -82,6 +158,18 @@ class Banco(ABC):
             return False
         
     def remover(self, item, tipo: str) -> bool:
+
+            # conferir quando tiver mais de um item
+        
+        """Remove um item do banco de dados
+
+        Parameters:
+            item : Any - polimorfico, depende do atributo instanciado, item a ser removido
+            tipo : str - nome da coluna que o item pode estar inserido
+
+        Return:
+            Retorna um data frame com o resultado das buscas"""
+        
         try:
             self.banco = self.banco[self.banco[tipo] != item]
             self.atualizarBanco()
