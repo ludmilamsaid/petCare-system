@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
 from enum import Enum
 from datetime import date
-from Tosador import TipoTosa
+from Tosador import TipoTosa, Tosador
+from Cliente import Cliente
 
 class Especie(Enum):
     CACHORRO = "Cachorro"
@@ -14,7 +15,18 @@ class Tamanho(Enum):
     GRANDE = "Grande"
 
 class Animal(ABC):
-    def __init__(self, nome: str, idade: int, especie: Especie, cor: str, tamanho: Tamanho, cliente: int, ID: int, data_chegada: date, data_saida: date, addr_historico: str, conta: float) -> None:
+    def __init__(self, 
+                 nome: str, 
+                 idade: int, 
+                 especie: Especie, 
+                 cor: str, 
+                 tamanho: Tamanho, 
+                 cliente: int, 
+                 ID: int, 
+                 data_chegada: date, 
+                 data_saida: date, 
+                 addr_historico: str, 
+                 conta: float) -> None:
         self.nome = nome
         self.idade = idade
         self.especie = especie
@@ -30,8 +42,8 @@ class Animal(ABC):
     def consulta_veterinaria(self) -> None:
         pass
 
-    def tosa(self, tosador: int, TipoTosa: TipoTosa) -> None:
+    def tosa(self, tosador: Tosador, TipoTosa: TipoTosa) -> None:
         pass
 
-    def banho(self, tosador: int) -> None:
+    def banho(self, tosador: Tosador) -> None:
         pass

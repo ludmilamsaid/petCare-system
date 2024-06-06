@@ -1,9 +1,7 @@
 from Funcionario import Funcionario
 from Cliente import Cliente
 from datetime import date
-from Animal import Animal
-from Animal import Especie
-from Animal import Tamanho
+from Animal import Animal, Especie, Tamanho
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 from enum import Enum
@@ -13,7 +11,7 @@ class Entregador(Funcionario):
         super().__init__(nome, ID, disponivel)
         self.geolocator = Nominatim(user_agent="pet_care")
 
-    def buscar(self, animal: int, cliente: int) -> str:
+    def buscar(self, animal: Animal, cliente: Cliente) -> None:
         if self.disponivel:
             print(f"Entregador {self.nome} está buscando o {animal.especie.value} {animal.nome}.")
             endereco_clinica = "Rua Reitor Píres Albuquerque, 308, Pampulha, Belo Horizonte, MG, 31270-901"
@@ -24,7 +22,7 @@ class Entregador(Funcionario):
         else:
             print(f"Entregador {self.nome} não está disponível para buscar animais no momento.")
 
-    def entregar(self, animal: int, cliente: int) -> str:
+    def entregar(self, animal: Animal, cliente: Cliente) -> None:
         if self.disponivel:
             print(f"Entregador {self.nome} está entregando o {animal.especie.value} {animal.nome}.")
             endereco_clinica = "Rua Reitor Píres Albuquerque, 308, Pampulha, Belo Horizonte, MG, 31270-901"
@@ -50,28 +48,28 @@ class Entregador(Funcionario):
         else:
             return 0, 0
 
-
-
-cliente = Cliente(
-    pet=Animal,
-    conta=500.0,
-    endereco="Rua Apucarana, 11, Ouro Preto, Belo Horizonte, MG",
-    ID=789
-)
-entregador = Entregador("João", 1, True)
-
 animal = Animal(
     nome="Rex",
     idade=3,
     especie=Especie.CACHORRO,
     cor="Marrom",
     tamanho=Tamanho.GRANDE.value,
-    cliente=123,
+    cliente= 789,
     ID=456,
     data_chegada=date.today(),
     data_saida=date.today(),
-    addr_historico="Rua Exemplo, 123",
+    addr_historico=[{"endereco": "Rua Exemplo, 123"}],
     conta=200.0
 )
+
+cliente = Cliente(
+    nome="Maria",
+    pet= animal,
+    conta=500.0,
+    endereco="Rua Apucarana, 11, Ouro Preto, Belo Horizonte, MG",
+    ID=789
+)
+
+entregador = Entregador("João", 1, True)
 
 entregador.entregar(animal, cliente)
