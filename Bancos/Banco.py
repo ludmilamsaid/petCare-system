@@ -181,6 +181,18 @@ class Banco(ABC):
 
     def alterarItem(self, itemNovo, itemAntigo, tipo: str) -> bool:
        
+        """
+        Altera uma cédula do banco de dados. Utiliza do método procurarItem()
+
+        Parameters:
+        itemNovo : Any - polimorfico, item a substituir
+        itemAntigo : Any - polimorfico, item a ser substituido
+        tipo : str - nome da cédula
+
+        Return:
+         True se não houver erros, e False se houver
+        """
+
         try:
             itemProcurado = self.procurarItem(itemAntigo, tipo)
             
