@@ -7,11 +7,11 @@ class Veterinario(Funcionario):
         super().__init__(nome, ID, disponivel)
         self.CRMV = CRMV
 
-    def prescrever_receita (self, animal: int) -> str:
+    def prescrever_receita (self, animal: Animal) -> None:
         print(f"Veterinário {self.nome} está prescrevendo uma receita para o {animal.especie.value} {animal.nome}.")
 
-    def atualizar_historico (self, animal: int) -> str:
+    def atualizar_historico (self, animal: Animal) -> None:
         print(f"Veterinário {self.nome} está atualizando o histórico do {animal.especie.value} {animal.nome}.")
 
-    def vacinar (self, animal: int) -> str:
+    def vacinar (self, animal: Animal) -> None:
         print(f"Veterinário {self.nome} está vacinando o {animal.especie.value} {animal.nome}.")

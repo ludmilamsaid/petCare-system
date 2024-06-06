@@ -16,7 +16,7 @@ class Atendente(Funcionario):
         self.banco_agendamentos = BancoAgendamentos()
         self.banco_clientes = BancoClientes()
 
-    def cadastrarClientes(self, cliente_id: int, cliente_nome: str, cliente_pets: int, cliente_endereco: str, cliente_conta: float) -> str:
+    def cadastrarClientes(self, cliente_id: int, cliente_nome: str, cliente_pets: int, cliente_endereco: str, cliente_conta: float) -> None:
         cliente_id = cliente.ID 
         cliente_nome = cliente.nome
         cliente_pets = cliente.pets  
@@ -32,7 +32,7 @@ class Atendente(Funcionario):
             print(f"Erro ao cadastrar o cliente {cliente_nome}.")
         print(f"Animal {animal.nome} cadastrado para o cliente {cliente.nome}.")
 
-    def agendar(self, cliente: int, animal: int, servico: str, data_horario:str) -> str:
+    def agendar(self, cliente: Cliente, animal: Animal, servico: str, data_horario:str) -> None:
         if not isinstance(data_horario, DataHorario):
             raise ValueError("O data_horario deve ser do tipo horas, dia.")
 
@@ -44,10 +44,10 @@ class Atendente(Funcionario):
         else:
             print(f"Erro ao registrar o agendamento para o animal {animal.nome}.")
 
-    def getHistorico(self, animal: int):
+    def getHistorico(self, animal: Animal):
         print(f"Nenhum histórico encontrado para o animal {animal.nome}.")
 
-    def cadastrar_animal(self, animal_id: int, animal_nome: str, animal_idade: int, animal_especie: Especie, animal_raca: str, animal_cor: str, animal_tamanho: Tamanho, tutor_id: int, horario_chegada: date, horario_saida: date, conta: float) -> str:
+    def cadastrar_animal(self, animal_id: int, animal_nome: str, animal_idade: int, animal_especie: Especie, animal_raca: str, animal_cor: str, animal_tamanho: Tamanho, tutor_id: int, horario_chegada: date, horario_saida: date, conta: float) -> None:
         animal_id = animal.ID  
         animal_nome = animal.nome
         animal_idade = animal.idade  
