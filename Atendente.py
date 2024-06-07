@@ -8,6 +8,8 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), 'Bancos'))
 from Bancos.BancoClientes import BancoClientes
+from Bancos.BancoAnimais import BancoAnimais
+from Bancos.BancoFuncionarios import BancoFuncionarios
 from Bancos.BancoAgendamentos import BancoAgendamentos, DataHorario
 
 class Atendente(Funcionario):
@@ -15,6 +17,8 @@ class Atendente(Funcionario):
         super().__init__(nome, ID, disponivel)
         self.banco_agendamentos = BancoAgendamentos()
         self.banco_clientes = BancoClientes()
+        self.banco_animais = BancoAnimais()
+        self.banco_funcionarios = BancoFuncionarios()
 
     def cadastrarClientes(self, cliente_id: int, cliente_nome: str, cliente_pets: int, cliente_endereco: str, cliente_conta: float) -> None:
         cliente_id = cliente.ID 
@@ -56,8 +60,8 @@ class Atendente(Funcionario):
         animal_cor = animal.cor
         animal_tamanho = animal.tamanho  
         tutor_id = cliente.ID
-        horario_chegada = animal.horario_chegada
-        horario_saida = animal.horario_saida
+        horario_chegada = animal.data_chegada
+        horario_saida = animal.data_saida
         conta = animal.conta
         
         nova_linha = [animal_id, animal_nome, animal_idade, animal_especie, animal_raca, animal_cor, 
@@ -93,4 +97,4 @@ animal = Cachorro(
 )
 
 atendente1 = Atendente("Jussara", 101, True)
-atendente1.agendar(cliente, animal, "Tosa", DataHorario("12h30", "12/06"))
+atendente1.cadastrar_animal(520, "Leticia", 3, "Cachorro", "Chihuahua", "Branca", "Mini", 510, date.today(), date.today(), 0.0)

@@ -15,7 +15,7 @@ class BancoClientes(Banco):
         }
 
         colunas = ["ID", "Nome", "PETs", "Endereço", "Conta"]
-        addr = "Planilhas/Clientes.xlsx"
+        addr = "Bancos/Planilhas/Clientes.xlsx"
 
         super().__init__(addr, dataType, colunas)
     

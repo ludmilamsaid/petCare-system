@@ -23,7 +23,7 @@ class BancoAnimais(Banco):
 
         colunas = ["ID"," Nome", "Idade", "Espécie", "Raça", "Cor","Tamanho", "Tutor (ID)",
                     "Horário Chegada", "Horário Saída", "Endereço Histórico", "Conta"]
-        addr = "Planilhas/Animais.xlsx"
+        addr = "Bancos/Planilhas/Animais.xlsx"
 
         super().__init__(addr, dataType, colunas)
     
