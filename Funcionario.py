@@ -4,10 +4,10 @@ class Funcionario:
         self.ID = ID
         self.disponivel = disponivel
         
-def chegar(self) -> None:
+    def chegar(self) -> None:
         self.disponivel = True
         return f"O funcionário {self.nome} (ID: {self.ID}) está na clínica."
 
-def sair(self) -> None:
+    def sair(self) -> None:
         self.disponivel = False
         return f"O funcionário {self.nome} (ID: {self.ID}) saiu da clínica."

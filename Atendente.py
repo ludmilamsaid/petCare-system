@@ -4,6 +4,7 @@ from Cliente import Cliente
 from datetime import date
 from Cachorro import Cachorro 
 from Gato import Gato
+from Funcionario import Funcionario
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), 'Bancos'))
@@ -72,6 +73,22 @@ class Atendente(Funcionario):
             print(f"Animal {animal_nome} cadastrado com sucesso.")
         else:
             print(f"Erro ao cadastrar o animal {animal_nome}.")
+
+    def cadastrar_funcionario(self, funcionario):
+        if not isinstance(funcionario, Funcionario):
+            raise ValueError("O parâmetro 'funcionario' deve ser uma instância da classe Funcionario.")
+        
+        funcionario_id = funcionario.ID
+        funcionario_nome = funcionario.nome
+        funcionario_disponibilidade = funcionario.disponivel
+        
+        nova_linha = [funcionario_id, funcionario_nome, funcionario_disponibilidade]
+        sucesso = self.banco_funcionarios.adicionar(nova_linha)
+
+        if sucesso:
+            print(f"Funcionário {funcionario_nome} cadastrado com sucesso.")
+        else:
+            print(f"Erro ao cadastrar o funcionário {funcionario_nome}.")
 
 
 cliente = Cliente(
