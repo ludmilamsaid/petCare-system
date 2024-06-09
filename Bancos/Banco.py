@@ -109,9 +109,9 @@ class Banco(ABC):
         except ValueError as e:
             print(f"Erro ao ler o arquivo Excel: {e}")
             return False
-        except:
+        except Exception as e:
             #Qualquer outro erro
-            print("Banco vazio")
+            print("Banco vazio:", e)
             self.banco = None
             return False
 

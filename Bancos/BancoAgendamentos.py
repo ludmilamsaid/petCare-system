@@ -22,7 +22,7 @@ class BancoAgendamentos(Banco):
         }
 
         colunas = ["Tutor", "PET", "Serviço", "Horário"]
-        addr = "Planilhas/Agendamentos.xlsx"
+        addr = "Bancos/Planilhas/Agendamentos.xlsx"
 
         super().__init__(addr, dataType, colunas)
     

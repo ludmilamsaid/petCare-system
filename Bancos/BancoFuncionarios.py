@@ -10,7 +10,7 @@ class BancoFuncionarios(Banco):
              "Disponibilidade" : bool 
         }
         colunas = ["ID", "Nome", "Disponibilidade"]
-        addr = "Planilhas/Funcionarios.xlsx"
+        addr = "Bancos/Planilhas/Funcionarios.xlsx"
 
         super().__init__(addr, dataType, colunas)
     
