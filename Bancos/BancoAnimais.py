@@ -21,7 +21,7 @@ class BancoAnimais(Banco):
              "Conta" : float 
         }
 
-        colunas = ["ID"," Nome", "Idade", "Espécie", "Raça", "Cor","Tamanho", "Tutor (ID)",
+        colunas = ["ID","Nome", "Idade", "Espécie", "Raça", "Cor","Tamanho", "Tutor",
                     "Horário Chegada", "Horário Saída", "Endereço Histórico", "Conta"]
         addr = "Bancos/Planilhas/Animais.xlsx"
 
@@ -61,3 +61,6 @@ class BancoAnimais(Banco):
         except Exception as e:
             print(f"Erro ao adicionar linha: {e}")
             return False
+
+def teste() -> None:
+    pass
