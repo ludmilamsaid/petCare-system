@@ -165,7 +165,7 @@ class Banco(ABC):
             itemProcurado = self.banco[self.banco[tipo] == item]
             return pd.DataFrame(itemProcurado)
         except:
-            print("Erro ao procurar item")
+            print("Banco: Erro ao procurar item")
             return pd.DataFrame()
 
     def atualizarBanco(self) -> bool:

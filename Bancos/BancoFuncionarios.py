@@ -37,7 +37,7 @@ class BancoFuncionarios(Banco):
                 return True
 
         except Exception as e:
-            print(f"Erro ao adicionar linha: {e}")
+            print(f"Banco Funcionarios: Erro ao adicionar linha: {e}")
             return False
 
 def teste() -> None:

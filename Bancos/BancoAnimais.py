@@ -59,7 +59,7 @@ class BancoAnimais(Banco):
                 return True
 
         except Exception as e:
-            print(f"Erro ao adicionar linha: {e}")
+            print(f"Banco Animais: Erro ao adicionar linha: {e}")
             return False
 
 def teste() -> None:
