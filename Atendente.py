@@ -67,7 +67,7 @@ class Atendente(Funcionario):
         conta = animal.conta
         
         nova_linha = [animal_id, animal_nome, animal_idade, animal_especie, animal_raca, animal_cor, 
-                      animal_tamanho, tutor_id, horario_chegada, horario_saida, "", conta]
+                      animal_tamanho, tutor_id, horario_chegada, horario_saida, conta]
         sucesso = self.banco_animais.adicionar(nova_linha)
 
         if sucesso:
@@ -115,4 +115,4 @@ animal = Cachorro(
 )
 
 atendente1 = Atendente("Jussara", 101, True)
-atendente1.cadastrar_animal(520, "Leticia", 3, "Cachorro", "Chihuahua", "Branca", "Mini", 510, date.today(), date.today(), 0.0)
+atendente1.cadastrar_animal(520, "Leticia", 3, "Cachorro", "Chihuahua", "Branca", "Mini", 510, date.today(), date.today(),float(0.0))
