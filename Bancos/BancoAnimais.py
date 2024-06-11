@@ -67,4 +67,4 @@ def teste() -> None:
     #"ID","Nome", "Idade", "Espécie", "Raça", "Cor","Tamanho", "Tutor","Horário Chegada", "Horário Saída", "Endereço Histórico", "Conta"
     banco.adicionar([123, "Joao", "rex", "preto", "médio",  123, "23h43", "123h1", 0])
 
-teste()
+#teste()
