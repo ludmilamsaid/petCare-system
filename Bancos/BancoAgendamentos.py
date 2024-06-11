@@ -82,7 +82,7 @@ class BancoAgendamentos(Banco):
             self.banco = self.banco.drop(0).reset_index(drop=True)
             return True
         except Exception as e:
-            print("Erro ao remover topo:", e)
+            print("Banco Agendamento: Erro ao remover topo:", e)
             return False
         
 def teste() -> None:
