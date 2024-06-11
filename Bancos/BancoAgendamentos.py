@@ -98,4 +98,4 @@ def teste() -> None:
     teste.atualizarBanco()
     teste.imprimir()
 
-#teste() 
+teste() 
