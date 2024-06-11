@@ -7,7 +7,7 @@ from Cachorro import Cachorro, raca_cachorro
 from Gato import Gato, raca_gato
 from Styles import *
 from tkinter import messagebox
-
+from Atendente import Atendente
 
 sys.path.append(os.path.join(os.path.dirname(__file__), 'Bancos'))
 
@@ -122,6 +122,7 @@ class PaginaCadastro(Frame):
         self.master.master.mostrar_pagina("PaginaPrincipal")
 
     def salvar_dados(self):
+        atendente = Atendente("Lara", 1, True)
         cliente_nome = self.entry_nome.get()
         endereco = self.entry_endereco.get()
 
@@ -147,12 +148,11 @@ class PaginaCadastro(Frame):
             pet = Gato(pet_nome, pet_idade, pet_raca, cor, tamanho, cliente_id, pet_id, data_chegada, data_saida, addr_historico, conta)
        
         cliente = Cliente(cliente_nome,pet, conta, endereco, cliente_id)
+        
+        
         try:
-            
-            # Aqui estamos simulando a adição de um novo cliente ao banco de dados
-            nova_linha = [cliente_id, cliente_nome, [pet_id], endereco, conta]
-            sucesso = self.banco_cliente.adicionar(nova_linha)
-            
+            sucesso = atendente.cadastrarClientes(cliente_id, cliente_nome, pet, endereco, conta )
+            atendente.cadastrar_animal(pet_id,pet_nome, pet_idade,pet_especie, pet_raca, cor, tamanho, cliente_id,  data_chegada, data_saida, conta)
             
             if sucesso:
                 messagebox.showinfo("Cadastro Salvo", "Cliente e pet cadastrado com sucesso!")
@@ -162,8 +162,6 @@ class PaginaCadastro(Frame):
         except Exception as e:
             messagebox.showerror("Erro", f"Ocorreu um erro: {e}")
         
-        print(f"Nome Tutor: {cliente.nome} com pet {pet.nome} ({pet.especie}) de raça {pet.raca} cadastrado com sucesso!")
-        messagebox.showwarning("Cadastro Salvo", "Cliente e pet cadastrado com sucesso!")
         
 if __name__ == "__main__":
     root = Tk()

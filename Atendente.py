@@ -24,7 +24,8 @@ class Atendente(Funcionario):
     def cadastrarClientes(self, cliente_id: int, cliente_nome: str, cliente_pets: int, cliente_endereco: str, cliente_conta: float) -> None:
         cliente_id = cliente.ID 
         cliente_nome = cliente.nome
-        cliente_pets = cliente.pets  
+        #mudei cliente.pets para cliente.pet
+        cliente_pets = cliente.pet 
         cliente_endereco = cliente.endereco  
         cliente_conta = cliente.conta
         
