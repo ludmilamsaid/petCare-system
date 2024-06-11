@@ -9,7 +9,7 @@ class PaginaPrincipal(Frame):
         self.title["font"] = ("Verdana", "50", "italic", "bold")
         self.title.pack()
          # Carregando a imagem
-        self.logo_image = PhotoImage(file="logoPetCare.png") 
+        self.logo_image = PhotoImage(file="logo_petcare.png") 
         self.logo_image = self.logo_image.subsample(4)
         # Criando um rótulo para exibir a imagem
         self.logo_label = Label(self, image=self.logo_image)
@@ -23,6 +23,9 @@ class PaginaPrincipal(Frame):
         
         self.botao_agendamentos = Button(self, text="Agendamentos", width= 15,command = self.navegar_pagina_agendamentos)
         self.botao_agendamentos.pack(pady=10)
+        
+        self.botao_funcionarios = Button(self, text="Funcionarios", width= 15,command = self.navegar_pagina_funcionarios)
+        self.botao_funcionarios.pack(pady=10)
 
         self.sair = Button(self, text="Sair", font="Calibri", width = 6, command = self.quit)
         self.sair.pack(pady=10)
@@ -35,3 +38,5 @@ class PaginaPrincipal(Frame):
 
     def navegar_pagina_agendamentos(self):
         self.master.master.mostrar_pagina("PaginaAgendamentos")
+    def navegar_pagina_funcionarios(self):
+        self.master.master.mostrar_pagina("PaginaFuncionarios")

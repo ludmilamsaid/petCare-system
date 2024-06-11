@@ -3,6 +3,8 @@ from paginaPrincipal import PaginaPrincipal
 from paginaCadastro import PaginaCadastro
 from paginaAgendar import PaginaAgendar
 from paginaAgendamentos import PaginaAgendamentos
+from paginaFuncionarios import PaginaFuncionarios
+
 
 class PetCare(Tk):
     def __init__(self):
@@ -12,12 +14,13 @@ class PetCare(Tk):
         
         self.paginas = {}
 
-        for Pagina in (PaginaPrincipal, PaginaCadastro, PaginaAgendar, PaginaAgendamentos):
+        for Pagina in (PaginaPrincipal, PaginaCadastro, PaginaAgendar, PaginaAgendamentos, PaginaFuncionarios):
             pagina = Pagina(self.container)
             self.paginas[Pagina.__name__] = pagina
             pagina.grid(row=0, column=0, sticky="nsew")
 
         self.mostrar_pagina("PaginaPrincipal")
+
 
     def mostrar_pagina(self, pagina_nome):
         pagina = self.paginas[pagina_nome]

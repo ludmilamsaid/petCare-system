@@ -52,6 +52,10 @@ class PaginaAgendamentos(Frame):
             for i, detail in enumerate(pet):
                 label = Label(pet_frame, text=f"{labels[i]} {detail}", bg="#FFFAFA", anchor="w")
                 label.pack(fill="x", pady=2)
+                
+            label_status = Label(pet_frame, text ="Status do Pet:", bg="#FFFAFA" )
+            label_status.pack(fill="x", pady=2)
+
 
         
         voltar = self.voltar = Button(self, text="Voltar", font=("Calibri", 12), width=10, command=self.navegar_pagina_principal)
