@@ -63,7 +63,7 @@ class BancoAgendamentos(Banco):
                 return True
 
         except Exception as e:
-            print(f"Erro ao adicionar linha no Banco de Agendamentos: {e}")
+            print(f"Banco Agendamentos: Erro ao adicionar linha: {e}")
             return False
         
     def removerTopo(self) -> bool:
@@ -98,4 +98,4 @@ def teste() -> None:
     teste.atualizarBanco()
     teste.imprimir()
 
-teste() 
+#teste() 
