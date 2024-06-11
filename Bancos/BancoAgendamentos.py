@@ -92,10 +92,10 @@ def teste() -> None:
     teste = BancoAgendamentos()
     print(teste.addr)
     data = DataHorario("12h34", "30/04")
-    teste.adicionar(["Joao", "Totó", "Tosa", data.horario()])
+    #teste.adicionar(["Joao", "Totó", "Tosa", data.horario()])
     teste.adicionar(["Geraldo","Poodle", "Banho", data.horario()])
     teste.removerTopo()
     teste.atualizarBanco()
     teste.imprimir()
 
-teste() 
+#teste() 
