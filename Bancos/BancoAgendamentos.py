@@ -1,6 +1,8 @@
 from Banco import *
 
 class DataHorario:
+
+    """Classe para definir hora"""
     def __init__(self, horas : str, dia : str) -> None:
         self.horas = horas
         self.dia = dia
@@ -18,7 +20,7 @@ class BancoAgendamentos(Banco):
              "Tutor" : str,
              "PET" : str,
              "Serviço" : str,
-             "Horário" : object
+             "Horário" : str
         }
 
         colunas = ["Tutor", "PET", "Serviço", "Horário"]
@@ -27,6 +29,17 @@ class BancoAgendamentos(Banco):
         super().__init__(addr, dataType, colunas)
     
     def adicionar(self, novaLinha: list) -> bool:
+
+        """
+        Adiciona uma linha ao banco de dados
+
+        Parameters:
+        novaLinha : list
+            [Tutor : str, PET : str, Serviço : str, Horário : str]
+
+        Return:
+        Retorna True se não houver erros, caso contrário, False
+        """
 
         #Conferir se o item já existe
         PET = novaLinha[1]
@@ -50,10 +63,21 @@ class BancoAgendamentos(Banco):
                 return True
 
         except Exception as e:
-            print(f"Erro ao adicionar linha: {e}")
+            print(f"Erro ao adicionar linha no Banco de Agendamentos: {e}")
             return False
         
     def removerTopo(self) -> bool:
+
+        """
+        Remove o primeiro agendamento
+
+        Parameters:
+        None
+
+        Return:
+        Retorna True se não houver erros, caso contrário, False
+        """
+
         try:
             self.banco = self.banco.drop(0).reset_index(drop=True)
             return True
@@ -62,6 +86,8 @@ class BancoAgendamentos(Banco):
             return False
         
 def teste() -> None:
+
+    #função para testar a classe
     
     teste = BancoAgendamentos()
     print(teste.addr)
