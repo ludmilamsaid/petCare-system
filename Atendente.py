@@ -90,6 +90,30 @@ class Atendente(Funcionario):
         else:
             print(f"Erro ao cadastrar o funcionário {funcionario_nome}.")
 
+    def excluirCliente(self, cliente_id: int) -> None:
+        sucesso = self.banco_clientes.remover(cliente_id, "ID")
+
+        if sucesso:
+            print(f"Cliente com ID {cliente_id} excluído com sucesso.")
+        else:
+            print(f"Erro ao excluir o cliente com ID {cliente_id}.")
+
+    def excluirFuncionario(self, funcionario_id: int) -> None:
+        sucesso = self.banco_funcionarios.remover(funcionario_id, "ID")
+
+        if sucesso:
+            print(f"Funcionário com ID {funcionario_id} excluído com sucesso.")
+        else:
+            print(f"Erro ao excluir o funcionário com ID {funcionario_id}.")
+
+    def excluirAnimal(self, animal_id: int) -> None:
+        sucesso = self.banco_animais.remover(animal_id, "ID")
+
+        if sucesso:
+            print(f"Animal com ID {animal_id} excluído com sucesso.")
+        else:
+            print(f"Erro ao excluir o animal com ID {animal_id}.")
+
 
 
 
