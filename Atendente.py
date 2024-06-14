@@ -93,6 +93,7 @@ class Atendente(Funcionario):
 
 
 
-
+novo_funcionario = Funcionario(1, "Geraldo Magela", True)
 atendente1 = Atendente("Jussara", 101, True)
+#atendente1.cadastrar_funcionario(novo_funcionario)
 #atendente1.cadastrar_animal(520, "Leticia", 3, "Cachorro", "Chihuahua", "Branca", "Mini", 510, date.today(), date.today(),float(0.0))

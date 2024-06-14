@@ -61,8 +61,15 @@ class PaginaAgendamentos(Frame):
             label_status = Label(pet_frame, text="Status do Pet:", bg="#FFFAFA")
             label_status.pack(fill="x", pady=2)
         
+            #deletar = Button(pet_frame, text="Deletar")
+            deletar = Button(pet_frame, text="Deletar", command=lambda pet_id=pet[0]: self.deletar_dados(pet_id))
+
+            #estilo_botao(deletar)
+            deletar.pack()
         
-        
+    def deletar_dados(self, pet_id):
+        print(f"Deletando o id {pet_id}")
+           
     def navegar_pagina_principal(self):
         self.master.master.mostrar_pagina("PaginaPrincipal")
 

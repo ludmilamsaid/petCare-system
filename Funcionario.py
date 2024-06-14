@@ -1,7 +1,7 @@
 class Funcionario:
-    def __init__(self, nome: str, ID: int, disponivel: bool) -> None:
-        self.nome = nome
+    def __init__(self, ID: int,nome: str, disponivel: bool) -> None:
         self.ID = ID
+        self.nome = nome
         self.disponivel = disponivel
         
     def chegar(self) -> None:
