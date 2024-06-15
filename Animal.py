@@ -37,7 +37,6 @@ class Animal(ABC):
         self.cor = cor
         self.tamanho = tamanho
         self.cliente = cliente
-        self.ID = ID
         self.data_chegada = data_chegada
         self.data_saida = data_saida
         self.addr_historico = addr_historico
