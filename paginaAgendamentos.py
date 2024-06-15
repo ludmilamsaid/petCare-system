@@ -1,5 +1,10 @@
+import sys
+import os
 from tkinter import *
 from Styles import *
+sys.path.append(os.path.join(os.path.dirname(__file__), 'Bancos'))
+
+from Bancos.BancoAnimais import BancoAnimais
 
 class PaginaAgendamentos(Frame):
     def __init__(self, master):
@@ -32,36 +37,39 @@ class PaginaAgendamentos(Frame):
 
         self.canvas.pack(side="left", fill="both", expand=True)
         self.scrollbar.pack(side="right", fill="y")
+        
+        voltar = self.voltar = Button(self, text="Voltar", font=("Calibri", 12), width=10, command=self.navegar_pagina_principal)
+        estilo_botao(voltar)
+        self.voltar.grid(row=2, column=0, padx=10, pady=20, sticky="w")
+        self.carregar_dados_pets()
 
-        # Dados fictícios para teste
-        pets_data = [
-            ["Rex", "3", "Labrador", "João", "Grande", "99999-9999", "Rua A, 123"],
-            ["Mimi", "2", "Persa", "Maria", "Pequeno", "88888-8888", "Rua B, 456"],
-            ["Bobby", "5", "Poodle", "Carlos", "Médio", "77777-7777", "Rua C, 789"],
-            ["Luna", "1", "Golden Retriever", "Ana", "Grande", "66666-6666", "Rua D, 101"],
-            ["Thor", "4", "Bulldog", "Pedro", "Médio", "55555-5555", "Rua E, 202"],
-           
-        ]
+    def carregar_dados_pets(self):
+        banco_animais = BancoAnimais()
+        pets_data = banco_animais.banco.values.tolist()
+
+        labels = ["ID", "Nome", "Idade", "Espécie", "Raça", "Cor", "Tamanho", "Tutor", "Horário Chegada", "Horário Saída", "Endereço Histórico", "Conta"]
 
         # Adicionando dados dos pets na página
         for pet in pets_data:
             pet_frame = Frame(self.scrollable_frame, bg="#FFFAFA", bd=2, relief="groove", padx=20, pady=20 )
             pet_frame.pack(fill="x", pady=10, padx=30)
 
-            labels = ["Nome do Pet:", "Idade:", "Raça:", "Tutor:", "Tamanho:", "Telefone:", "Endereço:"]
             for i, detail in enumerate(pet):
-                label = Label(pet_frame, text=f"{labels[i]} {detail}", bg="#FFFAFA", anchor="w")
+                label = Label(pet_frame, text=f"{labels[i]}: {detail}", bg="#FFFAFA", anchor="w")
                 label.pack(fill="x", pady=2)
                 
-            label_status = Label(pet_frame, text ="Status do Pet:", bg="#FFFAFA" )
+            label_status = Label(pet_frame, text="Status do Pet:", bg="#FFFAFA")
             label_status.pack(fill="x", pady=2)
-
-
         
-        voltar = self.voltar = Button(self, text="Voltar", font=("Calibri", 12), width=10, command=self.navegar_pagina_principal)
-        estilo_botao(voltar)
-        self.voltar.grid(row=2, column=0, padx=10, pady=20, sticky="w")
+            #deletar = Button(pet_frame, text="Deletar")
+            deletar = Button(pet_frame, text="Deletar", command=lambda pet_id=pet[0]: self.deletar_dados(pet_id))
 
+            #estilo_botao(deletar)
+            deletar.pack()
+        
+    def deletar_dados(self, pet_id):
+        print(f"Deletando o id {pet_id}")
+           
     def navegar_pagina_principal(self):
         self.master.master.mostrar_pagina("PaginaPrincipal")
 

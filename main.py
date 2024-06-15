@@ -5,7 +5,6 @@ from paginaAgendar import PaginaAgendar
 from paginaAgendamentos import PaginaAgendamentos
 from paginaFuncionarios import PaginaFuncionarios
 
-
 class PetCare(Tk):
     def __init__(self):
         super().__init__()
@@ -20,7 +19,6 @@ class PetCare(Tk):
             pagina.grid(row=0, column=0, sticky="nsew")
 
         self.mostrar_pagina("PaginaPrincipal")
-
 
     def mostrar_pagina(self, pagina_nome):
         pagina = self.paginas[pagina_nome]

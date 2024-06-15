@@ -9,9 +9,12 @@ class PaginaAgendar(Frame):
         self.title["font"] = ("Verdana", "30", "italic", "bold")
         self.title.grid(row=0, column=0, columnspan=2, pady=20)
 
-        self.pet_var = StringVar(self)
+        self.div = Frame(self, bg="lightblue")
+        self.div.grid(row=1, column=1,padx=10, pady=10, sticky="nsew")
+        
+        self.pet_var = StringVar(self.div)
         self.pet_var.set("Selecione o PET")
-        self.menu_pet = OptionMenu(self, self.pet_var, "Nome do cachorrinho")
+        self.menu_pet = OptionMenu(self.div, self.pet_var, "Nome do cachorrinho")
         estilo_menu(self.menu_pet)
         self.menu_pet.grid(row=1, column=0, pady=5, padx=50)
 
@@ -21,23 +24,23 @@ class PaginaAgendar(Frame):
         self.servico_veterinario = BooleanVar()
 
         # Checkbuttons para selecionar serviços
-        self.checkbox_banho = Checkbutton(self, text="Banho", variable=self.servico_banho, bg="#2E8B57", fg="#FFFAFA")
+        self.checkbox_banho = Checkbutton(self.div, text="Banho", variable=self.servico_banho, bg="#2E8B57", fg="#FFFAFA")
         self.checkbox_banho.grid(row=2, column=0, pady=5, sticky=W)
         estilo_checkbox(self.checkbox_banho)
         
-        self.checkbox_tosa = Checkbutton(self, text="Tosa", variable=self.servico_tosa, bg="#2E8B57", fg="#FFFAFA")
+        self.checkbox_tosa = Checkbutton(self.div, text="Tosa", variable=self.servico_tosa, bg="#2E8B57", fg="#FFFAFA")
         self.checkbox_tosa.grid(row=3, column=0, pady=5, sticky=W)
         estilo_checkbox(self.checkbox_tosa)
 
-        self.checkbox_veterinario = Checkbutton(self, text="Consulta Veterinária", variable=self.servico_veterinario, bg="#2E8B57", fg="#FFFAFA")
+        self.checkbox_veterinario = Checkbutton(self.div, text="Consulta Veterinária", variable=self.servico_veterinario, bg="#2E8B57", fg="#FFFAFA")
         self.checkbox_veterinario.grid(row=4, column=0, pady=5, sticky=W)
         estilo_checkbox(self.checkbox_veterinario)
 
 
-        self.valor_vacinas_label = Label(self, text="Valor total das vacinas", bg="#2E8B57", fg="#FFFAFA")
+        self.valor_vacinas_label = Label(self.div, text="Valor total das vacinas", bg="#2E8B57", fg="#FFFAFA")
         self.valor_vacinas_label["font"] = ( "10")
         self.valor_vacinas_label.grid(row = 5, column= 0,sticky=W)
-        self.valor_vacinas = Entry(self, width=20)
+        self.valor_vacinas = Entry(self.div, width=20)
         estilo_entry(self.valor_vacinas)
         self.valor_vacinas.grid(row=5, column=0, pady=5, padx = 170)
         

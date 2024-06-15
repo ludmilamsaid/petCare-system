@@ -39,7 +39,19 @@ class BancoFuncionarios(Banco):
         except Exception as e:
             print(f"Banco Funcionarios: Erro ao adicionar linha: {e}")
             return False
-
+        
+    def alterar_disponibilidade(self, nome):
+        try:
+            index = self.banco[self.banco["Nome"] == nome].index[0]
+            self.banco.at[index, "Disponibilidade"] = not self.banco.at[index, "Disponibilidade"]
+            self.atualizarBanco()
+            print("Alteracao concluida")
+            return True
+        except Exception as e:
+            print(f"Banco Funcionarios: Erro ao alterar disponibilidade: {e}")
+            return False
+        
+        
 def teste() -> None:
 
     teste = BancoFuncionarios()
@@ -50,5 +62,5 @@ def teste() -> None:
     teste.remover("Maria", "Nome")
     teste.atualizarBanco()
     teste.imprimir()
-
+    teste.alterar_disponibilidade("Geraldo Magela")
 #teste()

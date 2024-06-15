@@ -22,12 +22,12 @@ class Atendente(Funcionario):
         self.banco_funcionarios = BancoFuncionarios()
 
     def cadastrarClientes(self, cliente_id: int, cliente_nome: str, cliente_pets: int, cliente_endereco: str, cliente_conta: float) -> None:
-        cliente_id = cliente.ID 
-        cliente_nome = cliente.nome
+        cliente_id = cliente_id 
+        cliente_nome = cliente_nome
         #mudei cliente.pets para cliente.pet
-        cliente_pets = cliente.pet 
-        cliente_endereco = cliente.endereco  
-        cliente_conta = cliente.conta
+        cliente_pets = cliente_pets 
+        cliente_endereco = cliente_endereco  
+        cliente_conta = cliente_conta
         
         nova_linha = [cliente_id, cliente_nome, cliente_pets, cliente_endereco, cliente_conta]
         sucesso = self.banco_clientes.adicionar(nova_linha)
@@ -36,7 +36,6 @@ class Atendente(Funcionario):
             print(f"Cliente {cliente_nome} cadastrado com sucesso.")
         else:
             print(f"Erro ao cadastrar o cliente {cliente_nome}.")
-        print(f"Animal {animal.nome} cadastrado para o cliente {cliente.nome}.")
 
     def agendar(self, cliente: Cliente, animal: Animal, servico: str, data_horario:str) -> None:
         if not isinstance(data_horario, DataHorario):
@@ -54,20 +53,20 @@ class Atendente(Funcionario):
         print(f"Nenhum histórico encontrado para o animal {animal.nome}.")
 
     def cadastrar_animal(self, animal_id: int, animal_nome: str, animal_idade: int, animal_especie: Especie, animal_raca: str, animal_cor: str, animal_tamanho: Tamanho, tutor_id: int, horario_chegada: date, horario_saida: date, conta: float) -> None:
-        animal_id = animal.ID  
-        animal_nome = animal.nome
-        animal_idade = animal.idade  
-        animal_especie = animal.especie
-        animal_raca = animal.raca
-        animal_cor = animal.cor
-        animal_tamanho = animal.tamanho  
-        tutor_id = cliente.ID
-        horario_chegada = animal.data_chegada
-        horario_saida = animal.data_saida
-        conta = animal.conta
+        animal_id = animal_id  
+        animal_nome = animal_nome
+        animal_idade = animal_idade  
+        animal_especie = animal_especie
+        animal_raca = animal_raca
+        animal_cor = animal_cor
+        animal_tamanho = animal_tamanho  
+        tutor_id = tutor_id
+        horario_chegada = horario_chegada
+        horario_saida = horario_saida
+        conta = conta
         
         nova_linha = [animal_id, animal_nome, animal_idade, animal_especie, animal_raca, animal_cor, 
-                      animal_tamanho, tutor_id, horario_chegada, horario_saida, "", conta]
+                      animal_tamanho, tutor_id, horario_chegada, horario_saida, conta]
         sucesso = self.banco_animais.adicionar(nova_linha)
 
         if sucesso:
@@ -91,28 +90,34 @@ class Atendente(Funcionario):
         else:
             print(f"Erro ao cadastrar o funcionário {funcionario_nome}.")
 
+    def excluirCliente(self, cliente_id: int) -> None:
+        sucesso = self.banco_clientes.remover(cliente_id, "ID")
 
-cliente = Cliente(
-    nome="Ana",
-    pet=Animal,
-    conta=500.0,
-    endereco="Rua Apucarana, 11, Ouro Preto, Belo Horizonte, MG",
-    ID=123
-)
+        if sucesso:
+            print(f"Cliente com ID {cliente_id} excluído com sucesso.")
+        else:
+            print(f"Erro ao excluir o cliente com ID {cliente_id}.")
 
-animal = Cachorro(
-    nome="Rex",
-    idade=3,
-    cor="Marrom",
-    tamanho=Tamanho.GRANDE.value,
-    cliente=123,
-    ID=456,
-    data_chegada=date.today(),
-    data_saida=date.today(),
-    addr_historico="Rua Exemplo, 123",
-    conta=200.0,
-    raca= "Fila"
-)
+    def excluirFuncionario(self, funcionario_id: int) -> None:
+        sucesso = self.banco_funcionarios.remover(funcionario_id, "ID")
 
+        if sucesso:
+            print(f"Funcionário com ID {funcionario_id} excluído com sucesso.")
+        else:
+            print(f"Erro ao excluir o funcionário com ID {funcionario_id}.")
+
+    def excluirAnimal(self, animal_id: int) -> None:
+        sucesso = self.banco_animais.remover(animal_id, "ID")
+
+        if sucesso:
+            print(f"Animal com ID {animal_id} excluído com sucesso.")
+        else:
+            print(f"Erro ao excluir o animal com ID {animal_id}.")
+
+
+
+
+novo_funcionario = Funcionario(1, "Geraldo Magela", True)
 atendente1 = Atendente("Jussara", 101, True)
-atendente1.cadastrar_animal(520, "Leticia", 3, "Cachorro", "Chihuahua", "Branca", "Mini", 510, date.today(), date.today(), 0.0)
+#atendente1.cadastrar_funcionario(novo_funcionario)
+#atendente1.cadastrar_animal(520, "Leticia", 3, "Cachorro", "Chihuahua", "Branca", "Mini", 510, date.today(), date.today(),float(0.0))
