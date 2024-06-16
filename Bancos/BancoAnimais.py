@@ -7,7 +7,7 @@ class BancoAnimais(Banco):
     def __init__(self) -> None:
 
         dataType = {
-             "ID" : int, 
+             "ID" : int,
              "Nome" : str,
              "Idade" : int, 
              "Espécie" : str,
@@ -21,7 +21,7 @@ class BancoAnimais(Banco):
              "Conta" : float 
         }
 
-        colunas = ["ID","Nome", "Idade", "Espécie", "Raça", "Cor","Tamanho", "Tutor",
+        colunas = ["ID", "Nome", "Idade", "Espécie", "Raça", "Cor","Tamanho", "Tutor",
                     "Horário Chegada", "Horário Saída", "Endereço Histórico", "Conta"]
         addr = "Bancos/Planilhas/Animais.xlsx"
 
@@ -43,14 +43,15 @@ class BancoAnimais(Banco):
             self.colunas[7] : novaLinha[7],
             self.colunas[8] : novaLinha[8],
             self.colunas[9] : novaLinha[9],
-            self.colunas[10] : f"Históricos/{novaLinha[0]}.txt",
-            self.colunas[11] : novaLinha[10],
+            self.colunas[10] : f"Históricos/{novaLinha[10]}.txt",
+            self.colunas[11] : novaLinha[11],
+            
         }
 
         try:
             novaLinha = pd.DataFrame([novaLinha]).astype(self.dataType)
             
-            if not self.procurarItem(ID, "ID").empty:
+            if not self.banco.procurarItem(ID, "ID").empty:
                 #Erro, pois a pessoa já existe no banco
                 raise RegisteredItem
             else:
@@ -64,7 +65,7 @@ class BancoAnimais(Banco):
 
 def teste() -> None:
     banco = BancoAnimais()
-    #"ID","Nome", "Idade", "Espécie", "Raça", "Cor","Tamanho", "Tutor","Horário Chegada", "Horário Saída", "Endereço Histórico", "Conta"
-    banco.adicionar([123, "Joao", "rex", "preto", "médio",  123, "23h43", "123h1", 0])
+    #"Nome", "Idade", "Espécie", "Raça", "Cor","Tamanho", "Tutor","Horário Chegada", "Horário Saída", "Endereço Histórico", "Conta"
+    banco.adicionar(["Joao", "rex", "preto", "médio",  123, "23h43", "123h1", 0])
 
 #teste()
