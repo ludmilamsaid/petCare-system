@@ -156,27 +156,28 @@ class PaginaCadastro(Frame):
             except ValueError:
                 raise ValueError("A idade do pet deve ser um número inteiro.")
             
-            cliente_id = 12 
-            pet_id = 12  
+            cliente_id = 16
+            pet_id = 16
             conta = 0.0
             data_chegada = date.today()
             data_saida = date.today()
             addr_historico = self.text_historico.get("1.0", END).strip()
             
-            if pet_especie == "Cachorro":
-                pet = Cachorro(pet_nome, pet_idade, pet_raca, cor, tamanho, cliente_id, pet_id, data_chegada, data_saida, addr_historico, conta)
-            elif pet_especie == "Gato":
-                pet = Gato(pet_nome, pet_idade, pet_raca, cor, tamanho, cliente_id, pet_id, data_chegada, data_saida, addr_historico, conta)
-            else:
-                raise ValueError("Espécie inválida.")
+            # if pet_especie == "Cachorro":
+            #     pet = Cachorro(pet_nome, pet_idade, pet_raca, cor, tamanho, cliente_id, pet_id, data_chegada, data_saida, addr_historico, conta)
+            # elif pet_especie == "Gato":
+            #     pet = Gato(pet_nome, pet_idade, pet_raca, cor, tamanho, cliente_id, pet_id, data_chegada, data_saida, addr_historico, conta)
+            # else:
+            #     raise ValueError("Espécie inválida.")
             
-            sucesso = atendente.cadastrarClientes(cliente_id, cliente_nome, pet_id, endereco, conta)
-            atendente.cadastrar_animal(pet_id, pet_nome, pet_idade, pet_especie, pet_raca, cor, tamanho, cliente_id, data_chegada, data_saida, conta)
+            atendente.cadastrarClientes(cliente_id, cliente_nome, pet_id, endereco, conta)
+            sucesso =atendente.cadastrar_animal(pet_id, pet_nome, pet_idade, pet_especie, pet_raca, cor, tamanho, cliente_id, data_chegada, data_saida, conta)
             
             if sucesso:
                 messagebox.showinfo("Cadastro Salvo", "Cliente e pet cadastrados com sucesso!")
                 print(f"Pet: {pet_nome}, Raça: {pet_raca}, Idade: {pet_idade} cadastrado!")
             else:
+                print(f"{sucesso}")
                 messagebox.showerror("Erro", "Erro ao salvar cadastro no banco de dados!")
         
         except ValueError as ve:

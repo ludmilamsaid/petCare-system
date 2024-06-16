@@ -5,6 +5,7 @@ from Styles import *
 sys.path.append(os.path.join(os.path.dirname(__file__), 'Bancos'))
 from Bancos.BancoFuncionarios import BancoFuncionarios
 from Atendente import Atendente
+from Funcionario import Funcionario
 
 class PaginaFuncionarios(Frame):
     def __init__(self, master):
@@ -14,16 +15,34 @@ class PaginaFuncionarios(Frame):
         self.title = Label(self, text="Status dos Funcionarios", bg="#2E8B57", fg="#FFFAFA")
         self.title["font"] = ("Verdana", 30, "italic", "bold")
         self.title.grid(row=0, column=0, columnspan=2, pady=20)
+        
+        self.label_nome = Label(self, text="Nome:", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 12))
+        self.label_nome.grid(row=1, column=0, sticky=W, pady=5)
+        self.entry_nome = Entry(self, width=90)
+        estilo_entry(self.entry_nome)
+        self.entry_nome.grid(row=1, column=1, columnspan=10, pady=5)
+        #self.entry_nome.bind("<KeyPress>", self.validar_nome)
 
+        
+        self.label_cpf = Label(self, text="CPF:", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 12))
+        self.label_cpf.grid(row=2, column=0, sticky=W, pady=5)
+        self.entry_cpf = Entry(self, width=20)
+        estilo_entry(self.entry_cpf)
+        self.entry_cpf.grid(row=2, column=0, columnspan=10,sticky=W, pady=5, padx=60)
+        
+        self.cadastrar = Button(self, text="Salvar", font=("Calibri", 12), width=10, command = self.salvar_dados)
+        estilo_botao(self.cadastrar)
+        self.cadastrar.grid(row=2, column=1)
+        
         # Banco de dados
         self.banco_funcionarios = BancoFuncionarios()
 
         # Frame mais externo para exibir os dados dos funcionarios
         self.div = Frame(self, bg="lightblue")
-        self.div.grid(row=1, column=1, padx=10, pady=10, sticky="nsew")
+        self.div.grid(row=3, column=1, padx=10, pady=10, sticky="nsew")
         
         # Barra de rolagem
-        self.canvas = Canvas(self.div, bg="lightblue", width=600, height=500)
+        self.canvas = Canvas(self.div, bg="lightblue", width=600, height=450)
         self.scrollbar = Scrollbar(self.div, orient="vertical", command=self.canvas.yview)
         self.scrollable_frame = Frame(self.canvas, bg="lightblue")
 
@@ -45,11 +64,16 @@ class PaginaFuncionarios(Frame):
 
         voltar = self.voltar = Button(self, text="Voltar", font=("Calibri", 12), width=10, command=self.navegar_pagina_principal)
         estilo_botao(voltar)
-        self.voltar.grid(row=2, column=0, padx=10, pady=20, sticky="w")
+        self.voltar.grid(row=4, column=2, padx=10, pady=0, sticky="w")
+
+        self.atualizar_dados()
 
     def carregar_dados_funcionarios(self):
         funcionarios_data = self.banco_funcionarios.banco.to_dict(orient="records")
 
+        for widget in self.scrollable_frame.winfo_children():
+            widget.destroy()
+            
         self.funcionario_frames = []
         for funcionario in funcionarios_data:
             funcionario_frame = Frame(self.scrollable_frame, bg="#FFFAFA", bd=2, relief="groove", padx=20, pady=20)
@@ -81,6 +105,19 @@ class PaginaFuncionarios(Frame):
         novo_status = "Disponível" if not funcionario["Disponibilidade"] else "Indisponível"
         label_status.config(text=f"Disponibilidade: {novo_status}")
         self.atualizar_cor_disponibilidade(label_status, novo_status)
+        
+    def salvar_dados(self):
+        atendente = Atendente("Padrão", 101, True)
+        nome_funcionario = self.entry_nome.get()
+        cpf_funcionario = self.entry_cpf.get()
+        novo_funcionario = Funcionario(cpf_funcionario, nome_funcionario, True)
+        atendente.cadastrar_funcionario(novo_funcionario)
+        
+    #tentiva de atualizar a página a cada 5 segundos
+    def atualizar_dados(self):
+        self.carregar_dados_funcionarios()
+        self.after(5000, self.atualizar_dados)  
+        
 
     def navegar_pagina_principal(self):
         self.master.master.mostrar_pagina("PaginaPrincipal")

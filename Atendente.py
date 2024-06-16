@@ -52,7 +52,7 @@ class Atendente(Funcionario):
     def getHistorico(self, animal: Animal):
         print(f"Nenhum histórico encontrado para o animal {animal.nome}.")
 
-    def cadastrar_animal(self, animal_id: int, animal_nome: str, animal_idade: int, animal_especie: Especie, animal_raca: str, animal_cor: str, animal_tamanho: Tamanho, tutor_id: int, horario_chegada: date, horario_saida: date, conta: float) -> None:
+    def cadastrar_animal(self, animal_id: int, animal_nome: str, animal_idade: int, animal_especie: Especie, animal_raca: str, animal_cor: str, animal_tamanho: Tamanho, tutor_id: int, horario_chegada: date, horario_saida: date, conta: float) -> bool:
         animal_id = animal_id  
         animal_nome = animal_nome
         animal_idade = animal_idade  
@@ -70,10 +70,12 @@ class Atendente(Funcionario):
         sucesso = self.banco_animais.adicionar(nova_linha)
 
         if sucesso:
+            print(f"{sucesso}")
             print(f"Animal {animal_nome} cadastrado com sucesso.")
+            return sucesso
         else:
             print(f"Erro ao cadastrar o animal {animal_nome}.")
-
+            return sucesso
     def cadastrar_funcionario(self, funcionario):
         if not isinstance(funcionario, Funcionario):
             raise ValueError("O parâmetro 'funcionario' deve ser uma instância da classe Funcionario.")

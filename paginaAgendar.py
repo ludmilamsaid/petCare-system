@@ -1,6 +1,12 @@
 from tkinter import *
 from Styles import *
 from tkinter import messagebox
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), 'Bancos'))
+from Bancos.BancoAnimais import BancoAnimais
+from Atendente import Atendente
+from Bancos.BancoClientes import BancoClientes
 
 class PaginaAgendar(Frame):
     def __init__(self, master):
@@ -10,15 +16,17 @@ class PaginaAgendar(Frame):
         self.title.grid(row=0, column=0, columnspan=2, pady=20)
 
         self.div = Frame(self, bg="lightblue")
-        self.div.grid(row=1, column=1,padx=10, pady=10, sticky="nsew")
+        self.div.grid(row=1, column=1, padx=10, pady=10, sticky="nsew")
         
         self.pet_var = StringVar(self.div)
         self.pet_var.set("Selecione o PET")
-        self.menu_pet = OptionMenu(self.div, self.pet_var, "Nome do cachorrinho")
+        
+        self.menu_pet = OptionMenu(self.div, self.pet_var, "")
         estilo_menu(self.menu_pet)
         self.menu_pet.grid(row=1, column=0, pady=5, padx=50)
+        
+        self.carregar_dados_pets()
 
-        # Variáveis para armazenar o estado dos checkboxes
         self.servico_banho = BooleanVar()
         self.servico_tosa = BooleanVar()
         self.servico_veterinario = BooleanVar()
@@ -36,14 +44,12 @@ class PaginaAgendar(Frame):
         self.checkbox_veterinario.grid(row=4, column=0, pady=5, sticky=W)
         estilo_checkbox(self.checkbox_veterinario)
 
-
         self.valor_vacinas_label = Label(self.div, text="Valor total das vacinas", bg="#2E8B57", fg="#FFFAFA")
-        self.valor_vacinas_label["font"] = ( "10")
-        self.valor_vacinas_label.grid(row = 5, column= 0,sticky=W)
+        self.valor_vacinas_label["font"] = ("Verdana", 10)
+        self.valor_vacinas_label.grid(row=5, column=0, sticky=W)
         self.valor_vacinas = Entry(self.div, width=20)
         estilo_entry(self.valor_vacinas)
-        self.valor_vacinas.grid(row=5, column=0, pady=5, padx = 170)
-        
+        self.valor_vacinas.grid(row=5, column=0, pady=5, padx=170)
         
         self.botao_confirmar = Button(self, text="Confirmar", font=("Calibri", 12), width=10, command=self.mostrar_selecoes)
         estilo_botao(self.botao_confirmar)
@@ -53,6 +59,26 @@ class PaginaAgendar(Frame):
         estilo_botao(self.voltar)
         self.voltar.grid(row=7, column=1, padx=10, pady=20)
 
+    def carregar_dados_pets(self):
+        banco_clientes = BancoClientes()
+        banco_animais = BancoAnimais()
+        clientes_data = banco_clientes.banco.values.tolist()
+        pets_data = banco_animais.banco.values.tolist()
+        
+        clientes_dict = {cliente[0]: cliente[1] for cliente in clientes_data}
+        
+        self.pets = []
+        for pet in pets_data:
+            if pet[7] in clientes_dict:
+                self.pets.append(f"Tutor: {clientes_dict[pet[7]]} - Pet: {pet[1]}")
+            else:
+                self.pets.append(f"Pet: {pet[1]} (Sem tutor)")
+
+        menu = self.menu_pet["menu"]
+        menu.delete(0, "end")
+        for pet in self.pets:
+            menu.add_command(label=pet, command=lambda value=pet: self.pet_var.set(value))
+        
     def navegar_pagina_principal(self):
         self.master.master.mostrar_pagina("PaginaPrincipal")
 
@@ -67,7 +93,6 @@ class PaginaAgendar(Frame):
         
         resultado = "Serviços selecionados: " + ", ".join(selecoes)
         messagebox.showinfo("Seleções", resultado)
-
 
 # Janela para fazer teste
 if __name__ == "__main__":
