@@ -7,6 +7,7 @@ class BancoAnimais(Banco):
     def __init__(self) -> None:
 
         dataType = {
+             "ID" : int,
              "Nome" : str,
              "Idade" : int, 
              "Espécie" : str,
@@ -20,7 +21,7 @@ class BancoAnimais(Banco):
              "Conta" : float 
         }
 
-        colunas = ["Nome", "Idade", "Espécie", "Raça", "Cor","Tamanho", "Tutor",
+        colunas = ["ID", "Nome", "Idade", "Espécie", "Raça", "Cor","Tamanho", "Tutor",
                     "Horário Chegada", "Horário Saída", "Endereço Histórico", "Conta"]
         addr = "Bancos/Planilhas/Animais.xlsx"
 
@@ -29,8 +30,7 @@ class BancoAnimais(Banco):
     def adicionar(self, novaLinha: list) -> bool:
 
         #Conferir se o item já existe
-        tutor = novaLinha[7]
-        nome = novaLinha[0]
+        ID = novaLinha[0]
         #Converter nova linha para dict
         novaLinha = {
             self.colunas[0] : novaLinha[0],
@@ -42,17 +42,16 @@ class BancoAnimais(Banco):
             self.colunas[6] : novaLinha[6],
             self.colunas[7] : novaLinha[7],
             self.colunas[8] : novaLinha[8],
-            self.colunas[9] : f"Históricos/{novaLinha[0]}.txt",
-            self.colunas[10] : novaLinha[10],
+            self.colunas[9] : novaLinha[9],
+            self.colunas[10] : f"Históricos/{novaLinha[10]}.txt",
+            self.colunas[11] : novaLinha[11],
             
         }
 
         try:
             novaLinha = pd.DataFrame([novaLinha]).astype(self.dataType)
-
-            banco1 = self.procurarItem(tutor, "Tutor")
             
-            if not banco1.procurarItem(nome, "Nome").empty:
+            if not self.banco.procurarItem(ID, "ID").empty:
                 #Erro, pois a pessoa já existe no banco
                 raise RegisteredItem
             else:
