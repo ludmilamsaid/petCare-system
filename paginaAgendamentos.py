@@ -3,7 +3,7 @@ import os
 from tkinter import *
 from Styles import *
 sys.path.append(os.path.join(os.path.dirname(__file__), 'Bancos'))
-
+from Atendente import Atendente
 from Bancos.BancoAnimais import BancoAnimais
 
 class PaginaAgendamentos(Frame):
@@ -40,7 +40,7 @@ class PaginaAgendamentos(Frame):
         
         voltar = self.voltar = Button(self, text="Voltar", font=("Calibri", 12), width=10, command=self.navegar_pagina_principal)
         estilo_botao(voltar)
-        self.voltar.grid(row=2, column=0, padx=10, pady=20, sticky="w")
+        self.voltar.grid(row=2, column=2, padx=10, pady=20, sticky="w")
         self.carregar_dados_pets()
 
     def carregar_dados_pets(self):
@@ -68,7 +68,8 @@ class PaginaAgendamentos(Frame):
             deletar.pack()
         
     def deletar_dados(self, pet_id):
-        print(f"Deletando o id {pet_id}")
+        atendente = Atendente("Padrão", 101, True)
+        atendente.excluirAnimal(pet_id)
            
     def navegar_pagina_principal(self):
         self.master.master.mostrar_pagina("PaginaPrincipal")
