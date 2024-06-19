@@ -1,14 +1,12 @@
 import sys
 import os
 from tkinter import *
-from Animal import Tamanho
-from Cliente import Cliente
-from Cachorro import Cachorro, raca_cachorro
-from Gato import Gato, raca_gato
+from Cachorro import  raca_cachorro
+from Gato import  raca_gato
 from Styles import *
 from tkinter import messagebox
 from Atendente import Atendente
-
+from Tamanho import Tamanho
 sys.path.append(os.path.join(os.path.dirname(__file__), 'Bancos'))
 
 from Bancos.BancoClientes import BancoClientes

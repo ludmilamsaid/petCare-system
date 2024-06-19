@@ -1,5 +1,5 @@
 from Funcionario import Funcionario  # Importa a classe Funcionario do módulo Funcionario
-from Animal import Animal, Tamanho, Especie  # Importa as classes Animal, Tamanho e Especie do módulo Animal
+from Animal import Animal, Especie  # Importa as classes Animal, Tamanho e Especie do módulo Animal
 from Cliente import Cliente  # Importa a classe Cliente do módulo Cliente
 from datetime import date  # Importa a classe date do módulo datetime
 from Cachorro import Cachorro  # Importa a classe Cachorro do módulo Cachorro
@@ -11,7 +11,7 @@ from Bancos.BancoClientes import BancoClientes  # Importa a classe BancoClientes
 from Bancos.BancoAnimais import BancoAnimais  # Importa a classe BancoAnimais do módulo Bancos.BancoAnimais
 from Bancos.BancoFuncionarios import BancoFuncionarios  # Importa a classe BancoFuncionarios do módulo Bancos.BancoFuncionarios
 from Bancos.BancoAgendamentos import BancoAgendamentos, DataHorario  # Importa as classes BancoAgendamentos e DataHorario do módulo Bancos.BancoAgendamentos
-
+from Tamanho import Tamanho
 class Atendente(Funcionario):  # Define a classe Atendente que herda da classe Funcionario
     def __init__(self, nome: str, ID: int, disponivel: bool=False) -> None:
         super().__init__(nome, ID, disponivel)  # Chama o construtor da classe base Funcionario

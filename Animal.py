@@ -3,16 +3,11 @@ from typing import List # Importação da biblioteca typing para usar tipagem de
 from enum import Enum # Importação da biblioteca enum para definir enumerações
 from datetime import date # Importação da biblioteca datetime para manipular datas
 from Tosador import TipoTosa, Tosador # Importação das classes TipoTosa e Tosador
-
+from Tamanho import Tamanho
 class Especie(Enum): # Classe Enum definindo as espécies aceitas
     CACHORRO = "Cachorro"
     GATO = "Gato"
 
-class Tamanho(Enum): # Classe Enum definindo os tamanhos aceitos
-    MINI = "Mini"
-    PEQUENO = "Pequeno"
-    MEDIO = "Médio"
-    GRANDE = "Grande"
 
 class Animal(ABC): # Classe abstrata Animal, que serve como base para outras classes de animais
     def __init__(self, 

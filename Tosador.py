@@ -1,8 +1,6 @@
 from Funcionario import Funcionario  # Importa a classe Funcionario do módulo Funcionario
-from Animal import Tamanho  # Importa a enumeração Tamanho do módulo Animal
 from enum import Enum  # Importa a classe Enum para criar enumerações
-from datetime import date  # Importa a classe date para manipulação de datas
-
+from Tamanho import Tamanho
 # Enumeração para os tipos de tosa
 class TipoTosa(Enum):
     MAQUINA = "Máquina"  # Tosa com máquina
