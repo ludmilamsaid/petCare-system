@@ -1,9 +1,9 @@
 from typing import List
-from Animal import Animal, Tamanho
+from Animal import Animal
 from datetime import date
 from Cachorro import Cachorro
 from Tosador import Tosador, TipoTosa
-
+from Tamanho import Tamanho
 # Definição da classe Cliente
 class Cliente:
     # Inicializador da classe Cliente

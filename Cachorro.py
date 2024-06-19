@@ -1,8 +1,8 @@
 from enum import Enum
-from Animal import Animal, Tamanho, Especie
+from Animal import Animal, Especie
 from datetime import date
 from Tosador import TipoTosa, Tosador
-
+from Tamanho import Tamanho
 # Classe Cachorro, que herda de Animal
 class Cachorro(Animal):
     # Inicializador da classe Cachorro

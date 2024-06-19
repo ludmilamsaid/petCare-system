@@ -1,10 +1,9 @@
 from enum import Enum
-from Animal import Animal, Tamanho, Especie
+from Animal import Animal, Especie
 from Tosador import Tosador, TipoTosa
-from Cliente import Cliente
-from Veterinario import Veterinario
-from datetime import date
 
+from datetime import date
+from Tamanho import Tamanho
 # Classe Gato herda da classe Animal
 class Gato(Animal):
     # Inicializador da classe Gato

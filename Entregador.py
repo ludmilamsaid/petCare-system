@@ -1,12 +1,11 @@
 from Funcionario import Funcionario
 from Cliente import Cliente
 from datetime import date
-from Animal import Animal, Especie, Tamanho
+from Animal import Animal
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
-from enum import Enum
 from Cachorro import Cachorro
-from Gato import Gato
+from Tamanho import Tamanho
 
 # Definição da classe Entregador que herda de Funcionario
 class Entregador(Funcionario):
