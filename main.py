@@ -5,12 +5,12 @@ from paginaAgendar import PaginaAgendar
 from paginaAgendamentos import PaginaAgendamentos
 from paginaFuncionarios import PaginaFuncionarios
 
-class PetCare(Tk):
+class PetCare(Tk):  
     def __init__(self):
         super().__init__()
-        self.container = Frame(self, bg="#2E8B57", width=1000, height=800)
+        self.container = Frame(self, bg="#054b9c", width=1000, height=800)
         self.container.pack(expand=True, fill="both")
-        
+    
         self.paginas = {}
 
         for Pagina in (PaginaPrincipal, PaginaCadastro, PaginaAgendar, PaginaAgendamentos, PaginaFuncionarios):

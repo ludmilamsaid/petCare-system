@@ -9,14 +9,14 @@ from Funcionario import Funcionario
 
 class PaginaFuncionarios(Frame):
     def __init__(self, master):
-        super().__init__(master, bg="#2E8B57", width=800, height=600, padx=20, pady=20)
+        super().__init__(master, bg="lightblue", width=800, height=600, padx=20, pady=20)
         self.grid(row=0, column=0, sticky="nsew")
         
-        self.title = Label(self, text="Status dos Funcionarios", bg="#2E8B57", fg="#FFFAFA")
+        self.title = Label(self, text="Status dos Funcionarios", bg="lightblue", fg="#054b9c")
         self.title["font"] = ("Verdana", 30, "italic", "bold")
         self.title.grid(row=0, column=0, columnspan=2, pady=20)
         
-        self.label_nome = Label(self, text="Nome:", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 12))
+        self.label_nome = Label(self, text="Nome:", bg="lightblue", fg="#054b9c", font=("Verdana", 12))
         self.label_nome.grid(row=1, column=0, sticky=W, pady=5)
         self.entry_nome = Entry(self, width=90)
         estilo_entry(self.entry_nome)
@@ -24,7 +24,7 @@ class PaginaFuncionarios(Frame):
         #self.entry_nome.bind("<KeyPress>", self.validar_nome)
 
         
-        self.label_cpf = Label(self, text="CPF:", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 12))
+        self.label_cpf = Label(self, text="CPF:", bg="lightblue", fg="#054b9c", font=("Verdana", 12))
         self.label_cpf.grid(row=2, column=0, sticky=W, pady=5)
         self.entry_cpf = Entry(self, width=20)
         estilo_entry(self.entry_cpf)

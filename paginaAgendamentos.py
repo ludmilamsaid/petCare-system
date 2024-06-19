@@ -8,17 +8,17 @@ from Bancos.BancoAnimais import BancoAnimais
 
 class PaginaAgendamentos(Frame):
     def __init__(self, master):
-        super().__init__(master, bg="#2E8B57", width=800, height=600, padx=20, pady=20)
+        super().__init__(master, bg="lightblue", width=800, height=600, padx=20, pady=20)
         self.grid(row=0, column=0, sticky="nsew")
         
         
-        self.title = Label(self, text="Agendamentos", bg="#2E8B57", fg="#FFFAFA")
+        self.title = Label(self, text="Prontuário Veterinário", bg="lightblue", fg="#054b9c")
         self.title["font"] = ("Verdana", 30, "italic", "bold")
         self.title.grid(row=0, column=0, columnspan=2, pady=20)
 
         # Frame mais externo para exibir os dados dos pets
         self.div = Frame(self, bg="lightblue")
-        self.div.grid(row=1, column=1,padx=10, pady=10, sticky="nsew")
+        self.div.grid(row=1, column=1, pady=10, sticky="nsew")
         
         # Barra de rolagem
         self.canvas = Canvas(self.div, bg="lightblue", width=600, height=500)

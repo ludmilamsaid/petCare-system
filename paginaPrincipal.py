@@ -3,11 +3,11 @@ from tkinter import *
 class PaginaPrincipal(Frame):
     def __init__(self, master):
         ##2E8B57 #6B8E23
-        super().__init__(master, bg="#2E8B57", width=100, height=800, padx=300, pady=200)  
+        super().__init__(master, bg="lightblue", width=100, height=800, padx=300, pady=150)  
 
-        self.title = Label(self, text="PetCare", bg="#2E8B57", fg = "#FFFAFA")
+        self.title = Label(self, text="PetCare", bg="lightblue", fg = "#054b9c")
         self.title["font"] = ("Verdana", "50", "italic", "bold")
-        self.title.pack()
+        self.title.pack(pady=30)
          # Carregando a imagem
         self.logo_image = PhotoImage(file="logo_petcare.png") 
         self.logo_image = self.logo_image.subsample(4)

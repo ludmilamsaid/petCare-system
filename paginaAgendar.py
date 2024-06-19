@@ -10,8 +10,8 @@ from Bancos.BancoClientes import BancoClientes
 
 class PaginaAgendar(Frame):
     def __init__(self, master):
-        super().__init__(master, bg="#2E8B57", width=600, height=400, padx=50, pady=50)
-        self.title = Label(self, text="Agendar", bg="#2E8B57", fg="#FFFAFA")
+        super().__init__(master, bg="lightblue", width=600, height=400, padx=200, pady=50)
+        self.title = Label(self, text="Agendar", bg="lightblue", fg="#054b9c")
         self.title["font"] = ("Verdana", "30", "italic", "bold")
         self.title.grid(row=0, column=0, columnspan=2, pady=20)
 
@@ -44,20 +44,25 @@ class PaginaAgendar(Frame):
         self.checkbox_veterinario.grid(row=4, column=0, pady=5, sticky=W)
         estilo_checkbox(self.checkbox_veterinario)
 
-        self.valor_vacinas_label = Label(self.div, text="Valor total das vacinas", bg="#2E8B57", fg="#FFFAFA")
-        self.valor_vacinas_label["font"] = ("Verdana", 10)
+        self.valor_vacinas_label = Label(self.div, text="Valor total das vacinas:", bg="lightblue", fg="#054b9c")
+        self.valor_vacinas_label["font"] = ("Arial", 12, "bold")
         self.valor_vacinas_label.grid(row=5, column=0, sticky=W)
         self.valor_vacinas = Entry(self.div, width=20)
         estilo_entry(self.valor_vacinas)
-        self.valor_vacinas.grid(row=5, column=0, pady=5, padx=170)
+        self.valor_vacinas.grid(row=5, column=0, pady=5, padx=183)
+        
+        self.total_label = Label(self.div, text= "Total a ser pago:", bg="lightblue", fg="#054b9c" )
+        self.total_label["font"] = ("Arial", 12, "bold")
+        self.total_label.grid(row=6, column=0, sticky=W,pady=5)
         
         self.botao_confirmar = Button(self, text="Confirmar", font=("Calibri", 12), width=10, command=self.mostrar_selecoes)
         estilo_botao(self.botao_confirmar)
-        self.botao_confirmar.grid(row=6, column=0, padx=10, pady=20)
-
+        self.botao_confirmar.grid(row=7, column=1, padx=40, pady=20)
+        
+         
         self.voltar = Button(self, text="Voltar", font=("Calibri", 12), width=10, command=self.navegar_pagina_principal)
         estilo_botao(self.voltar)
-        self.voltar.grid(row=7, column=1, padx=10, pady=20)
+        self.voltar.grid(row=7, column=1, padx=50, sticky=W, pady=20)
 
     def carregar_dados_pets(self):
         banco_clientes = BancoClientes()

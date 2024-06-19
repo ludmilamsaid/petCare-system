@@ -17,16 +17,16 @@ from datetime import date
 
 class PaginaCadastro(Frame):
     def __init__(self, master):
-        super().__init__(master, bg="#2E8B57", padx=30, pady=30)
+        super().__init__(master, bg="lightblue", padx=30, pady=30)
         self.grid(row=0, column=0, sticky="nsew")
         
         self.banco_cliente = BancoClientes()
 
-        self.title = Label(self, text="Cadastro Tutor", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 30, "italic", "bold"))
+        self.title = Label(self, text="Cadastro Tutor", bg="lightblue", fg="#054b9c", font=("Verdana", 30, "italic", "bold"))
         self.title.grid(row=0, column=0, pady=20)
         
         # Form Frame
-        self.label_nome = Label(self, text="Nome:", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 12))
+        self.label_nome = Label(self, text="Nome:", bg="lightblue", fg="#054b9c", font=("Verdana", 12))
         self.label_nome.grid(row=1, column=0, sticky=W, pady=5)
         self.entry_nome = Entry(self, width=100)
         estilo_entry(self.entry_nome)
@@ -34,13 +34,13 @@ class PaginaCadastro(Frame):
         self.entry_nome.bind("<KeyPress>", self.validar_nome)
 
         
-        self.label_endereco = Label(self, text="Endereço:", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 12))
+        self.label_endereco = Label(self, text="Endereço:", bg="lightblue", fg="#054b9c", font=("Verdana", 12))
         self.label_endereco.grid(row=2, column=0, sticky=W, pady=5)
         self.entry_endereco = Entry(self, width=100)
         estilo_entry(self.entry_endereco)
         self.entry_endereco.grid(row=2, column=0, columnspan=10, pady=5, padx=100)
         
-        self.label_telefone = Label(self, text="Telefone:", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 12))
+        self.label_telefone = Label(self, text="Telefone:", bg="lightblue", fg="#054b9c", font=("Verdana", 12))
         self.label_telefone.grid(row=3, column=0, sticky=W, pady=5)
         self.entry_telefone = Entry(self, width=20)
         estilo_entry(self.entry_telefone)
@@ -49,10 +49,10 @@ class PaginaCadastro(Frame):
 
         
         # Formulário PET
-        self.title = Label(self, text="Cadastro PET", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 30, "italic", "bold"))
+        self.title = Label(self, text="Cadastro PET", bg="lightblue", fg="#054b9c", font=("Verdana", 30, "italic", "bold"))
         self.title.grid(row=6, column=0, pady=20)
         
-        self.label_nome_pet = Label(self, text="Nome:", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 12))
+        self.label_nome_pet = Label(self, text="Nome:", bg="lightblue", fg="#054b9c", font=("Verdana", 12))
         self.label_nome_pet.grid(row=8, column=0, sticky=W, pady=5)
         self.entry_nome_pet = Entry(self, width=100)
         estilo_entry(self.entry_nome_pet)
@@ -60,7 +60,7 @@ class PaginaCadastro(Frame):
         self.entry_nome_pet.bind("<KeyPress>", self.validar_nome)
 
         
-        self.label_idade_pet = Label(self, text="Idade:", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 12))
+        self.label_idade_pet = Label(self, text="Idade:", bg="lightblue", fg="#054b9c", font=("Verdana", 12))
         self.label_idade_pet.grid(row=9, column=0, sticky=W, pady=5)
         self.entry_idade_pet = Entry(self, width=20)
         estilo_entry(self.entry_idade_pet)
@@ -72,7 +72,7 @@ class PaginaCadastro(Frame):
         estilo_menu(self.option_menu_especie_pet)
         self.option_menu_especie_pet.grid(row=9, column=1, pady=5)
 
-        self.label_raca_pet = Label(self, text="Raça:", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 12))
+        self.label_raca_pet = Label(self, text="Raça:", bg="lightblue", fg="#054b9c", font=("Verdana", 12))
         self.label_raca_pet.grid(row=10, column=0, sticky=W, pady=5)
 
         self.raca_var = StringVar(self)
@@ -87,7 +87,7 @@ class PaginaCadastro(Frame):
         estilo_menu(self.option_menu_tamanho_pet)
         self.option_menu_tamanho_pet.grid(row=10, column=1, pady=5, padx=5)
         
-        self.label_historico = Label(self, text="Histórico:", bg="#2E8B57", fg="#FFFAFA", font=("Verdana", 12))
+        self.label_historico = Label(self, text="Histórico:", bg="lightblue", fg="#054b9c", font=("Verdana", 12))
         self.label_historico.grid(row=11, column=0, sticky=W, pady=5)
         self.text_historico = Text(self, width=100, height=10)
         estilo_entry(self.text_historico)
