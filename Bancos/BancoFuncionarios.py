@@ -5,7 +5,7 @@ class BancoFuncionarios(Banco):
     def __init__(self) -> None:
 
         dataType = {
-             "ID" : int, 
+             "ID" : str, 
              "Nome" : str, 
              "Disponibilidade" : bool 
         }

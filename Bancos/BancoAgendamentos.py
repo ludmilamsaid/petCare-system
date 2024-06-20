@@ -1,15 +1,5 @@
 from Banco import *
 
-class DataHorario:
-
-    """Classe para definir hora"""
-    def __init__(self, horas : str, dia : str) -> None:
-        self.horas = horas
-        self.dia = dia
-    
-    def horario (self) -> str:
-        return self.horas+" "+self.dia
-
 class BancoAgendamentos(Banco):
 
     #Tutor, PET, Serviço, Horário
@@ -91,9 +81,9 @@ def teste() -> None:
     
     teste = BancoAgendamentos()
     print(teste.addr)
-    data = DataHorario("12h34", "30/04")
+   
     #teste.adicionar(["Joao", "Totó", "Tosa", data.horario()])
-    teste.adicionar(["Geraldo","Poodle", "Banho", data.horario()])
+    #teste.adicionar(["Geraldo","Poodle", "Banho"])
     teste.removerTopo()
     teste.atualizarBanco()
     teste.imprimir()
