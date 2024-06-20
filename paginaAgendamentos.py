@@ -11,7 +11,6 @@ class PaginaAgendamentos(Frame):
         super().__init__(master, bg="lightblue", width=800, height=600, padx=20, pady=20)
         self.grid(row=0, column=0, sticky="nsew")
         
-        
         self.title = Label(self, text="Prontuário Veterinário", bg="lightblue", fg="#054b9c")
         self.title["font"] = ("Verdana", 30, "italic", "bold")
         self.title.grid(row=0, column=0, columnspan=2, pady=20)
@@ -44,14 +43,17 @@ class PaginaAgendamentos(Frame):
         self.carregar_dados_pets()
 
     def carregar_dados_pets(self):
-        banco_animais = BancoAnimais()
-        pets_data = banco_animais.banco.values.tolist()
+        # Limpa o frame antes de recarregar os dados
+        for widget in self.scrollable_frame.winfo_children():
+            widget.destroy()
 
+        banco = BancoAnimais()
+        pets_data = banco.banco.values.tolist()
         labels = ["ID", "Nome", "Idade", "Espécie", "Raça", "Cor", "Tamanho", "Tutor", "Horário Chegada", "Horário Saída", "Endereço Histórico", "Conta"]
 
         # Adicionando dados dos pets na página
         for pet in pets_data:
-            pet_frame = Frame(self.scrollable_frame, bg="#FFFAFA", bd=2, relief="groove", padx=20, pady=20 )
+            pet_frame = Frame(self.scrollable_frame, bg="#FFFAFA", bd=2, relief="groove", padx=20, pady=20)
             pet_frame.pack(fill="x", pady=10, padx=30)
 
             for i, detail in enumerate(pet):
@@ -60,17 +62,15 @@ class PaginaAgendamentos(Frame):
                 
             label_status = Label(pet_frame, text="Status do Pet:", bg="#FFFAFA")
             label_status.pack(fill="x", pady=2)
-        
-            #deletar = Button(pet_frame, text="Deletar")
+            
             deletar = Button(pet_frame, text="Deletar", command=lambda pet_id=pet[0]: self.deletar_dados(pet_id))
-
-            #estilo_botao(deletar)
             deletar.pack()
-        
+
     def deletar_dados(self, pet_id):
         atendente = Atendente("Padrão", 101, True)
         atendente.excluirAnimal(pet_id)
-           
+        self.carregar_dados_pets()
+        
     def navegar_pagina_principal(self):
         self.master.master.mostrar_pagina("PaginaPrincipal")
 

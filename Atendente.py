@@ -116,8 +116,8 @@ class Atendente(Funcionario):  # Define a classe Atendente que herda da classe F
             print(f"Erro ao excluir o animal com ID {animal_id}.")  # Mensagem de erro ao excluir animal
 
 # Criação de instâncias para testes
-novo_funcionario = Funcionario(1, "Geraldo Magela", True)  # Cria uma instância de Funcionario
-atendente1 = Atendente("Jussara", 101, True)  # Cria uma instância de Atendente
+#novo_funcionario = Funcionario(1, "Geraldo Magela", True)  # Cria uma instância de Funcionario
+#atendente1 = Atendente("Jussara", 101, True)  # Cria uma instância de Atendente
 #atendente1.cadastrar_funcionario(novo_funcionario)  # Comenta a chamada do método cadastrar_funcionario
-atendente1.cadastrar_animal(520, "Leticia", 90, "Cachorro", "Chihuahua", "Branca", "Mini", 510, date.today(), date.today(),float(0.0))  # Comenta a chamada do método cadastrar_animal
+#atendente1.cadastrar_animal(520, "Leticia", 90, "Cachorro", "Chihuahua", "Branca", "Mini", 510, date.today(), date.today(),float(0.0))  # Comenta a chamada do método cadastrar_animal
 #atendente1.excluirAnimal(13)

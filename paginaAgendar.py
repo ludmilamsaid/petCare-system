@@ -1,16 +1,19 @@
 from tkinter import *
-from Styles import *
 from tkinter import messagebox
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), 'Bancos'))
 from Bancos.BancoAnimais import BancoAnimais
-from Atendente import Atendente
 from Bancos.BancoClientes import BancoClientes
+from Atendente import Atendente
+from Styles import *
 
 class PaginaAgendar(Frame):
     def __init__(self, master):
         super().__init__(master, bg="lightblue", width=600, height=400, padx=200, pady=50)
+        
+        self.pets_details = {}  # Inicializar aqui
+        
         self.title = Label(self, text="Agendar", bg="lightblue", fg="#054b9c")
         self.title["font"] = ("Verdana", "30", "italic", "bold")
         self.title.grid(row=0, column=0, columnspan=2, pady=20)
@@ -51,15 +54,14 @@ class PaginaAgendar(Frame):
         estilo_entry(self.valor_vacinas)
         self.valor_vacinas.grid(row=5, column=0, pady=5, padx=183)
         
-        self.total_label = Label(self.div, text= "Total a ser pago:", bg="lightblue", fg="#054b9c" )
+        self.total_label = Label(self.div, text="Total a ser pago:", bg="lightblue", fg="#054b9c")
         self.total_label["font"] = ("Arial", 12, "bold")
-        self.total_label.grid(row=6, column=0, sticky=W,pady=5)
+        self.total_label.grid(row=6, column=0, sticky=W, pady=5)
         
-        self.botao_confirmar = Button(self, text="Confirmar", font=("Calibri", 12), width=10, command=self.mostrar_selecoes)
+        self.botao_confirmar = Button(self, text="Confirmar", font=("Calibri", 12), width=10, command=self.calcular_valor_total)
         estilo_botao(self.botao_confirmar)
         self.botao_confirmar.grid(row=7, column=1, padx=40, pady=20)
         
-         
         self.voltar = Button(self, text="Voltar", font=("Calibri", 12), width=10, command=self.navegar_pagina_principal)
         estilo_botao(self.voltar)
         self.voltar.grid(row=7, column=1, padx=50, sticky=W, pady=20)
@@ -73,31 +75,74 @@ class PaginaAgendar(Frame):
         clientes_dict = {cliente[0]: cliente[1] for cliente in clientes_data}
         
         self.pets = []
+        self.pets_details = {}
         for pet in pets_data:
             if pet[7] in clientes_dict:
-                self.pets.append(f"Tutor: {clientes_dict[pet[7]]} - Pet: {pet[1]}")
+                pet_info = f"Tutor: {clientes_dict[pet[7]]} - Pet: {pet[1]}"
+                self.pets.append(pet_info)
+                self.pets_details[pet_info] = pet
             else:
-                self.pets.append(f"Pet: {pet[1]} (Sem tutor)")
+                pet_info = f"Pet: {pet[1]} (Sem tutor)"
+                self.pets.append(pet_info)
+                self.pets_details[pet_info] = pet
 
         menu = self.menu_pet["menu"]
         menu.delete(0, "end")
         for pet in self.pets:
             menu.add_command(label=pet, command=lambda value=pet: self.pet_var.set(value))
         
-    def navegar_pagina_principal(self):
-        self.master.master.mostrar_pagina("PaginaPrincipal")
-
-    def mostrar_selecoes(self):
+    def calcular_valor_total(self):
         selecoes = []
+        total = 0
+        
         if self.servico_banho.get():
             selecoes.append("Banho")
+            total += 45
         if self.servico_tosa.get():
             selecoes.append("Tosa")
+            total += 65
         if self.servico_veterinario.get():
             selecoes.append("Consulta Veterinária")
+            total += 100
+
+        pet_info = self.pet_var.get()
+        pet_details = self.pets_details.get(pet_info, None)
+
+        if pet_details:
+            tamanho = pet_details[6]
+
+            if tamanho == "Mini":
+                fator_tamanho = 0.8
+            elif tamanho == "Pequeno":
+                fator_tamanho = 1.0
+            elif tamanho == "Médio":
+                fator_tamanho = 1.2
+            elif tamanho == "Grande":
+                fator_tamanho = 1.5
+            else:
+                fator_tamanho = 1.0 
+
+            total *= fator_tamanho
+
+            try:
+                valor_vacinas = float(self.valor_vacinas.get())
+            except ValueError:
+                valor_vacinas = 0.0
+
+            total += valor_vacinas
+
+            tutor_id = pet_details[7]
+            self.atualizar_conta_cliente(tutor_id, total)
         
-        resultado = "Serviços selecionados: " + ", ".join(selecoes)
+        resultado = "Serviços selecionados: " + ", ".join(selecoes) + f"\nTotal a ser pago: R${total:.2f}"
         messagebox.showinfo("Seleções", resultado)
+
+    def atualizar_conta_cliente(self, tutor_id, total):
+        banco_clientes = BancoClientes()
+       
+
+    def navegar_pagina_principal(self):
+        self.master.master.mostrar_pagina("PaginaPrincipal")
 
 # Janela para fazer teste
 if __name__ == "__main__":
