@@ -1,5 +1,15 @@
 from Banco import *
 
+class DataHorario:
+
+    """Classe para definir hora"""
+    def __init__(self, horas : str, dia : str) -> None:
+        self.horas = horas
+        self.dia = dia
+    
+    def horario (self) -> str:
+        return self.horas+" "+self.dia
+
 class BancoAgendamentos(Banco):
 
     #Tutor, PET, Serviço, Horário
