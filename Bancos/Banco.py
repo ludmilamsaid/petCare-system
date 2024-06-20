@@ -209,22 +209,22 @@ class Banco(ABC):
             print("Erro ao remover item")
             return False
 
-    def alterarItem(self, itemNovo, itemAntigo, tipo: str) -> bool:
+    def alterarItem(self, itemNovo, ID : str, tipo: str) -> bool:
        
         """
         Altera uma cédula do banco de dados. Utiliza do método procurarItem()
 
         Parameters:
         itemNovo : Any - polimorfico, item a substituir
-        itemAntigo : Any - polimorfico, item a ser substituido
         tipo : str - nome da cédula
+        ID : str - para procurar
 
         Return:
          True se não houver erros, e False se houver
         """
 
         try:
-            itemProcurado = self.procurarItem(itemAntigo, tipo)
+            itemProcurado = self.procurarItem(ID, "ID")
             
             if not itemProcurado.empty:
                 indiceLinha = itemProcurado.index[0]

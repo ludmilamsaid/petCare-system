@@ -1,5 +1,4 @@
 class FileNotCreated (Exception):
-
     #Erro criado para pasta não criada mesmo com o método utilizado
 
     def __init__(self) -> None:
