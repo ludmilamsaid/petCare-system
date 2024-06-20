@@ -133,9 +133,11 @@ class PaginaAgendar(Frame):
         resultado = "Serviços selecionados: " + ", ".join(selecoes) + f"\nTotal a ser pago: R${total:.2f}"
         messagebox.showinfo("Seleções", resultado)
 
-    def atualizar_conta_cliente(self, tutor_id, total):
+    def atualizar_conta_cliente(self, tutor_id: str, total: float)-> None:
         banco_clientes = BancoClientes()
-        #banco_clientes.alterarItem(total, "Conta")
+        banco_animais = BancoAnimais()
+        banco_animais.alterarItem(total, tutor_id, "Conta")
+        banco_clientes.alterarItem(total,tutor_id, "Conta")
        
 
     def navegar_pagina_principal(self):
