@@ -7,7 +7,7 @@ class BancoAnimais(Banco):
     def __init__(self) -> None:
 
         dataType = {
-             "ID" : int,
+             "ID" : str,
              "Nome" : str,
              "Idade" : int, 
              "Espécie" : str,
