@@ -34,7 +34,7 @@ class BancoClientes(Banco):
 
         try:
             novaLinha = pd.DataFrame([novaLinha]).astype(self.dataType)
-            
+            self.ler_banco()
             if not self.procurarItem(ID, "ID").empty:
                 #Erro, pois a pessoa já existe no banco
                 raise RegisteredItem

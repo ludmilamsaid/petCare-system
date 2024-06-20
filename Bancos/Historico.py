@@ -52,7 +52,8 @@ class Historico:
     def lerHistorico(self) -> str:
 
         """
-        Lê o histórico no endereço self.addr
+        Lê o histórico no endereço self.addr.Caso o historico não exista, o método cria um
+        arquivo e depois abre-o.
 
         Parameters:
         None

@@ -43,15 +43,16 @@ class BancoAnimais(Banco):
             self.colunas[7] : novaLinha[7],
             self.colunas[8] : novaLinha[8],
             self.colunas[9] : novaLinha[9],
-            self.colunas[10] : f"Históricos/{novaLinha[10]}.txt",
-            self.colunas[11] : novaLinha[11],
+            self.colunas[10] : f"Históricos/{novaLinha[0]}.txt",
+            self.colunas[11] : novaLinha[10],
             
         }
 
         try:
             novaLinha = pd.DataFrame([novaLinha]).astype(self.dataType)
-            
-            if not self.banco.procurarItem(ID, "ID").empty:
+            self.ler_banco()
+
+            if not self.procurarItem(ID, "ID").empty:
                 #Erro, pois a pessoa já existe no banco
                 raise RegisteredItem
             else:
@@ -62,6 +63,13 @@ class BancoAnimais(Banco):
         except Exception as e:
             print(f"Banco Animais: Erro ao adicionar linha: {e}")
             return False
+
+    def ler_ID_animais(self) -> list:
+
+        self.ler_banco()
+        IDs_utilizados = self.banco["ID"].tolist()
+
+        return IDs_utilizados
 
 def teste() -> None:
     banco = BancoAnimais()
