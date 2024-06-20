@@ -2,6 +2,7 @@ import sys
 import os
 from tkinter import *
 from Styles import *
+from tkinter import messagebox
 sys.path.append(os.path.join(os.path.dirname(__file__), 'Bancos'))
 from Bancos.BancoFuncionarios import BancoFuncionarios
 from Atendente import Atendente
@@ -21,8 +22,6 @@ class PaginaFuncionarios(Frame):
         self.entry_nome = Entry(self, width=90)
         estilo_entry(self.entry_nome)
         self.entry_nome.grid(row=1, column=1, columnspan=10, pady=5)
-        #self.entry_nome.bind("<KeyPress>", self.validar_nome)
-
         
         self.label_cpf = Label(self, text="CPF:", bg="lightblue", fg="#054b9c", font=("Verdana", 12))
         self.label_cpf.grid(row=2, column=0, sticky=W, pady=5)
@@ -110,8 +109,18 @@ class PaginaFuncionarios(Frame):
         atendente = Atendente("Padrão", 101, True)
         nome_funcionario = self.entry_nome.get()
         cpf_funcionario = self.entry_cpf.get()
+        
+        
         novo_funcionario = Funcionario(cpf_funcionario, nome_funcionario, True)
-        atendente.cadastrar_funcionario(novo_funcionario)
+        sucesso = atendente.cadastrar_funcionario(novo_funcionario)
+        
+        if sucesso:
+            messagebox.showinfo("Cadastro Salvo", "Funcionário cadastrado com sucesso!")
+            self.atualizar_dados()
+        else:
+            print(f"{sucesso}")
+            messagebox.showerror("Erro", "Erro ao salvar cadastro no banco de dados!")
+           
         
     #tentiva de atualizar a página a cada 5 segundos
     def atualizar_dados(self):

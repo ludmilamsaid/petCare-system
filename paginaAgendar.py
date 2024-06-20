@@ -54,10 +54,6 @@ class PaginaAgendar(Frame):
         estilo_entry(self.valor_vacinas)
         self.valor_vacinas.grid(row=5, column=0, pady=5, padx=183)
         
-        self.total_label = Label(self.div, text="Total a ser pago:", bg="lightblue", fg="#054b9c")
-        self.total_label["font"] = ("Arial", 12, "bold")
-        self.total_label.grid(row=6, column=0, sticky=W, pady=5)
-        
         self.botao_confirmar = Button(self, text="Confirmar", font=("Calibri", 12), width=10, command=self.calcular_valor_total)
         estilo_botao(self.botao_confirmar)
         self.botao_confirmar.grid(row=7, column=1, padx=40, pady=20)
@@ -139,6 +135,7 @@ class PaginaAgendar(Frame):
 
     def atualizar_conta_cliente(self, tutor_id, total):
         banco_clientes = BancoClientes()
+        #banco_clientes.alterarItem(total, "Conta")
        
 
     def navegar_pagina_principal(self):

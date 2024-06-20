@@ -38,7 +38,7 @@ def estilo_checkbox(CheckButton):
         #relief="groove",  # Estilo da borda
         #bd=2,             # Largura da borda
         selectcolor="#4c8fe0",  # Cor de fundo do checkbox quando selecionado
-        activebackground="#45a049",  # Cor de fundo quando o mouse está sobre o checkbox
+        activebackground="#054b9c",  # Cor de fundo quando o mouse está sobre o checkbox
         activeforeground="white",  # Cor do texto quando o mouse está sobre o checkbox
         #indicatoron=False  # Remover o indicador padrão do checkbox
     )

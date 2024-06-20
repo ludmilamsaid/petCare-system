@@ -2,7 +2,8 @@ from tkinter import *
 
 class PaginaPrincipal(Frame):
     def __init__(self, master):
-        ##2E8B57 #6B8E23
+       
+        # Inicialização do frame principal com configurações de cor e tamanho
         super().__init__(master, bg="lightblue", width=100, height=800, padx=300, pady=150)  
 
         self.title = Label(self, text="PetCare", bg="lightblue", fg = "#054b9c")
@@ -30,6 +31,7 @@ class PaginaPrincipal(Frame):
         self.sair = Button(self, text="Sair", font="Calibri", width = 6, command = self.quit)
         self.sair.pack(pady=10)
 
+    # Métodos de navegação para diferentes páginas
     def navegar_pagina_cadastro(self):
         self.master.master.mostrar_pagina("PaginaCadastro")
 

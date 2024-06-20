@@ -14,7 +14,7 @@ class BancoAnimais(Banco):
              "Raça" : str,
              "Cor" : str,
              "Tamanho" : str,
-             "Tutor" : int,
+             "Tutor" : str,
              "Horário Chegada" : str,
              "Horário Saída" : str,
              "Endereço Histórico" : str,

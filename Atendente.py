@@ -50,7 +50,7 @@ class Atendente(Funcionario):  # Define a classe Atendente que herda da classe F
     def getHistorico(self, animal: Animal):  # Método para obter histórico do animal
         print(f"Nenhum histórico encontrado para o animal {animal.nome}.")  # Mensagem padrão indicando que não há histórico
 
-    def cadastrar_animal(self, animal_id: int, animal_nome: str, animal_idade: int, animal_especie: Especie, animal_raca: str, animal_cor: str, animal_tamanho: Tamanho, tutor_id: int, horario_chegada: date, horario_saida: date, conta: float) -> bool:
+    def cadastrar_animal(self, animal_id: str, animal_nome: str, animal_idade: int, animal_especie: Especie, animal_raca: str, animal_cor: str, animal_tamanho: Tamanho, tutor_id: str, horario_chegada: date, horario_saida: date, conta: float) -> bool:
         animal_id = animal_id  
         animal_nome = animal_nome
         animal_idade = animal_idade  
@@ -75,7 +75,7 @@ class Atendente(Funcionario):  # Define a classe Atendente que herda da classe F
             print(f"Erro ao cadastrar o animal {animal_nome}.")  # Mensagem de erro ao cadastrar animal
             return sucesso
 
-    def cadastrar_funcionario(self, funcionario):  # Método para cadastrar um funcionário
+    def cadastrar_funcionario(self, funcionario) -> bool:  # Método para cadastrar um funcionário
         if not isinstance(funcionario, Funcionario):  # Verifica se funcionario é uma instância da classe Funcionario
             raise ValueError("O parâmetro 'funcionario' deve ser uma instância da classe Funcionario.")  # Lança um erro se não for
 
@@ -88,10 +88,12 @@ class Atendente(Funcionario):  # Define a classe Atendente que herda da classe F
 
         if sucesso:
             print(f"Funcionário {funcionario_nome} cadastrado com sucesso.")  # Mensagem de sucesso ao cadastrar funcionário
+            return sucesso
         else:
             print(f"Erro ao cadastrar o funcionário {funcionario_nome}.")  # Mensagem de erro ao cadastrar funcionário
+            return sucesso
 
-    def excluirCliente(self, cliente_id: int) -> None:  # Método para excluir um cliente
+    def excluirCliente(self, cliente_id: str) -> None:  # Método para excluir um cliente
         sucesso = self.banco_clientes.remover(cliente_id, "ID")  # Remove o cliente do banco de clientes
 
         if sucesso:
@@ -107,17 +109,18 @@ class Atendente(Funcionario):  # Define a classe Atendente que herda da classe F
         else:
             print(f"Erro ao excluir o funcionário com ID {funcionario_id}.")  # Mensagem de erro ao excluir funcionário
 
-    def excluirAnimal(self, animal_id: int) -> None:  # Método para excluir um animal
+    def excluirAnimal(self, animal_id: str) -> bool:  # Método para excluir um animal
         sucesso = self.banco_animais.remover(animal_id, "ID")  # Remove o animal do banco de animais
 
         if sucesso:
             print(f"Animal com ID {animal_id} excluído com sucesso.")  # Mensagem de sucesso ao excluir animal
+            return sucesso
         else:
             print(f"Erro ao excluir o animal com ID {animal_id}.")  # Mensagem de erro ao excluir animal
+            return sucesso
 
 # Criação de instâncias para testes
 #novo_funcionario = Funcionario(1, "Geraldo Magela", True)  # Cria uma instância de Funcionario
-#atendente1 = Atendente("Jussara", 101, True)  # Cria uma instância de Atendente
+atendente1 = Atendente("Jussara", 101, True)  # Cria uma instância de Atendente
 #atendente1.cadastrar_funcionario(novo_funcionario)  # Comenta a chamada do método cadastrar_funcionario
 #atendente1.cadastrar_animal(520, "Leticia", 90, "Cachorro", "Chihuahua", "Branca", "Mini", 510, date.today(), date.today(),float(0.0))  # Comenta a chamada do método cadastrar_animal
-#atendente1.excluirAnimal(13)

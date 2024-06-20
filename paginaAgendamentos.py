@@ -1,6 +1,7 @@
 import sys
 import os
 from tkinter import *
+from tkinter import messagebox
 from Styles import *
 sys.path.append(os.path.join(os.path.dirname(__file__), 'Bancos'))
 from Atendente import Atendente
@@ -59,17 +60,20 @@ class PaginaAgendamentos(Frame):
             for i, detail in enumerate(pet):
                 label = Label(pet_frame, text=f"{labels[i]}: {detail}", bg="#FFFAFA", anchor="w")
                 label.pack(fill="x", pady=2)
-                
-            label_status = Label(pet_frame, text="Status do Pet:", bg="#FFFAFA")
-            label_status.pack(fill="x", pady=2)
             
             deletar = Button(pet_frame, text="Deletar", command=lambda pet_id=pet[0]: self.deletar_dados(pet_id))
             deletar.pack()
 
     def deletar_dados(self, pet_id):
         atendente = Atendente("Padrão", 101, True)
-        atendente.excluirAnimal(pet_id)
+        sucesso = atendente.excluirAnimal(pet_id)
         self.carregar_dados_pets()
+        if sucesso:
+            messagebox.showinfo("Deletar Animal", "Pet deletado com sucesso!")
+        else:
+            print(f"{sucesso}")
+            messagebox.showerror("Erro", "Erro ao deletar pet!")
+        
         
     def navegar_pagina_principal(self):
         self.master.master.mostrar_pagina("PaginaPrincipal")

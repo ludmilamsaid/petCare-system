@@ -44,6 +44,12 @@ class PaginaCadastro(Frame):
         estilo_entry(self.entry_telefone)
         self.entry_telefone.grid(row=3, sticky=W, pady=5, padx=100)
         self.entry_telefone.bind("<KeyPress>", self.validar_telefone)
+        
+        self.label_cpf = Label(self, text="CPF:", bg="lightblue", fg="#054b9c", font=("Verdana", 12))
+        self.label_cpf.grid(row=3, column=1, sticky=W, padx =60 ,pady=5)
+        self.entry_cpf = Entry(self, width=20)
+        estilo_entry(self.entry_cpf)
+        self.entry_cpf.grid(row=3, column=1, sticky=W, pady=5, padx=120)
 
         
         # Formulário PET
@@ -141,7 +147,12 @@ class PaginaCadastro(Frame):
             pet_raca = self.raca_var.get()
             tamanho = self.tamanho_var.get()
             cor = "Caramelo"  
-            
+            cliente_id = self.entry_cpf.get()
+            pet_id = self.entry_cpf.get()
+            conta = 0.0
+            data_chegada = date.today()
+            data_saida = date.today()
+            addr_historico = self.text_historico.get("1.0", END).strip()
             
             if not cliente_nome or not endereco or not telefone:
                 raise ValueError("Todos os campos do tutor devem ser preenchidos.")
@@ -154,19 +165,6 @@ class PaginaCadastro(Frame):
             except ValueError:
                 raise ValueError("A idade do pet deve ser um número inteiro.")
             
-            cliente_id = 22
-            pet_id = 22
-            conta = 0.0
-            data_chegada = date.today()
-            data_saida = date.today()
-            addr_historico = self.text_historico.get("1.0", END).strip()
-            
-            # if pet_especie == "Cachorro":
-            #     pet = Cachorro(pet_nome, pet_idade, pet_raca, cor, tamanho, cliente_id, pet_id, data_chegada, data_saida, addr_historico, conta)
-            # elif pet_especie == "Gato":
-            #     pet = Gato(pet_nome, pet_idade, pet_raca, cor, tamanho, cliente_id, pet_id, data_chegada, data_saida, addr_historico, conta)
-            # else:
-            #     raise ValueError("Espécie inválida.")
             
             atendente.cadastrarClientes(cliente_id, cliente_nome, pet_id, endereco, conta)
             sucesso =atendente.cadastrar_animal(pet_id, pet_nome, pet_idade, pet_especie, pet_raca, cor, tamanho, cliente_id, data_chegada, data_saida, conta)

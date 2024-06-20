@@ -50,9 +50,11 @@ class BancoClientes(Banco):
 def teste() -> None:
     
     teste = BancoClientes()
-    print(teste.addr)
-    teste.adicionar([101, "Joao", [101, 102, 103], "35180184", 234.23])
+    # print(teste.addr)
+    # teste.adicionar([101, "Joao", [101, 102, 103], "35180184", 234.23])
+    teste.remover("4", "ID")
     teste.atualizarBanco()
     teste.imprimir()
+    
 
 #teste()
