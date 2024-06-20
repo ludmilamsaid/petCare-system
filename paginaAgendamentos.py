@@ -18,12 +18,12 @@ class PaginaAgendamentos(Frame):
 
         # Frame mais externo para exibir os dados dos pets
         self.div = Frame(self, bg="lightblue")
-        self.div.grid(row=1, column=1, pady=10, sticky="nsew")
+        self.div.grid(row=1, column=1, pady=10, padx=200)
         
         # Barra de rolagem
-        self.canvas = Canvas(self.div, bg="lightblue", width=600, height=500)
+        self.canvas = Canvas(self.div, bg="#eff0ed", width=600, height=500)
         self.scrollbar = Scrollbar(self.div, orient="vertical", command=self.canvas.yview)
-        self.scrollable_frame = Frame(self.canvas, bg="lightblue")
+        self.scrollable_frame = Frame(self.canvas, bg="#eff0ed")
 
         self.scrollable_frame.bind(
             "<Configure>",

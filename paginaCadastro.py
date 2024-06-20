@@ -154,8 +154,8 @@ class PaginaCadastro(Frame):
             except ValueError:
                 raise ValueError("A idade do pet deve ser um número inteiro.")
             
-            cliente_id = 16
-            pet_id = 16
+            cliente_id = 22
+            pet_id = 22
             conta = 0.0
             data_chegada = date.today()
             data_saida = date.today()

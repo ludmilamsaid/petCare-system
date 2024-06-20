@@ -42,9 +42,9 @@ class PaginaFuncionarios(Frame):
         self.div.grid(row=3, column=1, padx=10, pady=10, sticky="nsew")
         
         # Barra de rolagem
-        self.canvas = Canvas(self.div, bg="lightblue", width=600, height=450)
+        self.canvas = Canvas(self.div, bg="#eff0ed", width=600, height=450)
         self.scrollbar = Scrollbar(self.div, orient="vertical", command=self.canvas.yview)
-        self.scrollable_frame = Frame(self.canvas, bg="lightblue")
+        self.scrollable_frame = Frame(self.canvas, bg="#eff0ed")
 
         self.scrollable_frame.bind(
             "<Configure>",
